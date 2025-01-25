@@ -1,0 +1,28 @@
+---
+title: "About"
+about:
+  template: jolla
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/company/rinse-and-repeat-data-science
+    - icon: github
+      text: website
+      href: https://www.r2-ds.com
+
+---
+
+![](logonav_resized.png)
+
+::: {style="text-align: justify"}
+This is a blog about data science topics related to:
+
+
+1. Understanding, summarizing and optimal utilization of big data for datasets for business machine learning tasks 
+   
+2. Discrete and continuous optimization models for business tasks
+
+3. Applications of graph data models and algorithms to solve business problems.
+
+:::
+

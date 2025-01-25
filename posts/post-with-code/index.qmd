@@ -1,0 +1,57 @@
+---
+title: "Chat GPT and Data Analysis"
+author: "Rajiv Sambasivan"
+date: last-modified
+categories: [news, code, analysis]
+image: "ice_cream_sales.png"
+---
+
+
+# Data Analysis with Chat GPT, a test drive
+
+For a while now I have been meaning to explore how Copilot and Chat GPT are useful for data analysis. I have also been meaning to transition to Quarto for a while, so I grabbed a dataset from Kaggle, picked some interesting questions to analyze, and threw it at Copilot and Chat GPT. Here's my experience. I used Chat GPT to generate the content initially, so what you see here is my own writing interlaced with generated content. I used VSCode with extensions for quarto and copilot for this article.
+
+By leveraging Chat GPT, we can automate and enhance various aspects of time series analysis, including data preprocessing, model selection, and interpretation of results.
+
+::: {.callout-note}
+### Note
+While the above statement is true, it can be somewhat misleading. The assistance we get for the task explored in this post is different for tasks like data preprocessing in comparison to tasks like result interpretation and model selection.
+:::
+## The Time Series Analysis Task
+In this post, we will analyze ice cream sales from transaction data collected over four and a half years from four metropolitan areas in the USA. The dataset is available on [Kaggle](https://www.kaggle.com/datasets/prasad22/retail-transactions-dataset). Our goal is to extract key characteristics of this time series to understand the demand for ice cream at these stores during the analysis period. The questions addressed in this post represent a subset of a comprehensive analysis exercise, and it is not intended to be exhaustive or rigorous. Some example questions include:
+
+1. What does the plot of daily ice cream sales nationwide over the analysis period look like?
+   
+2. How do ice cream sales vary across the four years within the analysis period? Are there significant differences in the summary statistics year over year?
+   
+3. Is there variability in ice cream sales based on location? In other words, is there heterogeneity in consumption patterns based on location.
+   
+4. What does the autocorrelation function of the ice cream sales indicate? Is the time series stationary?
+   
+5. What are the key components of the time series (trend, seasonality, etc.)?
+   
+6. How does the plot of the maximum daily ice cream sales for each week of the year look? Can we model these maximum values using a Gumbel distribution to understand the distribution of peak daily demand nationally?
+
+::: {.callout-note}
+### Note
+The relevant analysis tasks (the list above) is something the analyst has to generate. In my view, this comes with experience with similar data and use cases. Asking Chat GPT on how to do time series analysis got me very general guidelines. I did not find the response very useful.
+A notebook implementation of most of these questions is [available](../../notebooks/daily_ice_cream_sales_exploration.ipynb)
+:::
+
+## Data Preparation
+Transforming the raw dataset to a format that was suitable to answer the analysis questions required an understanding of the various fields in the data. To get the daily ice cream sales from the raw transaction data, I had the identify the transactions that contained ice creams and then aggregate the transactions on a daily basis. Doing this required an analysis of how the line items for each transaction is encoded. Once the data description was analyzed, providing the prompts to Chat GPT generated code that was pretty close to what I developed manually.
+
+::: {.callout-note}
+### Note
+The real effort in the data preparation task went into developing an understanding of the various elements of the raw dataset and then coming up with the process of identifying the transactions containing ice cream. Aggregating these transactions to a daily or weekly cadence was fairly straight forward. Chat GPT was helpful in generating the specific pandas code for each step. The [manual](../../notebooks/retail_transaction_data.ipynb) and the [generated](../../notebooks/generated_code_retail.ipynb) were pretty close.
+:::
+
+## Summary of Chat GPT's utility for this particular exercise
+
+* Chat GPT was definitely very helpful in developing and organizing the content.
+
+* Identifying the key questions that are relevant to the analysis requires formal training and experience - I don't really see this replacing a data scientist at this point.
+
+* Chat GPT was definitely useful for various code generation tasks.
+
+* In summary, it was impressive as an assistant, but at this point, it is an assistant not a data scientist replacement.
