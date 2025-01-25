@@ -15,7 +15,7 @@ By leveraging Chat GPT, we can automate and enhance various aspects of time seri
 
 ::: {.callout-note}
 ### Note
-While the above statement is true, it can be somewhat misleading. The assistance we get for the task explored in this post is different for tasks like data preprocessing in comparison to tasks like result interpretation and model selection.
+While the above statement is true, it can be somewhat misleading. The assistance we get for the tasks like data preprocessing in comparison to tasks like result interpretation and model selection is very different. Code generation for manipulating and transforming pandas dataframes was useful, I did't really find anything useful for interpretation or model selection.
 :::
 ## The Time Series Analysis Task
 In this post, we will analyze ice cream sales from transaction data collected over four and a half years from four metropolitan areas in the USA. The dataset is available on [Kaggle](https://www.kaggle.com/datasets/prasad22/retail-transactions-dataset). Our goal is to extract key characteristics of this time series to understand the demand for ice cream at these stores during the analysis period. The questions addressed in this post represent a subset of a comprehensive analysis exercise, and it is not intended to be exhaustive or rigorous. Some example questions include:
