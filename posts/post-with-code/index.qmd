@@ -17,14 +17,15 @@ By leveraging Chat GPT, we can automate and enhance various aspects of time seri
 ### Note
 While the above statement is true, it can be somewhat misleading. The assistance we get for the tasks like data preprocessing in comparison to tasks like result interpretation and model selection is very different. Code generation for manipulating and transforming pandas dataframes was useful, I did't really find anything useful for interpretation or model selection.
 :::
+
 ## The Time Series Analysis Task
-In this post, we will analyze ice cream sales from transaction data collected over four and a half years from four metropolitan areas in the USA. The dataset is available on [Kaggle](https://www.kaggle.com/datasets/prasad22/retail-transactions-dataset). Our goal is to extract key characteristics of this time series to understand the demand for ice cream at these stores during the analysis period. The questions addressed in this post represent a subset of a comprehensive analysis exercise, and it is not intended to be exhaustive or rigorous. Some example questions include:
+The data analyzed in this post is a collection of transactions from a national retailer. The transactions span major metropolitan cities in the US and cover a four and half year period. The dataset is available on [Kaggle](https://www.kaggle.com/datasets/prasad22/retail-transactions-dataset). The objective was to analyze this data to get answers to a representative set of questions. The questions addressed in this post represent a subset of a comprehensive analysis exercise, and it is not intended to be exhaustive or rigorous. Some example questions include:
 
 1. What does the plot of daily ice cream sales nationwide over the analysis period look like?
    
 2. How do ice cream sales vary across the four years within the analysis period? Are there significant differences in the summary statistics year over year?
    
-3. Is there variability in ice cream sales based on location? In other words, is there heterogeneity in consumption patterns based on location.
+3. Is there variability in ice cream sales based on location? In other words, is there heterogeneity in consumption patterns based on location?
    
 4. What does the autocorrelation function of the ice cream sales indicate? Is the time series stationary?
    
