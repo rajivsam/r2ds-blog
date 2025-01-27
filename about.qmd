@@ -15,7 +15,7 @@ about:
 ![](logonav_resized.png)
 
 ::: {style="text-align: justify"}
-This is a blog about data science topics related to:
+This is a blog where I write about topics I am interested in. These include:
 
 
 1. Understanding, summarizing and optimal utilization of big data for datasets for business machine learning tasks 
@@ -23,6 +23,7 @@ This is a blog about data science topics related to:
 2. Discrete and continuous optimization models for business tasks
 
 3. Applications of graph data models and algorithms to solve business problems.
+4. Statistical Modeling of business problems
 
 :::
 

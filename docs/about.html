@@ -124,11 +124,12 @@ ul.task-list li input[type="checkbox"] {
 </header><main class="content" id="quarto-document-content">
 <p><img src="logonav_resized.png" class="img-fluid"></p>
 <div style="text-align: justify">
-<p>This is a blog about data science topics related to:</p>
+<p>This is a blog where I write about topics I am interested in. These include:</p>
 <ol type="1">
 <li><p>Understanding, summarizing and optimal utilization of big data for datasets for business machine learning tasks</p></li>
 <li><p>Discrete and continuous optimization models for business tasks</p></li>
 <li><p>Applications of graph data models and algorithms to solve business problems.</p></li>
+<li><p>Statistical Modeling of business problems</p></li>
 </ol>
 </div>
 
@@ -230,7 +231,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/rajivsam\.github\.io\/r2ds-blog\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

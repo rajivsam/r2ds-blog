@@ -6,6 +6,7 @@ categories: [news, code, analysis]
 image: "ice_cream_sales.png"
 ---
 
+::: {style="text-align: justify"}
 
 # Data Analysis with Chat GPT, a test drive
 
@@ -56,3 +57,5 @@ The real effort in the data preparation task went into developing an understandi
 * Chat GPT was definitely useful for various code generation tasks.
 
 * In summary, it was impressive as an assistant, but at this point, it is an assistant not a data scientist replacement.
+
+:::
