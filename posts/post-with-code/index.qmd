@@ -36,9 +36,11 @@ The data analyzed in this post is a collection of transactions from a national r
 
 ::: {.callout-note}
 ### Note
-The relevant analysis tasks (the list above) is something the analyst has to generate. In my view, this comes with experience with similar data and use cases. Asking Chat GPT on how to do time series analysis got me very general guidelines. I did not find the response very useful.
+The relevant analysis tasks (the list above) is something the analyst has to generate. In my view, this comes with experience with similar data and use cases. Asking Chat GPT on how to do time series analysis got me very general guidelines. I did not find the response very useful (see below). The ACF suggests a white noise process (which is the ground truth), Chat GPT was trying find patterns in it.
 A notebook implementation of most of these questions is [available](../../notebooks/daily_ice_cream_sales_exploration.ipynb)
 :::
+
+![Chat GPT Analysis](chat_gpt_analysis.png)
 
 ## Data Preparation
 Transforming the raw dataset to a format that was suitable to answer the analysis questions required an understanding of the various fields in the data. To get the daily ice cream sales from the raw transaction data, I had the identify the transactions that contained ice creams and then aggregate the transactions on a daily basis. Doing this required an analysis of how the line items for each transaction is encoded. Once the data description was analyzed, providing the prompts to Chat GPT generated code that was pretty close to what I developed manually.
