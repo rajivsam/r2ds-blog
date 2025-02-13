@@ -2,7 +2,8 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/post-with-code/index.html"
+      "/posts/coffee_prices/index.html",
+      "/posts/ice_cream_sales/index.html"
     ]
   }
 ]
