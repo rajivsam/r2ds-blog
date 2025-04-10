@@ -6,3 +6,9 @@ dask[complete]
 matplotlib
 statsmodels
 radian
+fredapi
+dotenv
+plotly
+ruptures
+numba
+quantecon
