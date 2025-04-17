@@ -33,7 +33,16 @@ We need to adjust the penalty parameter to be consistent with our data. This is 
 
  ![](num_bp_vs_pen.png)
 
- Using a *Gaussian* kernel for each segment and a penalty value of $6$, we get a segmentation that is shown below.
+
+::: {.callout-note appearance="simple"}
+
+## Correction
+
+There is an edit to the previous version of the post. In the previous version I had mentioned that a *Gaussian* kernel is used as model for the segments. This is not a reasonable choice because the points in the series are not IID (identical, independently distributed), a *Gaussian Process* model is a much more reasonable choice. This model captures the correlation of values between data points. As a result of this change, the results from the modeling are different from what resulted from the *Gaussian* kernel.
+:::
+
+
+ Using a *Gaussian Process* for each segment and a penalty value of $55$, we get a segmentation that is shown below.
 
  ![](change_point_plot.png)
 
@@ -71,7 +80,7 @@ If the stochastic matrix is *irreducible* —meaning that it is possible to tran
 
 Now that the modeling has been described, what do the results suggest. Here is what I was able to pick. 
 
-1. **Cycle Lengths Vary Widely**: Coffee price cycles can range from as short as 25 months to as long as 110 months.
+1. **Cycle Lengths Vary Widely**: Coffee price cycles can range from as short as 25 months to as long as 70 months.
 
 2. **Rising Volatility Since 2005**: The variability in prices within each cycle—measured by the standard deviation—has been increasing since around 2005 (beginning with regime R5). This trend aligns with major global disruptions such as the financial crisis, the COVID-19 pandemic, and the Ukraine conflict. The rise in variance is also clearly visible in the violin plots. Increased volatility implies that businesses could potentially reduce costs by stockpiling coffee when demand is stable, though practical constraints and regulations may limit this strategy.
 
@@ -91,11 +100,9 @@ The code for this post is available. These are grouped as follows:
 4. [Markov Analysis](../../notebooks/markov_chains_coffee_prices.ipynb)
 
 
-
-
- 
-
-
-
-
 :::
+
+
+
+
+
