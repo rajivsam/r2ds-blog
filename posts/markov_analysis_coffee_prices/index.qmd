@@ -1,10 +1,16 @@
 ---
 title: "Understanding Coffee Prices"
-author: "Rajiv Sambasivan"
+author:
+  - name: Rajiv Sambasivan 
+    url: https://www.r2-ds.com
+    affiliation: Rinse and Repeat Data Science
+    affiliation-url: https://www.r2-ds.com
 date: last-modified
 categories: [news, code, analysis]
 bibliography: mc_ref.bib
 image: "change_point_plot.png"
+citation:
+  url: https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/
 nocite: |
   @*
 ---
