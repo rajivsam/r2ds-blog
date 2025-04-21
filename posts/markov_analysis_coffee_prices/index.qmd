@@ -55,7 +55,7 @@ There is an edit to the previous version of the post. In the previous version I 
 
  Each segment, or *regime*, is a sequence of months with similar prices. The summary statistics of the segments is shown below. The *size* column represents the length of the segment in months.
 
- ![](regime_summary.png)
+ ![](regime_summary.png){fig-align="center" width=50% height=50%}
 
 
  A violin plot of the prices during each of the cycles is shown below
@@ -77,7 +77,8 @@ Markov chains are widely used to study, understand, and model stochastic process
 
 The stochastic matrix for the current period (now) is shown below.
 
-![](transition_matrix_R8.png)
+![](transition_matrix_R8.png){fig-align="center" width=65% height=65%}
+
 If the stochastic matrix is *irreducible* —meaning that it is possible to transition from any state to any other state in a finite number of steps—then the corresponding regime has a stationary distribution. This distribution represents the long-run probabilities of the prices being in each of the three states within that regime. For the current period, the stochastic matrix is indeed irreducible, and its associated stationary distribution is as follows:
 
 ![](stationary_prob_R8.png)

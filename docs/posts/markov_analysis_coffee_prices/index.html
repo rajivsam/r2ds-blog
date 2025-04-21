@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Rajiv Sambasivan">
-<meta name="dcterms.date" content="2025-04-18">
+<meta name="dcterms.date" content="2025-04-22">
 
 <title>Understanding Coffee Prices – r2ds-blog</title>
 <style>
@@ -195,7 +195,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">April 18, 2025</p>
+        <p class="date">April 22, 2025</p>
       </div>
     </div>
     
@@ -242,7 +242,11 @@ Correction
 <p>Using a <em>Gaussian Process</em> for each segment and a penalty value of <span class="math inline">\(55\)</span>, we get a segmentation that is shown below.</p>
 <p><img src="change_point_plot.png" class="img-fluid"></p>
 <p>Each segment, or <em>regime</em>, is a sequence of months with similar prices. The summary statistics of the segments is shown below. The <em>size</em> column represents the length of the segment in months.</p>
-<p><img src="regime_summary.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="regime_summary.png" class="quarto-figure quarto-figure-center figure-img" style="width:50.0%;height:0.0%"></p>
+</figure>
+</div>
 <p>A violin plot of the prices during each of the cycles is shown below</p>
 <p><img src="violin_plot.png" class="img-fluid"></p>
 <p>It is evident that each regime has a unimodal distribution and the <em>Gaussian</em> assumption seems reasonable. Strictly speaking, a <em>Q-Q</em> plot and a <em>goodness of fit</em> test are warranted.</p>
@@ -255,7 +259,12 @@ Correction
 <li><a href="https://www.youtube.com/watch?v=TCJdgmquZXU&amp;list=PLXsDp0z6VWFT5ZM86xh8i1AMFYxnrefLk&amp;index=28">Jason Bramburger’s course</a> <span class="citation" data-cites="jason_bramburger">(<a href="#ref-jason_bramburger" role="doc-biblioref">Bramburger 2025</a>)</span>, “Introduction to Mathematical Modeling”</li>
 </ol>
 <p>The stochastic matrix for the current period (now) is shown below.</p>
-<p><img src="transition_matrix_R8.png" class="img-fluid"> If the stochastic matrix is <em>irreducible</em> —meaning that it is possible to transition from any state to any other state in a finite number of steps—then the corresponding regime has a stationary distribution. This distribution represents the long-run probabilities of the prices being in each of the three states within that regime. For the current period, the stochastic matrix is indeed irreducible, and its associated stationary distribution is as follows:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="transition_matrix_R8.png" class="quarto-figure quarto-figure-center figure-img" style="width:65.0%;height:65.0%"></p>
+</figure>
+</div>
+<p>If the stochastic matrix is <em>irreducible</em> —meaning that it is possible to transition from any state to any other state in a finite number of steps—then the corresponding regime has a stationary distribution. This distribution represents the long-run probabilities of the prices being in each of the three states within that regime. For the current period, the stochastic matrix is indeed irreducible, and its associated stationary distribution is as follows:</p>
 <p><img src="stationary_prob_R8.png" class="img-fluid"></p>
 <p>Now that the modeling has been described, what do the results suggest. Here is what I was able to pick.</p>
 <ol type="1">
@@ -297,13 +306,13 @@ Truong, Charles, Laurent Oudre, and Nicolas Vayatis. 2020. <span>“Selective Re
 </div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2025,
   author = {Sambasivan, Rajiv},
   title = {Understanding {Coffee} {Prices}},
-  date = {2025-04-18},
+  date = {2025-04-22},
   url = {https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2025" class="csl-entry quarto-appendix-citeas" role="listitem">
 Sambasivan, Rajiv. 2025. <span>“Understanding Coffee Prices.”</span>
-April 18, 2025. <a href="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/">https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/</a>.
+April 22, 2025. <a href="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/">https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -395,7 +404,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/rajivsam\.github\.io\/r2ds-blog\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
