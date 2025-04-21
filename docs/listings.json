@@ -2,9 +2,9 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/markov_analysis_coffee_prices/index.html",
       "/posts/coffee_prices/index.html",
-      "/posts/ice_cream_sales/index.html"
+      "/posts/ice_cream_sales/index.html",
+      "/posts/markov_analysis_coffee_prices/index.html"
     ]
   }
 ]
