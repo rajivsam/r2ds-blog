@@ -81,7 +81,7 @@ The stochastic matrix for the current period (now) is shown below.
 
 If the stochastic matrix is *irreducible* —meaning that it is possible to transition from any state to any other state in a finite number of steps—then the corresponding regime has a stationary distribution. This distribution represents the long-run probabilities of the prices being in each of the three states within that regime. For the current period, the stochastic matrix is indeed irreducible, and its associated stationary distribution is as follows:
 
-![](stationary_prob_R8.png)
+![](stationary_prob_R8.png){fig-align="center" width=35% height=35%}
 
 
 
