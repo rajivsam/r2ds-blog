@@ -12,3 +12,4 @@ plotly
 ruptures
 numba
 quantecon
+hmmlearn

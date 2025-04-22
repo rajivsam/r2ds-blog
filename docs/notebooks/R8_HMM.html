@@ -166,424 +166,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>OMP: Info #276: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.</code></pre>
 </div>
 </div>
-<div id="14c20807-d614-4625-b928-65b9585e0a41" class="cell" data-execution_count="8">
+<div id="14c20807-d614-4625-b928-65b9585e0a41" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fp <span class="op">=</span> <span class="st">"../data/regimed_coffee_prices.csv"</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(fp)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>select_r8 <span class="op">=</span> (df.regime <span class="op">==</span> <span class="st">"R-8"</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>dfr8 <span class="op">=</span> df[select_r8].copy().reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="bf22aa1c-3e4d-4154-9dc4-03014e52e94e" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dfr8.shape[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div id="b1188fa6-e850-4292-a02a-7ffd84ca3a49" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>LEARN_RNG <span class="op">=</span> <span class="dv">40</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="bf22aa1c-3e4d-4154-9dc4-03014e52e94e" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dfr8.shape[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>47</code></pre>
 </div>
 </div>
-<div id="5b2c3581-8920-42f6-acf6-04b3e22e4d38" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dflearn <span class="op">=</span> dfr8.iloc[:<span class="dv">30</span>, :]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="5b2c3581-8920-42f6-acf6-04b3e22e4d38" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>dflearn <span class="op">=</span> dfr8.iloc[:LEARN_RNG, :].reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="9f3e58d3-9353-4bba-911d-beeabda15d72" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dfr8</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">date</th>
-<th data-quarto-table-cell-role="th">cents_per_lb</th>
-<th data-quarto-table-cell-role="th">regime</th>
-<th data-quarto-table-cell-role="th">price</th>
-<th data-quarto-table-cell-role="th">previous_price</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>2021-04-01</td>
-<td>168.649</td>
-<td>R-8</td>
-<td>L</td>
-<td>NaN</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>2021-05-01</td>
-<td>186.463</td>
-<td>R-8</td>
-<td>L</td>
-<td>L</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>2021-06-01</td>
-<td>192.065</td>
-<td>R-8</td>
-<td>L</td>
-<td>L</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>2021-07-01</td>
-<td>204.501</td>
-<td>R-8</td>
-<td>L</td>
-<td>L</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>2021-08-01</td>
-<td>216.435</td>
-<td>R-8</td>
-<td>M</td>
-<td>L</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
-<td>2021-09-01</td>
-<td>225.537</td>
-<td>R-8</td>
-<td>M</td>
-<td>M</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
-<td>2021-10-01</td>
-<td>241.073</td>
-<td>R-8</td>
-<td>M</td>
-<td>M</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">7</td>
-<td>2021-11-01</td>
-<td>258.978</td>
-<td>R-8</td>
-<td>M</td>
-<td>M</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">8</td>
-<td>2021-12-01</td>
-<td>268.329</td>
-<td>R-8</td>
-<td>H</td>
-<td>M</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
-<td>2022-01-01</td>
-<td>271.081</td>
-<td>R-8</td>
-<td>H</td>
-<td>H</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">10</td>
-<td>2022-02-01</td>
-<td>279.834</td>
-<td>R-8</td>
-<td>H</td>
-<td>H</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">11</td>
-<td>2022-03-01</td>
-<td>258.993</td>
-<td>R-8</td>
-<td>H</td>
-<td>H</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">12</td>
-<td>2022-04-01</td>
-<td>265.398</td>
-<td>R-8</td>
-<td>H</td>
-<td>H</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">13</td>
-<td>2022-05-01</td>
-<td>260.450</td>
-<td>R-8</td>
-<td>H</td>
-<td>H</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">14</td>
-<td>2022-06-01</td>
-<td>273.764</td>
-<td>R-8</td>
-<td>H</td>
-<td>H</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">15</td>
-<td>2022-07-01</td>
-<td>255.907</td>
-<td>R-8</td>
-<td>M</td>
-<td>H</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">16</td>
-<td>2022-08-01</td>
-<td>268.483</td>
-<td>R-8</td>
-<td>H</td>
-<td>M</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">17</td>
-<td>2022-09-01</td>
-<td>267.492</td>
-<td>R-8</td>
-<td>H</td>
-<td>H</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">18</td>
-<td>2022-10-01</td>
-<td>240.082</td>
-<td>R-8</td>
-<td>M</td>
-<td>H</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">19</td>
-<td>2022-11-01</td>
-<td>213.718</td>
-<td>R-8</td>
-<td>M</td>
-<td>M</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">20</td>
-<td>2022-12-01</td>
-<td>210.389</td>
-<td>R-8</td>
-<td>L</td>
-<td>M</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">21</td>
-<td>2023-01-01</td>
-<td>206.760</td>
-<td>R-8</td>
-<td>L</td>
-<td>L</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">22</td>
-<td>2023-02-01</td>
-<td>229.506</td>
-<td>R-8</td>
-<td>M</td>
-<td>L</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">23</td>
-<td>2023-03-01</td>
-<td>222.664</td>
-<td>R-8</td>
-<td>M</td>
-<td>M</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">24</td>
-<td>2023-04-01</td>
-<td>229.956</td>
-<td>R-8</td>
-<td>M</td>
-<td>M</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">25</td>
-<td>2023-05-01</td>
-<td>220.121</td>
-<td>R-8</td>
-<td>M</td>
-<td>M</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">26</td>
-<td>2023-06-01</td>
-<td>207.385</td>
-<td>R-8</td>
-<td>L</td>
-<td>M</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">27</td>
-<td>2023-07-01</td>
-<td>193.494</td>
-<td>R-8</td>
-<td>L</td>
-<td>L</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">28</td>
-<td>2023-08-01</td>
-<td>186.347</td>
-<td>R-8</td>
-<td>L</td>
-<td>L</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">29</td>
-<td>2023-09-01</td>
-<td>183.589</td>
-<td>R-8</td>
-<td>L</td>
-<td>L</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">30</td>
-<td>2023-10-01</td>
-<td>183.951</td>
-<td>R-8</td>
-<td>L</td>
-<td>L</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">31</td>
-<td>2023-11-01</td>
-<td>197.433</td>
-<td>R-8</td>
-<td>L</td>
-<td>L</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">32</td>
-<td>2023-12-01</td>
-<td>210.310</td>
-<td>R-8</td>
-<td>L</td>
-<td>L</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">33</td>
-<td>2024-01-01</td>
-<td>203.879</td>
-<td>R-8</td>
-<td>L</td>
-<td>L</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">34</td>
-<td>2024-02-01</td>
-<td>208.783</td>
-<td>R-8</td>
-<td>L</td>
-<td>L</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">35</td>
-<td>2024-03-01</td>
-<td>208.913</td>
-<td>R-8</td>
-<td>L</td>
-<td>L</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">36</td>
-<td>2024-04-01</td>
-<td>239.866</td>
-<td>R-8</td>
-<td>M</td>
-<td>L</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">37</td>
-<td>2024-05-01</td>
-<td>232.343</td>
-<td>R-8</td>
-<td>M</td>
-<td>M</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">38</td>
-<td>2024-06-01</td>
-<td>248.405</td>
-<td>R-8</td>
-<td>M</td>
-<td>M</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">39</td>
-<td>2024-07-01</td>
-<td>257.099</td>
-<td>R-8</td>
-<td>M</td>
-<td>M</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">40</td>
-<td>2024-08-01</td>
-<td>261.438</td>
-<td>R-8</td>
-<td>H</td>
-<td>M</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">41</td>
-<td>2024-09-01</td>
-<td>278.760</td>
-<td>R-8</td>
-<td>H</td>
-<td>H</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">42</td>
-<td>2024-10-01</td>
-<td>276.777</td>
-<td>R-8</td>
-<td>H</td>
-<td>H</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">43</td>
-<td>2024-11-01</td>
-<td>304.953</td>
-<td>R-8</td>
-<td>H</td>
-<td>H</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">44</td>
-<td>2024-12-01</td>
-<td>344.119</td>
-<td>R-8</td>
-<td>H</td>
-<td>H</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">45</td>
-<td>2025-01-01</td>
-<td>353.933</td>
-<td>R-8</td>
-<td>H</td>
-<td>H</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">46</td>
-<td>2025-02-01</td>
-<td>409.516</td>
-<td>R-8</td>
-<td>H</td>
-<td>H</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<div id="82f88e54-1dc5-472f-b475-9c68566d5538" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dflearn[<span class="st">"cents_per_lb"</span>].hist()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="39d080ea-b415-4e1a-aeba-51e58dbd4c49" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dflearn[<span class="st">"cents_per_lb"</span>].plot.kde()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -592,86 +197,190 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="688b7077-6961-4238-8146-956a470e5e38" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># maintain regime point count to mark the previous price for the first entry in each regime as na</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>rpc <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ri, row <span class="kw">in</span> dflearn.iterrows():</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> rpc <span class="op">==</span> <span class="dv">0</span> :</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        rpc <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        dflearn.loc[ri, <span class="st">"previous_price"</span>] <span class="op">=</span> dflearn.loc[ (ri <span class="op">-</span><span class="dv">1</span>), <span class="st">"price"</span>]</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        rpc <span class="op">+=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
-File <span class="ansi-green-fg">~/Programming/r2ds-blog-worskpace/r2ds-blog/.venv/lib/python3.12/site-packages/pandas/core/indexes/base.py:3805</span>, in <span class="ansi-cyan-fg">Index.get_loc</span><span class="ansi-blue-fg">(self, key)</span>
-<span class="ansi-green-fg ansi-bold">   3804</span> <span style="font-weight:bold;color:rgb(0,135,0)">try</span>:
-<span class="ansi-green-fg">-&gt; 3805</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_engine</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">get_loc</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">casted_key</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">   3806</span> <span style="font-weight:bold;color:rgb(0,135,0)">except</span> <span style="font-weight:bold;color:rgb(215,95,95)">KeyError</span> <span style="font-weight:bold;color:rgb(0,135,0)">as</span> err:
+<div id="a67942e5-1966-44fa-b85c-5bff9f1d78e3" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> hmmlearn <span class="im">import</span> hmm</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> dflearn[<span class="st">"cents_per_lb"</span>].values</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X.reshape((X.shape[<span class="dv">0</span>], <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="011e438a-4494-4a08-b040-a21ec0583593" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>X.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>(40, 1)</code></pre>
+</div>
+</div>
+<div id="ae94557e-fcc9-4a36-8d51-bc4ff0e974d5" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>comp_range <span class="op">=</span> [ <span class="dv">2</span>,<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="bc8bbe1e-ba18-4702-b420-74020079877e" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>comp_range</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>[2, 3]</code></pre>
+</div>
+</div>
+<div id="1889c167-5587-4d2e-a92e-32604c9a119c" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>np.random.randint(<span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>56</code></pre>
+</div>
+</div>
+<div id="2627c0f9-13aa-48e4-af90-042c6da8ae45" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> <span class="bu">list</span>()</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>models <span class="op">=</span> <span class="bu">list</span>()</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>bic <span class="op">=</span> <span class="bu">list</span>()</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">10</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n_components <span class="kw">in</span> comp_range:</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># define our hidden Markov model</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>        model <span class="op">=</span> hmm.GaussianHMM(n_components<span class="op">=</span>n_components,</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>                                covariance_type<span class="op">=</span><span class="st">'full'</span>,</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>                                random_state<span class="op">=</span>np.random.randint(<span class="dv">10</span>,<span class="dv">500</span>))</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>        model.fit(X)  <span class="co"># 50/50 </span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>        models.append(model)</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>        scores.append(model.score(X))</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>        bic.append(model.bic(X))</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'Converged: </span><span class="sc">{</span>model<span class="sc">.</span>monitor_<span class="sc">.</span>converged<span class="sc">}</span><span class="ss">'</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>              <span class="ss">f'</span><span class="ch">\t</span><span class="ss">Score: </span><span class="sc">{</span>scores[<span class="op">-</span><span class="dv">1</span>]<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a><span class="co"># get the best model</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> models[np.argmin(bic)]</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>n_states <span class="op">=</span> model.n_components</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'The best model had a score of </span><span class="sc">{</span><span class="bu">max</span>(scores)<span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span>n_states<span class="sc">}</span><span class="ss"> '</span></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>      <span class="st">'states'</span>)</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="co"># use the Viterbi algorithm to predict the most likely sequence of states</span></span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="co"># given the model</span></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>states <span class="op">=</span> model.predict(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Converged: True Score: -193.01424017511735
+Converged: True Score: -173.4905746732474
+Converged: True Score: -173.50308099381377
+Converged: True Score: -173.4440605514749
+Converged: True Score: -193.00533548374705
+Converged: True Score: -173.2950245063382
+Converged: True Score: -192.69477463018066
+Converged: True Score: -173.49555242391432
+Converged: True Score: -193.02331693449096
+Converged: True Score: -173.29226497857934
+Converged: True Score: -165.47664941343598
+Converged: True Score: -178.86754302496482
+Converged: True Score: -166.65183108643694
+Converged: True Score: -165.4549050271745
+Converged: True Score: -171.8040837555721
+Converged: True Score: -167.82937741455203
+Converged: True Score: -177.08936192571053
+Converged: True Score: -169.99930610147587
+Converged: True Score: -173.16803000558758
+Converged: True Score: -165.29478475018215
+The best model had a score of -165.29478475018215 and 2 states</code></pre>
+</div>
+</div>
+<div id="83faa7cf-917b-4945-b31c-b750c3f98cd5" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>Xt <span class="op">=</span> dfr8.loc[LEARN_RNG:, <span class="st">"cents_per_lb"</span>].values</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>Xt <span class="op">=</span> Xt.reshape((Xt.shape[<span class="dv">0</span>], <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="1e38af70-37c5-4925-a2ad-f86f59108c99" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>model.predict(Xt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>array([0, 1, 1, 1, 0, 0, 0])</code></pre>
+</div>
+</div>
+<div id="1fb15be0-6381-4880-8cd5-140b7976bbd5" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>dflearn[<span class="st">"cluster"</span>] <span class="op">=</span> model.predict(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="17394c68-5535-4cd8-9bdd-bd5af88e7670" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>dflearn.groupby(<span class="st">"cluster"</span>).agg( size <span class="op">=</span> pd.NamedAgg(column<span class="op">=</span><span class="st">"cluster"</span>, aggfunc<span class="op">=</span><span class="st">"size"</span>),<span class="op">\</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>                         min_price <span class="op">=</span> pd.NamedAgg(column<span class="op">=</span><span class="st">"cents_per_lb"</span>, aggfunc<span class="op">=</span><span class="st">"min"</span>),<span class="op">\</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                        max_price <span class="op">=</span> pd.NamedAgg(column<span class="op">=</span><span class="st">"cents_per_lb"</span>, aggfunc<span class="op">=</span><span class="st">"max"</span>),<span class="op">\</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                        mean_price <span class="op">=</span> pd.NamedAgg(column<span class="op">=</span><span class="st">"cents_per_lb"</span>, aggfunc<span class="op">=</span><span class="st">"mean"</span>),<span class="op">\</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                        std_dev_price <span class="op">=</span>  pd.NamedAgg(column<span class="op">=</span><span class="st">"cents_per_lb"</span>, aggfunc<span class="op">=</span><span class="st">"std"</span>)).<span class="bu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<div>
 
-File <span class="ansi-green-fg">index.pyx:167</span>, in <span class="ansi-cyan-fg">pandas._libs.index.IndexEngine.get_loc</span><span class="ansi-blue-fg">()</span>
 
-File <span class="ansi-green-fg">index.pyx:196</span>, in <span class="ansi-cyan-fg">pandas._libs.index.IndexEngine.get_loc</span><span class="ansi-blue-fg">()</span>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">size</th>
+<th data-quarto-table-cell-role="th">min_price</th>
+<th data-quarto-table-cell-role="th">max_price</th>
+<th data-quarto-table-cell-role="th">mean_price</th>
+<th data-quarto-table-cell-role="th">std_dev_price</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">cluster</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>27</td>
+<td>168.65</td>
+<td>241.07</td>
+<td>209.79</td>
+<td>19.25</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>13</td>
+<td>248.40</td>
+<td>279.83</td>
+<td>264.17</td>
+<td>8.50</td>
+</tr>
+</tbody>
+</table>
 
-File <span class="ansi-green-fg">pandas/_libs/hashtable_class_helper.pxi:7081</span>, in <span class="ansi-cyan-fg">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="ansi-blue-fg">()</span>
+</div>
+</div>
+</div>
+<div id="f83b8b05-7097-41c4-a439-20ee9ab9cb77" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>model.covars_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>array([[[355.45947763]],
 
-File <span class="ansi-green-fg">pandas/_libs/hashtable_class_helper.pxi:7089</span>, in <span class="ansi-cyan-fg">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="ansi-blue-fg">()</span>
-
-<span class="ansi-red-fg">KeyError</span>: 'price'
-
-The above exception was the direct cause of the following exception:
-
-<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[7], line 8</span>
-<span class="ansi-green-fg ansi-bold">      6</span>     <span style="font-weight:bold;color:rgb(0,135,0)">continue</span>
-<span class="ansi-green-fg ansi-bold">      7</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
-<span class="ansi-green-fg">----&gt; 8</span>     dflearn<span style="color:rgb(98,98,98)">.</span>loc[ri, <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">previous_price</span><span style="color:rgb(175,0,0)">"</span>] <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">dflearn</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">loc</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">ri</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">-</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">1</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">price</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">]</span>
-<span class="ansi-green-fg ansi-bold">      9</span>     rpc <span style="color:rgb(98,98,98)">+</span><span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(98,98,98)">1</span>
-
-File <span class="ansi-green-fg">~/Programming/r2ds-blog-worskpace/r2ds-blog/.venv/lib/python3.12/site-packages/pandas/core/indexing.py:1183</span>, in <span class="ansi-cyan-fg">_LocationIndexer.__getitem__</span><span class="ansi-blue-fg">(self, key)</span>
-<span class="ansi-green-fg ansi-bold">   1181</span>     key <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">tuple</span>(com<span style="color:rgb(98,98,98)">.</span>apply_if_callable(x, <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>obj) <span style="font-weight:bold;color:rgb(0,135,0)">for</span> x <span style="font-weight:bold;color:rgb(175,0,255)">in</span> key)
-<span class="ansi-green-fg ansi-bold">   1182</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_is_scalar_access(key):
-<span class="ansi-green-fg">-&gt; 1183</span>         <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">obj</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_get_value</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">key</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">takeable</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_takeable</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">   1184</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_getitem_tuple(key)
-<span class="ansi-green-fg ansi-bold">   1185</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
-<span class="ansi-green-fg ansi-bold">   1186</span>     <span style="font-style:italic;color:rgb(95,135,135)"># we by definition only have the 0th axis</span>
-
-File <span class="ansi-green-fg">~/Programming/r2ds-blog-worskpace/r2ds-blog/.venv/lib/python3.12/site-packages/pandas/core/frame.py:4214</span>, in <span class="ansi-cyan-fg">DataFrame._get_value</span><span class="ansi-blue-fg">(self, index, col, takeable)</span>
-<span class="ansi-green-fg ansi-bold">   4211</span>     series <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_ixs(col, axis<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(98,98,98)">1</span>)
-<span class="ansi-green-fg ansi-bold">   4212</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> series<span style="color:rgb(98,98,98)">.</span>_values[index]
-<span class="ansi-green-fg">-&gt; 4214</span> series <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_get_item_cache</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">col</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">   4215</span> engine <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>index<span style="color:rgb(98,98,98)">.</span>_engine
-<span class="ansi-green-fg ansi-bold">   4217</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="color:rgb(0,135,0)">isinstance</span>(<span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>index, MultiIndex):
-<span class="ansi-green-fg ansi-bold">   4218</span>     <span style="font-style:italic;color:rgb(95,135,135)"># CategoricalIndex: Trying to use the engine fastpath may give incorrect</span>
-<span class="ansi-green-fg ansi-bold">   4219</span>     <span style="font-style:italic;color:rgb(95,135,135)">#  results if our categories are integers that dont match our codes</span>
-<span class="ansi-green-fg ansi-bold">   4220</span>     <span style="font-style:italic;color:rgb(95,135,135)"># IntervalIndex: IntervalTree has no get_loc</span>
-
-File <span class="ansi-green-fg">~/Programming/r2ds-blog-worskpace/r2ds-blog/.venv/lib/python3.12/site-packages/pandas/core/frame.py:4638</span>, in <span class="ansi-cyan-fg">DataFrame._get_item_cache</span><span class="ansi-blue-fg">(self, item)</span>
-<span class="ansi-green-fg ansi-bold">   4633</span> res <span style="color:rgb(98,98,98)">=</span> cache<span style="color:rgb(98,98,98)">.</span>get(item)
-<span class="ansi-green-fg ansi-bold">   4634</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> res <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>:
-<span class="ansi-green-fg ansi-bold">   4635</span>     <span style="font-style:italic;color:rgb(95,135,135)"># All places that call _get_item_cache have unique columns,</span>
-<span class="ansi-green-fg ansi-bold">   4636</span>     <span style="font-style:italic;color:rgb(95,135,135)">#  pending resolution of GH#33047</span>
-<span class="ansi-green-fg">-&gt; 4638</span>     loc <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">columns</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">get_loc</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">item</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">   4639</span>     res <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_ixs(loc, axis<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(98,98,98)">1</span>)
-<span class="ansi-green-fg ansi-bold">   4641</span>     cache[item] <span style="color:rgb(98,98,98)">=</span> res
-
-File <span class="ansi-green-fg">~/Programming/r2ds-blog-worskpace/r2ds-blog/.venv/lib/python3.12/site-packages/pandas/core/indexes/base.py:3812</span>, in <span class="ansi-cyan-fg">Index.get_loc</span><span class="ansi-blue-fg">(self, key)</span>
-<span class="ansi-green-fg ansi-bold">   3807</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">isinstance</span>(casted_key, <span style="color:rgb(0,135,0)">slice</span>) <span style="font-weight:bold;color:rgb(175,0,255)">or</span> (
-<span class="ansi-green-fg ansi-bold">   3808</span>         <span style="color:rgb(0,135,0)">isinstance</span>(casted_key, abc<span style="color:rgb(98,98,98)">.</span>Iterable)
-<span class="ansi-green-fg ansi-bold">   3809</span>         <span style="font-weight:bold;color:rgb(175,0,255)">and</span> <span style="color:rgb(0,135,0)">any</span>(<span style="color:rgb(0,135,0)">isinstance</span>(x, <span style="color:rgb(0,135,0)">slice</span>) <span style="font-weight:bold;color:rgb(0,135,0)">for</span> x <span style="font-weight:bold;color:rgb(175,0,255)">in</span> casted_key)
-<span class="ansi-green-fg ansi-bold">   3810</span>     ):
-<span class="ansi-green-fg ansi-bold">   3811</span>         <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> InvalidIndexError(key)
-<span class="ansi-green-fg">-&gt; 3812</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">KeyError</span>(key) <span style="font-weight:bold;color:rgb(0,135,0)">from</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">err</span>
-<span class="ansi-green-fg ansi-bold">   3813</span> <span style="font-weight:bold;color:rgb(0,135,0)">except</span> <span style="font-weight:bold;color:rgb(215,95,95)">TypeError</span>:
-<span class="ansi-green-fg ansi-bold">   3814</span>     <span style="font-style:italic;color:rgb(95,135,135)"># If we have a listlike key, _check_indexing_error will raise</span>
-<span class="ansi-green-fg ansi-bold">   3815</span>     <span style="font-style:italic;color:rgb(95,135,135)">#  InvalidIndexError. Otherwise we fall through and re-raise</span>
-<span class="ansi-green-fg ansi-bold">   3816</span>     <span style="font-style:italic;color:rgb(95,135,135)">#  the TypeError.</span>
-<span class="ansi-green-fg ansi-bold">   3817</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_check_indexing_error(key)
-
-<span class="ansi-red-fg">KeyError</span>: 'price'</pre>
+       [[ 88.55697321]]])</code></pre>
+</div>
+</div>
+<div id="6daa08e2-0615-493a-84a4-2321f055688e" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>model.means_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>array([[209.41982256],
+       [263.24063538]])</code></pre>
+</div>
+</div>
+<div id="a5bbceee-1642-45d4-835d-fecd951137db" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>select_c0 <span class="op">=</span> (dflearn.cluster <span class="op">==</span> <span class="dv">0</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>select_c1 <span class="op">=</span> (dflearn.cluster <span class="op">==</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="c4de9fb0-d19f-494a-8fe6-d1f2ad7ea0f2" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>dflearn[select_c0][<span class="st">"cents_per_lb"</span>].plot.kde()</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="R8_HMM_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="57da7cbe-98ba-4421-8ff5-ae78d837664d" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>dflearn[select_c1][<span class="st">"cents_per_lb"</span>].plot.kde()</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="R8_HMM_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
 </div>
