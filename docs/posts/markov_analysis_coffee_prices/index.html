@@ -224,6 +224,19 @@ window.Quarto = {
 </figure>
 </div>
 <p>As mentioned in the previous post on coffee prices, it’s evident that these prices follow distinct cycles in which prices rise to a peak and then decline. While some peaks are more pronounced than others, focusing on the major ones reveals seven to eight clear cycles between 1990 and the present. To identify the beginning and end of these cycles, we can use a change point detection algorithm. In time series analysis, the process of dividing a series into segments with similar behavior is known as segmentation.</p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I have not really explained how I arrive at the number of <span class="math inline">\(7-8\)</span> changes in this post. This comes from an analysis of the <em>decomposition</em> of the time series into <em>trend</em> and <em>seasonal</em> components and a subsequent review of these components. If you are interested in the details, please check out the next post. An explaination is provided there.</p>
+</div>
+</div>
 <p>The modeling approach we choose depends largely on how certain we are about the number of segments in the data. In some cases, this number is known with confidence; in others, we start with an estimate that must be refined through modeling. For the coffee price series, we have a fairly narrow estimate—between seven and eight segments. To determine the exact number and placement of these segments, we use a model selection technique. In essence, model selection helps us refine our estimate and identify the segmentation that best fits the data.</p>
 <p>To identify segments in the coffee price time series, we use the <em>PELT</em> algorithm (Pruned Exact Linear Time)<span class="citation" data-cites="Killick01122012">(<a href="#ref-Killick01122012" role="doc-biblioref">Killick, Fearnhead, and and 2012</a>)</span>. For a broader overview of change point detection methods, see <span class="citation" data-cites="TRUONG2020107299">(<a href="#ref-TRUONG2020107299" role="doc-biblioref">Truong, Oudre, and Vayatis 2020</a>)</span>. The change point detection problem can be described as follows: we have a sequence of signal values—in this case, monthly coffee prices. Typically, prices from one month to the next are relatively consistent, but occasionally, a significant shift occurs, indicating the start of a new pattern. The goal of change point detection is to identify these moments of transition. Each segment between change points represents a distinct period of similar price behavior, also known as a <em>price regime</em>. When a change point is detected, it marks the beginning of a new <em>regime</em>.</p>
 <p>A statistical model is assigned to each segment—for example, a probabilistic model where each segment is assumed to be a <em>Gaussian Process</em>. To prevent overfitting, a regularization or penalty term is included in the model. The parameters, along with the optimal segmentation, are determined by solving an optimization problem. For a comprehensive overview of this approach, see <span class="citation" data-cites="TRUONG2020107299">(<a href="#ref-TRUONG2020107299" role="doc-biblioref">Truong, Oudre, and Vayatis 2020</a>)</span>, and for details on the specific change point detection method used here, refer to <span class="citation" data-cites="Killick01122012">(<a href="#ref-Killick01122012" role="doc-biblioref">Killick, Fearnhead, and and 2012</a>)</span>. The method is briefly summarized in the equation below.</p>

@@ -24,6 +24,12 @@ The question of whether I will continue paying these high prices for coffee was 
 
 As mentioned in the previous post on coffee prices, it's evident that these prices follow distinct cycles in which prices rise to a peak and then decline. While some peaks are more pronounced than others, focusing on the major ones reveals seven to eight clear cycles between 1990 and the present. To identify the beginning and end of these cycles, we can use a change point detection algorithm. In time series analysis, the process of dividing a series into segments with similar behavior is known as segmentation.
 
+::: {.callout-note appearance="simple"}
+
+## Note
+I have not really explained how I arrive at the number of $7-8$ changes in this post. This comes from an analysis of the *decomposition* of the time series into *trend* and *seasonal* components and a subsequent review of these components. If you are interested in the details, please check out the next post. An explaination is provided there.
+:::
+
 The modeling approach we choose depends largely on how certain we are about the number of segments in the data. In some cases, this number is known with confidence; in others, we start with an estimate that must be refined through modeling. For the coffee price series, we have a fairly narrow estimate—between seven and eight segments. To determine the exact number and placement of these segments, we use a model selection technique. In essence, model selection helps us refine our estimate and identify the segmentation that best fits the data.
 
 To identify segments in the coffee price time series, we use the *PELT* algorithm (Pruned Exact Linear Time)[@Killick01122012]. For a broader overview of change point detection methods, see [@TRUONG2020107299]. The change point detection problem can be described as follows: we have a sequence of signal values—in this case, monthly coffee prices. Typically, prices from one month to the next are relatively consistent, but occasionally, a significant shift occurs, indicating the start of a new pattern. The goal of change point detection is to identify these moments of transition. Each segment between change points represents a distinct period of similar price behavior, also known as a *price regime*. When a change point is detected, it marks the beginning of a new *regime*.
