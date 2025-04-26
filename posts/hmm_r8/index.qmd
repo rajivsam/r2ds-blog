@@ -34,7 +34,7 @@ This distinction is why some authors — such as Hyndman [@hyndman2018forecastin
 
 
 
-::: {layout="[[1,1], [1]]"}
+::: {layout="[[1],[1], [1]]"}
 ![Raw Prices (monthly)](raw_prices)
 
 ![Trend-Cycle](trend-cycle.png)
@@ -43,9 +43,15 @@ This distinction is why some authors — such as Hyndman [@hyndman2018forecastin
 
 :::
 
-The decomposition of the coffee time series using LOESS[@cleveland1990stl] is shown in the panel above. A review of the trend-cycle component reveals approximately $4$ major cycles. The seasonal component reflects noticeable shifts beginning around 2020, likely due to the impact of COVID. I was able to identify at least $3$ distinct seasonal patterns during the period.
+The decomposition of the coffee time series using LOESS[@cleveland1990stl] is shown in the panel above. A review of the trend-cycle component reveals approximately $4$ major cycles. The seasonal component reflects noticeable shifts beginning around 2022, likely due to the impact of COVID. I was able to identify at least $3$ distinct seasonal patterns during the period.
 
 Altogether, this led me to expect around $7$ significant changes in the series — $4$ from the trend-cycle and $3$–$4$ from seasonal variations — dating back to the start of the series in 1990.
+
+::: {.callout-note appearance="simple"}
+
+## Note
+One of the benefits of *analysis* prior to model building is that we get to understand the components that account for the variation in the data. A review of the plots for *trend-cycle* and *seasonality* shows that the *trend-cycle* component is what accounts for the majority of the variation in prices. 
+:::
 
 If you're a commodities pricing expert and you see additional changes beyond these, I'd be very interested in learning more about your interpretation.
 
