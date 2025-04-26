@@ -225,9 +225,9 @@ window.Quarto = {
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout="[[1,1], [1]]">
+<div class="quarto-layout-panel" data-layout="[[1],[1], [1]]">
 <div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="raw_prices.png" class="img-fluid figure-img"></p>
@@ -235,7 +235,9 @@ window.Quarto = {
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="trend-cycle.png" class="img-fluid figure-img"></p>
@@ -255,8 +257,21 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>The decomposition of the coffee time series using LOESS<span class="citation" data-cites="cleveland1990stl">(<a href="#ref-cleveland1990stl" role="doc-biblioref">Cleveland et al. 1990</a>)</span> is shown in the panel above. A review of the trend-cycle component reveals approximately <span class="math inline">\(4\)</span> major cycles. The seasonal component reflects noticeable shifts beginning around 2020, likely due to the impact of COVID. I was able to identify at least <span class="math inline">\(3\)</span> distinct seasonal patterns during the period.</p>
+<p>The decomposition of the coffee time series using LOESS<span class="citation" data-cites="cleveland1990stl">(<a href="#ref-cleveland1990stl" role="doc-biblioref">Cleveland et al. 1990</a>)</span> is shown in the panel above. A review of the trend-cycle component reveals approximately <span class="math inline">\(4\)</span> major cycles. The seasonal component reflects noticeable shifts beginning around 2022, likely due to the impact of COVID. I was able to identify at least <span class="math inline">\(3\)</span> distinct seasonal patterns during the period.</p>
 <p>Altogether, this led me to expect around <span class="math inline">\(7\)</span> significant changes in the series — <span class="math inline">\(4\)</span> from the trend-cycle and <span class="math inline">\(3\)</span>–<span class="math inline">\(4\)</span> from seasonal variations — dating back to the start of the series in 1990.</p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>One of the benefits of <em>analysis</em> prior to model building is that we get to understand the components that account for the variation in the data. A review of the plots for <em>trend-cycle</em> and <em>seasonality</em> shows that the <em>trend-cycle</em> component is what accounts for the majority of the variation in prices.</p>
+</div>
+</div>
 <p>If you’re a commodities pricing expert and you see additional changes beyond these, I’d be very interested in learning more about your interpretation.</p>
 <p>The residuals — the remaining variation after removing both trend and seasonal effects — are shown in the panel below.</p>
 <div class="quarto-figure quarto-figure-center">
