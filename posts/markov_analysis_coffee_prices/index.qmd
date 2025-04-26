@@ -22,7 +22,7 @@ The question of whether I will continue paying these high prices for coffee was 
 
 ![Raw Coffee Prices](raw_coffee_prices.png){fig-align="center"}
 
-As mentioned in the previous post on coffee prices, it's evident that these prices follow distinct cycles in which prices rise to a peak and then decline. While some peaks are more pronounced than others, focusing on the major ones reveals seven to eight clear cycles between 1990 and the present. To identify the beginning and end of these cycles, we can use a change point detection algorithm. In time series analysis, the process of dividing a series into segments with similar behavior is known as segmentation.
+As mentioned in the previous post on coffee prices, it's evident that these prices follow distinct cycles in which prices rise to a peak and then decline. While some peaks are more pronounced than others, focusing on the major ones reveals seven to eight clear changepoints between 1990 and the present. To identify the beginning and end of these cycles, we can use a change point detection algorithm. In time series analysis, the process of dividing a series into segments with similar behavior is known as segmentation.
 
 ::: {.callout-note appearance="simple"}
 

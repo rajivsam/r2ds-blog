@@ -49,6 +49,8 @@ Altogether, this led me to expect around $7$ significant changes in the series �
 
 If you're a commodities pricing expert and you see additional changes beyond these, I'd be very interested in learning more about your interpretation.
 
+
+
 The residuals — the remaining variation after removing both trend and seasonal effects — are shown in the panel below.
 
 ![Errors](errors_kde.png){fig-align="center" width=50% height=50%}
