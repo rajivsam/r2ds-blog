@@ -13,3 +13,4 @@ ruptures
 numba
 quantecon
 hmmlearn
+openpyxl
