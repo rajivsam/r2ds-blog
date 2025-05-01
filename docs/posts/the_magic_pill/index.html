@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Rajiv Sambasivan">
+<meta name="dcterms.date" content="2025-05-01">
 
-<title>r2ds-blog</title>
+<title>The Magic Pill Approach – r2ds-blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,77 +68,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">r2ds-blog</span>
     </a>
   </div>
@@ -149,7 +91,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -172,239 +114,63 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">r2ds-blog</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">The Magic Pill Approach</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">news</div>
+                <div class="quarto-category">code</div>
+                <div class="quarto-category">analysis</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Rajiv Sambasivan </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">May 1, 2025</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div><div class="category" data-category="YW5hbHlzaXM=">analysis <span class="quarto-category-count">(5)</span></div><div class="category" data-category="Y29kZQ==">code <span class="quarto-category-count">(5)</span></div><div class="category" data-category="bmV3cw==">news <span class="quarto-category-count">(5)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<div style="text-align: justify">
+<p>This post is more of a rant, really. I’m fine with asking ChatGPT for movie recommendations on Netflix or Prime, but when it comes to answering complex, nuanced questions that demand rigor and careful validation of assumptions, I draw the line. Yet, it seems impossible to escape the ubiquitous question: “But what does ChatGPT say?”</p>
+<p>Foundational models for everything? Really? Let’s break this down at a basic level. Assuming I’m even solving the right problem for my use case—which is far from trivial—here’s what I aim to do when tackling a problem:</p>
+<ol type="1">
+<li><strong>Identify sources of variation</strong>: For tasks like regression, I want to pinpoint every factor that contributes to variation in the data.</li>
+<li><strong>Validate these sources</strong>: This requires rigor and due diligence to ensure they are legitimate contributors.</li>
+<li><strong>Account for unexplained variance</strong>: Ideally, this should be minimal. If it’s significant, I need to investigate further and determine how to address it. Even then, I want to ensure the model remains useful—better than having no model or sticking with the status quo.</li>
+</ol>
+<p>I’m skeptical of the notion that all problems can be reduced to the same sources of variation or that there’s a universal method to identify them. If such a method exists, it must be demonstrated rigorously—not through cherry-picked examples.</p>
+<p>Sure, I understand that certain approaches work well within specific problem domains. However, what I often encounter is this: “This approach worked for situation A, so let’s try it for situation B,” without any solid justification that A and B are meaningfully similar.</p>
+</div>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="bmV3cyUyQ2NvZGUlMkNhbmFseXNpcw==" data-listing-date-sort="1746059118000" data-listing-file-modified-sort="1746059118022" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="252">
-<div class="thumbnail">
-<p><a href="./posts/the_magic_pill/index.html" class="no-external"></a></p><a href="./posts/the_magic_pill/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/the_magic_pill/magic_pill.jpeg" class="thumbnail-image"></p>
-</a><p><a href="./posts/the_magic_pill/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/the_magic_pill/index.html" class="no-external">The Magic Pill Approach</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/the_magic_pill/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('bmV3cw=='); return false;">
-news
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Y29kZQ=='); return false;">
-code
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('YW5hbHlzaXM='); return false;">
-analysis
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/the_magic_pill/index.html" class="no-external">This post is more of a rant, really. I’m fine with asking ChatGPT for movie recommendations on Netflix or Prime, but when it comes to answering complex, nuanced questions…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/the_magic_pill/index.html" class="no-external">
-<div class="listing-date">
-May 1, 2025
-</div>
-<div class="listing-author">
-Rajiv Sambasivan
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="bmV3cyUyQ2NvZGUlMkNhbmFseXNpcw==" data-listing-date-sort="1745647834000" data-listing-file-modified-sort="1745647834882" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1078">
-<div class="thumbnail">
-<p><a href="./posts/hmm_r8/index.html" class="no-external"></a></p><a href="./posts/hmm_r8/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/hmm_r8/hmm_pred_plot.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/hmm_r8/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/hmm_r8/index.html" class="no-external">Using Hidden Markov Models with the Coffee Prices Data</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/hmm_r8/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('bmV3cw=='); return false;">
-news
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Y29kZQ=='); return false;">
-code
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('YW5hbHlzaXM='); return false;">
-analysis
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/hmm_r8/index.html" class="no-external">I started writing about coffee prices kind of on a whim—mostly because I wanted to try out this tool called quarto that I’d heard good things about. At the same time, I was…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/hmm_r8/index.html" class="no-external">
-<div class="listing-date">
-Apr 26, 2025
-</div>
-<div class="listing-author">
-Rajiv Sambasivan
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="bmV3cyUyQ2NvZGUlMkNhbmFseXNpcw==" data-listing-date-sort="1745631090000" data-listing-file-modified-sort="1745631090012" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1512">
-<div class="thumbnail">
-<p><a href="./posts/markov_analysis_coffee_prices/index.html" class="no-external"></a></p><a href="./posts/markov_analysis_coffee_prices/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/markov_analysis_coffee_prices/change_point_plot.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/markov_analysis_coffee_prices/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/markov_analysis_coffee_prices/index.html" class="no-external">Understanding Coffee Prices</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/markov_analysis_coffee_prices/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('bmV3cw=='); return false;">
-news
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Y29kZQ=='); return false;">
-code
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('YW5hbHlzaXM='); return false;">
-analysis
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/markov_analysis_coffee_prices/index.html" class="no-external">The question of whether I will continue paying these high prices for coffee was a “nerd itch” I simply had to scratch. Below is a plot showing the coffee prices (in cents…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/markov_analysis_coffee_prices/index.html" class="no-external">
-<div class="listing-date">
-Apr 26, 2025
-</div>
-<div class="listing-author">
-Rajiv Sambasivan
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="bmV3cyUyQ2NvZGUlMkNhbmFseXNpcw==" data-listing-date-sort="1745366424000" data-listing-file-modified-sort="1745366424124" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="273">
-<div class="thumbnail">
-<p><a href="./posts/coffee_prices/index.html" class="no-external"></a></p><a href="./posts/coffee_prices/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/coffee_prices/coffee_prices.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/coffee_prices/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/coffee_prices/index.html" class="no-external">Predictive Modeling without Supporting Data Analysis</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/coffee_prices/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('bmV3cw=='); return false;">
-news
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Y29kZQ=='); return false;">
-code
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('YW5hbHlzaXM='); return false;">
-analysis
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/coffee_prices/index.html" class="no-external">In my opinion, relying on models without prior data analysis is problematic. This is particularly true for business applications that work with regular tabular data. While…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/coffee_prices/index.html" class="no-external">
-<div class="listing-date">
-Apr 23, 2025
-</div>
-<div class="listing-author">
-Rajiv Sambasivan
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="bmV3cyUyQ2NvZGUlMkNhbmFseXNpcw==" data-listing-date-sort="1745366424000" data-listing-file-modified-sort="1745366424125" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="729">
-<div class="thumbnail">
-<p><a href="./posts/ice_cream_sales/index.html" class="no-external"></a></p><a href="./posts/ice_cream_sales/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/ice_cream_sales/ice_cream_sales.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/ice_cream_sales/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/ice_cream_sales/index.html" class="no-external">Chat GPT and Data Analysis</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/ice_cream_sales/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('bmV3cw=='); return false;">
-news
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Y29kZQ=='); return false;">
-code
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('YW5hbHlzaXM='); return false;">
-analysis
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/ice_cream_sales/index.html" class="no-external">For a while now I have been meaning to explore how Copilot and Chat GPT are useful for data analysis. I have also been meaning to transition to Quarto for a while, so I…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/ice_cream_sales/index.html" class="no-external">
-<div class="listing-date">
-Apr 23, 2025
-</div>
-<div class="listing-author">
-Rajiv Sambasivan
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

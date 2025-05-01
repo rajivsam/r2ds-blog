@@ -1,0 +1,23 @@
+---
+title: "The Magic Pill Approach"
+author: "Rajiv Sambasivan"
+date: last-modified
+categories: [news, code, analysis]
+image: "magic_pill.jpeg"
+---
+
+::: {style="text-align: justify"}
+
+This post is more of a rant, really. I’m fine with asking ChatGPT for movie recommendations on Netflix or Prime, but when it comes to answering complex, nuanced questions that demand rigor and careful validation of assumptions, I draw the line. Yet, it seems impossible to escape the ubiquitous question: "But what does ChatGPT say?"
+
+Foundational models for everything? Really? Let’s break this down at a basic level. Assuming I’m even solving the right problem for my use case—which is far from trivial—here’s what I aim to do when tackling a problem:
+
+1. **Identify sources of variation**: For tasks like regression, I want to pinpoint every factor that contributes to variation in the data.
+2. **Validate these sources**: This requires rigor and due diligence to ensure they are legitimate contributors.
+3. **Account for unexplained variance**: Ideally, this should be minimal. If it’s significant, I need to investigate further and determine how to address it. Even then, I want to ensure the model remains useful—better than having no model or sticking with the status quo.
+
+I’m skeptical of the notion that all problems can be reduced to the same sources of variation or that there’s a universal method to identify them. If such a method exists, it must be demonstrated rigorously—not through cherry-picked examples.
+
+Sure, I understand that certain approaches work well within specific problem domains. However, what I often encounter is this: "This approach worked for situation A, so let’s try it for situation B," without any solid justification that A and B are meaningfully similar.
+
+:::
