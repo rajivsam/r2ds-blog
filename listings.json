@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/accuracy_is_all/index.html",
       "/posts/the_magic_pill/index.html",
       "/posts/hmm_r8/index.html",
       "/posts/markov_analysis_coffee_prices/index.html",
