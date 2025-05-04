@@ -14,3 +14,4 @@ numba
 quantecon
 hmmlearn
 openpyxl
+kagglehub
