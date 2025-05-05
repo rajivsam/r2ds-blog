@@ -154,27 +154,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div id="6f6ce698-6648-4c4a-b34f-6ae8d0aead16" class="cell" data-execution_count="1">
+<div id="6f6ce698-6648-4c4a-b34f-6ae8d0aead16" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> fredapi <span class="im">as</span> fa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="c10f2042-15a1-4156-a550-68ff04793944" class="cell" data-execution_count="2">
+<div id="c10f2042-15a1-4156-a550-68ff04793944" class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dotenv <span class="im">import</span> dotenv_values</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> dotenv_values(<span class="st">".env"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="d97a984e-94b8-4392-8221-a50a557cba6a" class="cell" data-execution_count="3">
+<div id="d97a984e-94b8-4392-8221-a50a557cba6a" class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>fred <span class="op">=</span> fa.Fred(config[<span class="st">"FRED_API_KEY"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="2eb8dc22-8c5c-49be-a76b-7e86c7f48da4" class="cell" data-execution_count="4">
+<div id="2eb8dc22-8c5c-49be-a76b-7e86c7f48da4" class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>cp <span class="op">=</span> fred.get_series(<span class="st">"PCOFFOTMUSDM"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="09ad8d59-bd93-4482-9df9-9c46c667ff58" class="cell" data-execution_count="5">
+<div id="09ad8d59-bd93-4482-9df9-9c46c667ff58" class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>cp <span class="op">=</span> cp.dropna()</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>cp_df <span class="op">=</span> pd.DataFrame({<span class="st">"date"</span>: cp.index, <span class="st">"cents_per_lb"</span>: cp.values})</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>cp_df[<span class="st">"cents_per_lb"</span>] <span class="op">=</span> cp_df[<span class="st">"cents_per_lb"</span>].<span class="bu">round</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="0a179adc-be4f-46da-9042-94a18d85183e" class="cell" data-execution_count="6">
+<div id="0a179adc-be4f-46da-9042-94a18d85183e" class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>cp_df.to_csv(config[<span class="st">"CP_DATA_FILE"</span>], index<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
