@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -100,9 +100,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../styles.css">
@@ -174,7 +171,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>The purpose of this notebook is to analyze the daily sales of ice creams at metro areas in the USA. Subsets corresponding to yearly sales are also profiled. Plots of auto-correlation and maximum daily sales per week are also provided.</p>
-<div id="e8f753e2" class="cell" data-execution_count="1">
+<div id="e8f753e2" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>fp <span class="op">=</span> <span class="st">"../data/daily_ice_cream_sales.csv"</span></span>
@@ -182,386 +179,81 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Date"</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">"Date"</span>])</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"log_daily_sales"</span>] <span class="op">=</span> np.log(df[<span class="st">"ice_cream_purchases"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="71d55047-4915-4f3d-9e50-28b6a3d38c9b" class="cell" data-execution_count="2">
+<div id="71d55047-4915-4f3d-9e50-28b6a3d38c9b" class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Date"</span>].<span class="bu">max</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>Timestamp('2024-05-18 00:00:00')</code></pre>
 </div>
+<div id="7d6bfb6a-9c5a-40e4-8a87-4741c8488e7b" class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Date"</span>].<span class="bu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="7d6bfb6a-9c5a-40e4-8a87-4741c8488e7b" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Date"</span>].<span class="bu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>Timestamp('2020-01-01 00:00:00')</code></pre>
-</div>
-</div>
-<div id="89fd5df4-c1ea-4f79-a69c-462ad8908658" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="89fd5df4-c1ea-4f79-a69c-462ad8908658" class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="extract-yearly-data-subsets" class="level2">
 <h2 class="anchored" data-anchor-id="extract-yearly-data-subsets">Extract yearly data subsets</h2>
-<div id="f8b3b62a-3629-4195-baf3-f0ec07e9d159" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df_2020 <span class="op">=</span> df[df.Date.dt.year <span class="op">==</span> <span class="dv">2020</span>]</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df_2021 <span class="op">=</span> df[df.Date.dt.year <span class="op">==</span> <span class="dv">2021</span>]</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>df_2022 <span class="op">=</span> df[df.Date.dt.year <span class="op">==</span> <span class="dv">2022</span>]</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>df_2023 <span class="op">=</span> df[df.Date.dt.year <span class="op">==</span> <span class="dv">2023</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f8b3b62a-3629-4195-baf3-f0ec07e9d159" class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_2020 <span class="op">=</span> df[df.Date.dt.year <span class="op">==</span> <span class="dv">2020</span>]</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df_2021 <span class="op">=</span> df[df.Date.dt.year <span class="op">==</span> <span class="dv">2021</span>]</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>df_2022 <span class="op">=</span> df[df.Date.dt.year <span class="op">==</span> <span class="dv">2022</span>]</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>df_2023 <span class="op">=</span> df[df.Date.dt.year <span class="op">==</span> <span class="dv">2023</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="b7bdefa0-2915-4a57-b13d-fa8ef11f2f06" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b7bdefa0-2915-4a57-b13d-fa8ef11f2f06" class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="06e362f0-1ae6-4cf8-8e82-4367c7628061" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df_2020[<span class="st">"log_daily_sales"</span>].plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="daily_ice_cream_sales_exploration_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
+<div id="06e362f0-1ae6-4cf8-8e82-4367c7628061" class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df_2020[<span class="st">"log_daily_sales"</span>].plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="plot-autocorrelation" class="level2">
 <h2 class="anchored" data-anchor-id="plot-autocorrelation">Plot Autocorrelation</h2>
 <p>The auto correlation plots are shown below.</p>
-<div id="321d414f" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sm.graphics.tsa.plot_acf(df_2020[<span class="st">"log_daily_sales"</span>], lags<span class="op">=</span><span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<div>
-<figure class="figure">
-<p><img src="daily_ice_cream_sales_exploration_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<div id="321d414f" class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sm.graphics.tsa.plot_acf(df_2020[<span class="st">"log_daily_sales"</span>], lags<span class="op">=</span><span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div id="537d985f-2777-4979-9e87-2c888c5f6b11" class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sm.graphics.tsa.plot_pacf(df_2020[<span class="st">"log_daily_sales"</span>], lags<span class="op">=</span><span class="dv">40</span>, method<span class="op">=</span><span class="st">"ywm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="daily_ice_cream_sales_exploration_files/figure-html/cell-9-output-2.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="537d985f-2777-4979-9e87-2c888c5f6b11" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sm.graphics.tsa.plot_pacf(df_2020[<span class="st">"log_daily_sales"</span>], lags<span class="op">=</span><span class="dv">40</span>, method<span class="op">=</span><span class="st">"ywm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
-<div>
-<figure class="figure">
-<p><img src="daily_ice_cream_sales_exploration_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="daily_ice_cream_sales_exploration_files/figure-html/cell-10-output-2.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="d247b4d0-509d-437d-bed3-cf88e0184c6f" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sm.graphics.tsa.plot_pacf(df[<span class="st">"log_daily_sales"</span>], lags<span class="op">=</span><span class="dv">40</span>, method<span class="op">=</span><span class="st">"ywm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
-<div>
-<figure class="figure">
-<p><img src="daily_ice_cream_sales_exploration_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="daily_ice_cream_sales_exploration_files/figure-html/cell-11-output-2.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
+<div id="d247b4d0-509d-437d-bed3-cf88e0184c6f" class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sm.graphics.tsa.plot_pacf(df[<span class="st">"log_daily_sales"</span>], lags<span class="op">=</span><span class="dv">40</span>, method<span class="op">=</span><span class="st">"ywm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="observation" class="level2">
 <h2 class="anchored" data-anchor-id="observation">Observation</h2>
 <p>It appears that daily sales are not correlated, but independent draws from a distribution. This looks like a white noise process. This is consistent with synthetically generated data. A dickey fuller test with no regression (constant, this is the default) also suggests the same.</p>
-<div id="41035e32-cf8f-4ae2-a660-2c6df3e41d9f" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.tsa.stattools <span class="im">import</span> adfuller</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> adfuller(df[<span class="st">"log_daily_sales"</span>])</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'ADF Statistic: </span><span class="sc">%f</span><span class="st">'</span> <span class="op">%</span> result[<span class="dv">0</span>])</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'p-value: </span><span class="sc">%f</span><span class="st">'</span> <span class="op">%</span> result[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>ADF Statistic: -40.221392
-p-value: 0.000000</code></pre>
+<div id="41035e32-cf8f-4ae2-a660-2c6df3e41d9f" class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.tsa.stattools <span class="im">import</span> adfuller</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> adfuller(df[<span class="st">"log_daily_sales"</span>])</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'ADF Statistic: </span><span class="sc">%f</span><span class="st">'</span> <span class="op">%</span> result[<span class="dv">0</span>])</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'p-value: </span><span class="sc">%f</span><span class="st">'</span> <span class="op">%</span> result[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div id="973f417d-18aa-4da7-a6cc-b9a6035f085b" class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df_2020</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="973f417d-18aa-4da7-a6cc-b9a6035f085b" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df_2020</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Date</th>
-<th data-quarto-table-cell-role="th">ice_cream_purchases</th>
-<th data-quarto-table-cell-role="th">log_daily_sales</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>2020-01-01</td>
-<td>20</td>
-<td>2.995732</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>2020-01-02</td>
-<td>22</td>
-<td>3.091042</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>2020-01-03</td>
-<td>23</td>
-<td>3.135494</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>2020-01-04</td>
-<td>23</td>
-<td>3.135494</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>2020-01-05</td>
-<td>21</td>
-<td>3.044522</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">361</td>
-<td>2020-12-27</td>
-<td>31</td>
-<td>3.433987</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">362</td>
-<td>2020-12-28</td>
-<td>30</td>
-<td>3.401197</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">363</td>
-<td>2020-12-29</td>
-<td>25</td>
-<td>3.218876</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">364</td>
-<td>2020-12-30</td>
-<td>22</td>
-<td>3.091042</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">365</td>
-<td>2020-12-31</td>
-<td>29</td>
-<td>3.367296</td>
-</tr>
-</tbody>
-</table>
-
-<p>366 rows × 3 columns</p>
+<div id="c0a6c7ca" class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"log_daily_sales"</span>] <span class="op">=</span> np.log(df[<span class="st">"ice_cream_purchases"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div id="8aa95bfe-f438-4d89-b6ed-35dca9dc9a8c" class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df_yearly_ice_cream_sales <span class="op">=</span> df.set_index(<span class="st">"Date"</span>).resample(<span class="st">"Y"</span>).<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div id="0ce1e97a-c970-49bf-a306-458afbf83fa7" class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df_yearly_ice_cream_sales</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="c0a6c7ca" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"log_daily_sales"</span>] <span class="op">=</span> np.log(df[<span class="st">"ice_cream_purchases"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8d3fbc4f" class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"ice_cream_purchases"</span>].plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="8aa95bfe-f438-4d89-b6ed-35dca9dc9a8c" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df_yearly_ice_cream_sales <span class="op">=</span> df.set_index(<span class="st">"Date"</span>).resample(<span class="st">"Y"</span>).<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b33c5d00" class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>fpmeanweekly <span class="op">=</span> <span class="st">"../data/mean_weekly_ice_cream_sales.csv"</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>dfwmics <span class="op">=</span> pd.read_csv(fpmeanweekly)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="0ce1e97a-c970-49bf-a306-458afbf83fa7" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df_yearly_ice_cream_sales</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">ice_cream_purchases</th>
-<th data-quarto-table-cell-role="th">log_daily_sales</th>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">Date</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2020-12-31</td>
-<td>8488</td>
-<td>1142.662667</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2021-12-31</td>
-<td>8224</td>
-<td>1128.462655</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2022-12-31</td>
-<td>8206</td>
-<td>1127.813921</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2023-12-31</td>
-<td>8379</td>
-<td>1135.628790</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2024-12-31</td>
-<td>3188</td>
-<td>432.632764</td>
-</tr>
-</tbody>
-</table>
-
+<div id="d5119638-b358-49e4-a8fa-8c6e02ec4817" class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>dfwmics[<span class="st">"ice_cream_purchases"</span>].plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div id="53183a2a-cc93-466d-be09-e287f049900b" class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>dfwmics[<span class="st">"weekno"</span>] <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>,dfwmics.shape[<span class="dv">0</span>] <span class="op">+</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<div id="8d3fbc4f" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"ice_cream_purchases"</span>].plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="daily_ice_cream_sales_exploration_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="b33c5d00" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>fpmeanweekly <span class="op">=</span> <span class="st">"../data/mean_weekly_ice_cream_sales.csv"</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>dfwmics <span class="op">=</span> pd.read_csv(fpmeanweekly)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="d5119638-b358-49e4-a8fa-8c6e02ec4817" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>dfwmics[<span class="st">"ice_cream_purchases"</span>].plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="daily_ice_cream_sales_exploration_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="53183a2a-cc93-466d-be09-e287f049900b" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>dfwmics[<span class="st">"weekno"</span>] <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>,dfwmics.shape[<span class="dv">0</span>] <span class="op">+</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="5e3027a7-8282-46d1-a8e7-8b55d76cc7d7" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>dfwmics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="20">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">year</th>
-<th data-quarto-table-cell-role="th">week</th>
-<th data-quarto-table-cell-role="th">ice_cream_purchases</th>
-<th data-quarto-table-cell-role="th">weekno</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>2020</td>
-<td>1</td>
-<td>21.800000</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>2020</td>
-<td>2</td>
-<td>21.857143</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>2020</td>
-<td>3</td>
-<td>26.000000</td>
-<td>3</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>2020</td>
-<td>4</td>
-<td>26.142857</td>
-<td>4</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>2020</td>
-<td>5</td>
-<td>19.571429</td>
-<td>5</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">225</td>
-<td>2024</td>
-<td>16</td>
-<td>21.571429</td>
-<td>226</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">226</td>
-<td>2024</td>
-<td>17</td>
-<td>23.000000</td>
-<td>227</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">227</td>
-<td>2024</td>
-<td>18</td>
-<td>20.857143</td>
-<td>228</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">228</td>
-<td>2024</td>
-<td>19</td>
-<td>23.285714</td>
-<td>229</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">229</td>
-<td>2024</td>
-<td>20</td>
-<td>23.000000</td>
-<td>230</td>
-</tr>
-</tbody>
-</table>
-
-<p>230 rows × 4 columns</p>
-</div>
-</div>
+<div id="5e3027a7-8282-46d1-a8e7-8b55d76cc7d7" class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>dfwmics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

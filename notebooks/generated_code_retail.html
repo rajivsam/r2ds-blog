@@ -154,7 +154,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div id="b4e516bd" class="cell" data-execution_count="1">
+<div id="b4e516bd" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -205,58 +205,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the final resampled DataFrame</span></span>
 <span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(resampled_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
-File <span class="ansi-green-fg">~/Programming/change_utils/.venv/lib/python3.12/site-packages/pandas/core/indexes/base.py:3805</span>, in <span class="ansi-cyan-fg">Index.get_loc</span><span class="ansi-blue-fg">(self, key)</span>
-<span class="ansi-green-fg ansi-bold">   3804</span> <span style="font-weight:bold;color:rgb(0,135,0)">try</span>:
-<span class="ansi-green-fg">-&gt; 3805</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_engine</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">get_loc</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">casted_key</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">   3806</span> <span style="font-weight:bold;color:rgb(0,135,0)">except</span> <span style="font-weight:bold;color:rgb(215,95,95)">KeyError</span> <span style="font-weight:bold;color:rgb(0,135,0)">as</span> err:
-
-File <span class="ansi-green-fg">index.pyx:167</span>, in <span class="ansi-cyan-fg">pandas._libs.index.IndexEngine.get_loc</span><span class="ansi-blue-fg">()</span>
-
-File <span class="ansi-green-fg">index.pyx:196</span>, in <span class="ansi-cyan-fg">pandas._libs.index.IndexEngine.get_loc</span><span class="ansi-blue-fg">()</span>
-
-File <span class="ansi-green-fg">pandas/_libs/hashtable_class_helper.pxi:7081</span>, in <span class="ansi-cyan-fg">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="ansi-blue-fg">()</span>
-
-File <span class="ansi-green-fg">pandas/_libs/hashtable_class_helper.pxi:7089</span>, in <span class="ansi-cyan-fg">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="ansi-blue-fg">()</span>
-
-<span class="ansi-red-fg">KeyError</span>: 'ice_cream'
-
-The above exception was the direct cause of the following exception:
-
-<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[1], line 34</span>
-<span class="ansi-green-fg ansi-bold">     32</span> <span style="font-style:italic;color:rgb(95,135,135)"># Step 7: Filter the DataFrame to rows that only contain the sentinel value</span>
-<span class="ansi-green-fg ansi-bold">     33</span> df[<span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">is_ice_cream</span><span style="color:rgb(175,0,0)">'</span>] <span style="color:rgb(98,98,98)">=</span> df[<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">Product</span><span style="color:rgb(175,0,0)">"</span>]<span style="color:rgb(98,98,98)">.</span>apply(contains_sentinel_value)
-<span class="ansi-green-fg">---&gt; 34</span> filtered_df <span style="color:rgb(98,98,98)">=</span> df[<span class="ansi-yellow-bg">df</span><span class="ansi-yellow-bg">[</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">ice_cream</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span class="ansi-yellow-bg">]</span>]
-<span class="ansi-green-fg ansi-bold">     36</span> <span style="font-style:italic;color:rgb(95,135,135)"># Step 8: Drop all columns except the timestamp column in the filtered DataFrame</span>
-<span class="ansi-green-fg ansi-bold">     37</span> filtered_df <span style="color:rgb(98,98,98)">=</span> filtered_df[[timestamp_column]]
-
-File <span class="ansi-green-fg">~/Programming/change_utils/.venv/lib/python3.12/site-packages/pandas/core/frame.py:4102</span>, in <span class="ansi-cyan-fg">DataFrame.__getitem__</span><span class="ansi-blue-fg">(self, key)</span>
-<span class="ansi-green-fg ansi-bold">   4100</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>columns<span style="color:rgb(98,98,98)">.</span>nlevels <span style="color:rgb(98,98,98)">&gt;</span> <span style="color:rgb(98,98,98)">1</span>:
-<span class="ansi-green-fg ansi-bold">   4101</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_getitem_multilevel(key)
-<span class="ansi-green-fg">-&gt; 4102</span> indexer <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">columns</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">get_loc</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">key</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">   4103</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> is_integer(indexer):
-<span class="ansi-green-fg ansi-bold">   4104</span>     indexer <span style="color:rgb(98,98,98)">=</span> [indexer]
-
-File <span class="ansi-green-fg">~/Programming/change_utils/.venv/lib/python3.12/site-packages/pandas/core/indexes/base.py:3812</span>, in <span class="ansi-cyan-fg">Index.get_loc</span><span class="ansi-blue-fg">(self, key)</span>
-<span class="ansi-green-fg ansi-bold">   3807</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">isinstance</span>(casted_key, <span style="color:rgb(0,135,0)">slice</span>) <span style="font-weight:bold;color:rgb(175,0,255)">or</span> (
-<span class="ansi-green-fg ansi-bold">   3808</span>         <span style="color:rgb(0,135,0)">isinstance</span>(casted_key, abc<span style="color:rgb(98,98,98)">.</span>Iterable)
-<span class="ansi-green-fg ansi-bold">   3809</span>         <span style="font-weight:bold;color:rgb(175,0,255)">and</span> <span style="color:rgb(0,135,0)">any</span>(<span style="color:rgb(0,135,0)">isinstance</span>(x, <span style="color:rgb(0,135,0)">slice</span>) <span style="font-weight:bold;color:rgb(0,135,0)">for</span> x <span style="font-weight:bold;color:rgb(175,0,255)">in</span> casted_key)
-<span class="ansi-green-fg ansi-bold">   3810</span>     ):
-<span class="ansi-green-fg ansi-bold">   3811</span>         <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> InvalidIndexError(key)
-<span class="ansi-green-fg">-&gt; 3812</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">KeyError</span>(key) <span style="font-weight:bold;color:rgb(0,135,0)">from</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">err</span>
-<span class="ansi-green-fg ansi-bold">   3813</span> <span style="font-weight:bold;color:rgb(0,135,0)">except</span> <span style="font-weight:bold;color:rgb(215,95,95)">TypeError</span>:
-<span class="ansi-green-fg ansi-bold">   3814</span>     <span style="font-style:italic;color:rgb(95,135,135)"># If we have a listlike key, _check_indexing_error will raise</span>
-<span class="ansi-green-fg ansi-bold">   3815</span>     <span style="font-style:italic;color:rgb(95,135,135)">#  InvalidIndexError. Otherwise we fall through and re-raise</span>
-<span class="ansi-green-fg ansi-bold">   3816</span>     <span style="font-style:italic;color:rgb(95,135,135)">#  the TypeError.</span>
-<span class="ansi-green-fg ansi-bold">   3817</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_check_indexing_error(key)
-
-<span class="ansi-red-fg">KeyError</span>: 'ice_cream'</pre>
-</div>
-</div>
 </div>
 
 
