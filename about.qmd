@@ -6,12 +6,15 @@ about:
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/company/rinse-and-repeat-data-science
-    - icon: github
+    - icon: file-person-fill
       text: website
       href: https://www.r2-ds.com
     - icon: goolgescholar
       text: google scholar
       href: https://scholar.google.com/citations?user=96db8S4AAAAJ&hl=en
+    - icon: file-earmark-person
+      text: personal website
+      href: https://rajivsam.github.io/
 
 ---
 

@@ -6,10 +6,10 @@ website:
   navbar:
     right:
       - about.qmd
-      - icon: github
-        href: https://github.com/rajivsam
-      - icon: twitter
-        href: https://twitter.com
+      - icon: file-person-fill
+        href: https://www.r2-ds.com
+      - icon: file-earmark-person
+        href: https://rajivsam.github.io/
 format:
   html:
     theme:
