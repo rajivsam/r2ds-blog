@@ -2,7 +2,6 @@ notebook
 ipython
 scikit-learn
 pyyaml
-dask[complete]
 matplotlib
 statsmodels
 radian
@@ -15,3 +14,4 @@ quantecon
 hmmlearn
 openpyxl
 kagglehub
+amplpy[all]
