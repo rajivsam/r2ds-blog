@@ -55,7 +55,7 @@ The demand is a count variable that is _over dispersed_, that is, the variance i
 ![Estimated Negative Binomial Demand Fit](neg_binomial_fit.png){fig-align="center"}
 
 3. **Stochastic Optimization**:
-Here, I will outline the procedure, highlight the intuition behind it, and provide a link to the implementation. The primary decision variable is the number of baguettes to bake each day. This decision is influenced by the demand distribution and any unsold stock from the previous day. In essence, the total stock available (unsold stock plus freshly baked baguettes) must meet but not significantly exceed the expected demand for the day.
+Here, I will outline the procedure, highlight the intuition behind it, and provide a link to the implementation. The primary decision variable is the number of baguettes to bake each day. This decision is influenced by the demand distribution and any unsold stock from the previous day. In essence, the total stock available (unsold stock plus freshly baked baguettes) must not exceed the expected demand for the day.
 
 The demand distribution plays a pivotal role in guiding the optimization process. The implementation of this narrative leverages a mathematical modeling language for optimization, specifically [AMPL](https://ampl.com/) [@amplAMPLAdvanced]. For details, refer to the `bakery.mod` section in the [model implementation notebook](../../notebooks/bakery_stochastic.ipynb). The book "Introduction to Stochastic Programming" [@birge2011introduction] served as an excellent resource, offering clear explanations and practical examples of real-world business problems that can be effectively addressed using stochastic optimization techniques.
 
