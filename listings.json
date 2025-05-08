@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/stochastic_opt/index.html",
       "/posts/accuracy_is_all/index.html",
       "/posts/the_magic_pill/index.html",
       "/posts/hmm_r8/index.html",
