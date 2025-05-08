@@ -64,7 +64,7 @@ So what are the results of doing all of this. To run an efficient business, when
 ![Optimization Results](opt_results.png){fig-align="center"}
 
 ## Note:
-The primary goal of this post is to highlight how statistical estimation serves as a critical component of stochastic optimization. While the newsvendor model presented here could be refined further—perhaps with different constraints, costs, or assumptions—the focus remains on illustrating the synergy between statistical modeling and optimization. 
+The primary goal of this post is to highlight how statistical estimation serves as a critical component of stochastic optimization. While the newsvendor model presented here could be a better fit compared to the stock optimization model—the idea was to show that statistical estimation primes the optimization process. 
 
 
  
