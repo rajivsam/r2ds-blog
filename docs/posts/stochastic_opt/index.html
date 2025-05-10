@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Rajiv Sambasivan">
-<meta name="dcterms.date" content="2025-05-08">
+<meta name="dcterms.date" content="2025-05-10">
 
 <title>Stochastic Optimization – r2ds-blog</title>
 <style>
@@ -195,7 +195,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">May 8, 2025</p>
+        <p class="date">May 10, 2025</p>
       </div>
     </div>
     
@@ -242,7 +242,20 @@ window.Quarto = {
 </figure>
 </div>
 <p>The code for the detailed data profile for the last <span class="math inline">\(40\)</span> weeks of data is available <a href="../../notebooks/bakery_sales_last_40_weeks.html">here</a>.</p>
-<ol start="2" type="1">
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Optimizing the Gamma Likelihood, why?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you are wondering why I am not doing maximum likelihood estimation on the Negative Binomial, but instead I am choosing to do it on the associated Gamma distribution, it is because the Gamma distribution is continuous. Once you have fitted the Gamma to the data, you can work out the associated (optimal) Negative Binomial. The <code>scipy.stats</code> package does not provide a fit method for the Negative Binomial, probably for this reason - the fact that you can always use the Gamma MLE to work this out.</p>
+</div>
+</div>
+<ol type="1">
 <li><strong>Statistical Estimation</strong>: The demand is a count variable that is <em>over dispersed</em>, that is, the variance is larger than the mean. We cannot use a Poisson distribution for the demand because of this <em>over dispersion</em>. For a Poisson distributed random variable, the mean and variance need to be identical, we can probably live with similar, but this is an order of magnitude difference. We can use a Negative Binomial distribution instead. This can work with <em>over dispersed</em> data. One interpretation of a Negative Binomial distribution is as a compound distribution. It is a distribution where one of the parameters is also a distribution, so you can think of it as a <em>mixture</em> of Poisson random variables where the <em>rate</em> parameter is a Gamma distribution. We have the daily arrival rates here (which happen to be integral, but in general, they do not need to be), we fit a Gamma distribution to the daily purchase rates using maximum likelihood estimation. This is available in <code>scipy.stats</code> package. We can then use the relationship between the Negative Binomial and its associated Gamma distribution to work out the details of the parameters of the Negative Binomial distribution. For the relationship between the Gamma and the Negative Binomial arameters, please see <a href="https://en.wikipedia.org/wiki/Negative_binomial_distribution#Gamma%E2%80%93Poisson_mixture">this wikipedia article</a>. Please see <a href="../../notebooks/bakery_sales_last_40_weeks.html">this notebook</a> for the details of the estimation. The fitted Negative Binomial distribution and the actual demand data are shown below.</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
@@ -262,10 +275,19 @@ window.Quarto = {
 <figcaption>Optimization Results</figcaption>
 </figure>
 </div>
-</section>
-<section id="note" class="level2">
-<h2 class="anchored" data-anchor-id="note">Note:</h2>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note:
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>The primary goal of this post is to highlight how statistical estimation serves as a critical component of stochastic optimization. While the newsvendor model could be a better fit compared to the stock optimization model used here —the idea was to show that statistical estimation primes the optimization process.</p>
+</div>
+</div>
 </section>
 </section>
 
@@ -285,12 +307,12 @@ Postek, Krzysztof, Alessandro Zocca, Joaquim Gromicho, and Jeffrey Kantor. 2024.
 </div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2025,
   author = {Sambasivan, Rajiv},
   title = {Stochastic {Optimization}},
-  date = {2025-05-08},
+  date = {2025-05-10},
   url = {https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2025" class="csl-entry quarto-appendix-citeas" role="listitem">
-Sambasivan, Rajiv. 2025. <span>“Stochastic Optimization.”</span> May 8,
+Sambasivan, Rajiv. 2025. <span>“Stochastic Optimization.”</span> May 10,
 2025. <a href="https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/">https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
