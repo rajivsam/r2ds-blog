@@ -75,7 +75,9 @@ So what are the results of doing all of this. To run an efficient business, when
 
 ## Note:
 
-The primary goal of this post is to highlight how statistical estimation serves as a critical component of stochastic optimization. While the newsvendor model could be a better fit compared to the stock optimization model used here —the idea was to show that statistical estimation primes the optimization process. 
+1. The primary goal of this post is to highlight how statistical estimation serves as a critical component of stochastic optimization. While the newsvendor model could be a better fit compared to the stock optimization model used here —the idea was to show that statistical estimation primes the optimization process. 
+
+2. If you are wondering why not just use the mean and what really do we get by working with the distribution, please check out the AMPL [seafood stock optimization example](https://ampl.com/mo-book/notebooks/09/seafood.html). It provides the difference in profits between using the expected value and using the distribution. Retail margins are sometimes small. So doing this may matter.
 :::
 
 
