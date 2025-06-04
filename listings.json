@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/olist_case_study/index.html",
       "/posts/descriptive_analytics/index.html",
       "/posts/stochastic_opt/index.html",
       "/posts/accuracy_is_all/index.html",
