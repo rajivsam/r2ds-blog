@@ -1,0 +1,23 @@
+---
+title: "Descriptive Analytics, the Olist Dataset"
+author: "Rajiv Sambasivan"
+date: last-modified
+categories: [news, code, analysis]
+image: "lost_child.jpeg"
+citation:
+  url: https://rajivsam.github.io/r2ds-blog/posts/olist_case_study 
+---
+
+::: {style="text-align: justify"}
+
+## Descriptive Analytics
+Just an update on my post last week about descriptive analytics. Here is an incremental update. The first dataset I considered was a transaction dataset from an kaggle. As an initial iteration I examined what drives revenue to the store. The summary from this analysis is available at [this repository location](https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/summary_revenue_analysis.md). There are three parts to the analysis, [part 1](https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/part_1_revenue_segmentation.md), [part 2](https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/part_2_revenue_seg_by_geography.md) and [part 3](https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/part_3_revenue_seg_by_time_period.md).
+
+As discussed in the results, understanding the purchasing behavior in Sao Paulo, the major market for Olist seemed like a good next step. Purchasing behavior can be analyzed based on temporal patterns and geographic patterns. Temporal patterns captures temporal clusters where similar purchases are observed or similar spending behavior is observed. Geographic patterns capture clusters of geographic regions with similar purchasing behavior.
+
+I have an incremental update on the temporal analysis component. The approach to the analysis is available [here](https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/approach_to_temporal_purchase_pattern_analysis.md). The implementation sketch is available [here](https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/implementation_temporal_purhcase_clustering.md).
+
+
+
+
+:::
