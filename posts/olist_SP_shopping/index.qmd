@@ -1,0 +1,22 @@
+---
+title: "Descriptive Analysis of Olist Customers in SP, 2017"
+author: "Rajiv Sambasivan"
+date: last-modified
+categories: [news, code, analysis]
+image: "shopping_in_SP.png"
+citation:
+  url: https://rajivsam.github.io/r2ds-blog/posts/olist_SP_shopping 
+---
+
+::: {style="text-align: justify"}
+
+## Shopping on Olist by Customers in Sau Paulo in 2017
+This post is the first sketch of a descriptive analysis task for the [Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) dataset. Last week I had an incremental update. If you saw that, you'd see that this week's increment has many simpilications. A lot of deletions. For those who do this, you know that this is typical. Sao Paulo turns out to be the biggest market for Olist. So this post covers just the description of the Sao Paulo market. The analysis for the other markets should be similar. Rio De Janero and Minas Gerias are other decent size geographic market segments. Customers from all other states in Brazil are small. So to get a complete picture you need analysis for the Rio De Janero and the Mias Gerias states.
+
+A couple of thoughts worth sharing. To go from a dataset with say 100 K records to say 10 to 20 facts is a logarithmic reduction. Of these 10 to 20 facts, some of them are irrelevant to what you are interested in analyzing the data for, some are redundant (other facts convey the same information), say 5 facts truly shape your analysis. Descriptive analytics helps us get this picture. 
+
+Here is the [summary](https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/picture_summary_SP_2017.md)
+
+
+
+:::
