@@ -2,8 +2,8 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/descriptive_analytics_repo/index.html",
       "/posts/olist_SP_shopping/index.html",
-      "/posts/olist_case_study/index.html",
       "/posts/descriptive_analytics/index.html",
       "/posts/stochastic_opt/index.html",
       "/posts/accuracy_is_all/index.html",
