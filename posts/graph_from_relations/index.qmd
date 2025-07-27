@@ -1,0 +1,26 @@
+---
+title: "Graph From Relations"
+author: "Rajiv Sambasivan"
+date: last-modified
+categories: [news, code, analysis]
+image: "graph-rell.jpg"
+citation:
+  url: https://rajivsam.github.io/r2ds-blog/posts/graph_from_relations 
+---
+
+::: {style="text-align: justify"}
+
+## Graphs as a Descriptive Analytics Tool
+If you have had a chance to look at the [Olist Case Study](https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/picture_summary_SP_2017.md), you can see that even within one geographic region, IID (Independent Identically Distributed) is not a reasonable assumption to analyze purchasing patterns of customers. For some cities it is, but for others it is not. As discussed in the post, a reasonable approach in such scenarios is to use methods used to analyze IID data for the group of cities for which IID is a reasonable assumption. For the remainder, we can use Graph based analysis methods.
+
+This pattern of finding different behaviors for different subsets of the data is a very frequent finding in real life datasets. Using a monolithic modeling approach can be sub-optimal. If we use an IID assumption for all the data, then we have a model that is not correctly specified for some parts of the data. We could use a graph based approach for the entire dataset, but we don't need the neighborhood features for some parts of the data (the IID parts). So we have a lot of redundant computation. Doing a descriptive analytics exercise lets us pick the right modeling approach for each subset of the data.
+
+If you look at all the examples, the raw dataset is tabular. This can be viewed as a mathematical relation. Conceptually, each row in the input dataset can be viewed as a set an interaction between one or more entities. In the Olist case, it is a customer's interaction with the store's inventory. For some subset of this input dataset, a graph representation is useful to analyze it. Since non-IID (dependent) data does occur frequently, learning a graph from a set of relations is a frequent problem.
+
+I have a write up about this problem and a proposed solution sketch in the descriptive analytics repository: [Learning Graphs from Relations](https://github.com/rajivsam/descriptive_analytics/blob/main/examples/graph_from_relations/graph_creation.pdf).
+
+
+
+
+
+:::
