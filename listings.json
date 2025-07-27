@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/graph_from_relations/index.html",
       "/posts/markov_analysis_coffee_prices/index.html",
       "/posts/descriptive_analytics_repo/index.html",
       "/posts/olist_SP_shopping/index.html",
