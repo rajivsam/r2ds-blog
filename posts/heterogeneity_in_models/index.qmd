@@ -1,0 +1,41 @@
+---
+title: "Heterogeneity in Modeling"
+bibliography: references.bib
+author: "Rajiv Sambasivan"
+date: last-modified
+categories: [news, code, analysis]
+image: "mixed_bag.png"
+citation:
+  url: https://rajivsam.github.io/r2ds-blog/posts/heterogeneity_in_models 
+---
+
+::: {style="text-align: justify"}
+## Heterogeneity
+In previous posts, I have frequently mentioned the term **heterogeneity**. Since it is a recurring concept, I wanted to clarify what it means in this context.
+
+*Heterogeneity* refers to the variability we observe in what we are analyzing—either across different observation units or within the same unit over time. Let’s break this down with some examples.
+
+Analyses typically fall into one of the following categories:
+
+1. **Cross-Sectional Analysis:** Here, we examine multiple units at a single point in time. For example, analyzing average apartment rents across US cities in 2017 provides a snapshot comparison.
+2. **Longitudinal Analysis:** This involves tracking a single unit over time. For instance, monitoring an individual’s blood sugar levels daily for 3 years.
+3. **Panel Data Analysis:** This combines both approaches, observing multiple units over multiple time periods. For example, tracking monthly apartment rents in Chicago from 2015 to 2020.
+
+*Heterogeneity* appears differently in each type of analysis. In cross-sectional data, such as average rents in 2017, variability can arise from factors like:
+- City
+- Apartment features (e.g., size, amenities)
+
+These are sources of *heterogeneity*. For example, the relationship between apartment features and rent may differ from city to city, reflecting this underlying variability.
+
+In a longitudinal setting, such as tracking an individual's daily 7 am blood sugar over 3 years along with diet and lifestyle factors (e.g., carb intake, sleep, exercise), heterogeneity can arise over time. For instance, as the person becomes fitter, the effect of these lifestyle factors on blood sugar may change from year to year.
+
+In a panel data setting, such as tracking apartment rents in Chicago over several years, heterogeneity can arise both across groups and over time. For example, the impact of free utilities on monthly rents may change from year to year, and this effect might differ between single-bedroom and two-bedroom apartments. These differences could be driven by factors like rising fuel costs, which affect heating and cooling expenses differently depending on apartment size.
+
+The above discussion covers what heterogeneity is and how it manifests in different types of data. Let's talk about how this is addressed. Heterogeneity is a well recognized problem in the statistics and economics communities. Random effects models is the standard approach to dealing with this. Please see [@faraway2016extending] for a discussion of the method. Modeling your analysis with graphs is another approach to dealing heterogeneity. 
+
+In graph-based models, the neighborhood of a node—its most similar peers—is used to predict the value of a property at that node. This approach naturally accounts for heterogeneity, since predictions are informed by local structure and relationships. For example, the predicted rent for an apartment is influenced by the rents of apartments most similar to it; the definition of "similarity" and the size of the neighborhood are modeling choices.
+
+By framing your analysis as a graph problem, you can leverage a rich body of theory and methods developed for network data. This not only provides a principled way to address heterogeneity, but also offers interpretable insights into how local relationships drive outcomes. Developing tools to map relational data into graph structures is an ongoing effort, and I am working on this.
+
+:::
+
