@@ -11,7 +11,7 @@ citation:
 
 ::: {style="text-align: justify"}
 ## Heterogeneity
-In previous posts, I have frequently mentioned the term **heterogeneity**. Since it is a recurring concept, I wanted to clarify what it means in this context.
+In previous posts, I have frequently mentioned the term **heterogeneity**. Since it is a recurring concept, I wanted to explain what I was talking about
 
 *Heterogeneity* refers to the variability we observe in what we are analyzing—either across different observation units or within the same unit over time. Let’s break this down with some examples.
 
@@ -25,7 +25,7 @@ Analyses typically fall into one of the following categories:
 - City
 - Apartment features (e.g., size, amenities)
 
-These are sources of *heterogeneity*. For example, the relationship between apartment features and rent may differ from city to city, reflecting this underlying variability.
+These are sources of *heterogeneity*. Model heterogeneity occurs when we observe a difference in how each of these sources relate to the rents for each city. For example if there is a linear relationship between apartment size and rent, the coefficient term in a New York city may be different from Chicago. In some states, we may find that the relationship between size and rent is non-linear.
 
 In a longitudinal setting, such as tracking an individual's daily 7 am blood sugar over 3 years along with diet and lifestyle factors (e.g., carb intake, sleep, exercise), heterogeneity can arise over time. For instance, as the person becomes fitter, the effect of these lifestyle factors on blood sugar may change from year to year.
 
