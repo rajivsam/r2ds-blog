@@ -10,7 +10,7 @@ citation:
 ---
 ::: {style="text-align: justify"}
 ## Unsupervised Learning and Graphs
-Graph-based problems often fall into one of the following categories:
+Graph problems that you solve routinely fall into one of the following categories:
 
 1. **Prediction with Partial Graphs:** Given a graph that is partially observed, can you predict node property values on unobserved nodes? Can you predict if an unobserved pair of nodes are connected by an edge?
 
@@ -27,7 +27,10 @@ Given observations on the nodes of a graph the paper (and talk) discuss three ap
 2. By selecting how a signal should diffuse through a graph. Diffusion on graphs, associated kernels is an extensive topic. If the diffusion perspective is right for your application, for example in disease modeling, then this might appeal to you.
 3. By assuming a causal structure. If you have a causal model associated with the variables of the graph, you can use this approach to learning the graph.
 
+The smoothness idea appeals to me. If you are wondering "what did we actually solve, we just traded threshold selection for smoothness selection?", here is connecting the dots. It turns out that the covariance matrix that we can compute from the data that we observe can be used to estimate the graph laplacian through the Graphical LASSO. You will need to select a regularization constant. This you can do by trying a range of values that produce a smoothness that is representative for your application.
+
 The olist geographical sales by cities in Sau Paulo for 2017 is a good candidate to explore the first approach. So I might try that.
+
 
 
 
