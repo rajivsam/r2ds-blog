@@ -9,7 +9,7 @@
 <meta name="author" content="Rajiv Sambasivan">
 <meta name="dcterms.date" content="2025-09-23">
 
-<title>Unsupervised Learning and Graphs – r2ds-blog</title>
+<title>Feature Engineering with Graphs – r2ds-blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,27 +22,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -135,7 +115,7 @@ div.csl-indent {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Unsupervised Learning and Graphs</h1>
+      <h1 class="title">Feature Engineering with Graphs</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">news</div>
                 <div class="quarto-category">code</div>
@@ -176,48 +156,23 @@ div.csl-indent {
 
 
 
-<section id="unsupervised-learning-and-graphs" class="level2" style="text-align: justify">
-<h2 class="anchored" data-anchor-id="unsupervised-learning-and-graphs">Unsupervised Learning and Graphs</h2>
-<p>Graph problems that you solve routinely fall into one of the following categories:</p>
-<ol type="1">
-<li><p><strong>Prediction with Partial Graphs:</strong> Given a graph that is partially observed, can you predict node property values on unobserved nodes? Can you predict if an unobserved pair of nodes are connected by an edge?</p></li>
-<li><p><strong>Graph Structure Inference from Node Signals:</strong> Given values or signals assigned to the nodes, can you infer the underlying graph structure? Here, you lack explicit examples of which nodes should be connected, and the challenge is to determine the connections that best explain the observed node signals.</p></li>
-</ol>
-<p>So if you are like me, you are probably thinking that the second example is a candidate for unsupervised learning and I agree. The problem is that you will run into the problem of selecting a threshold value in your learning task. For example, if you choose to cluster nodes using the notion of similarity or distance, then you need to decide that nodes that are closer or more similar than a threshold value are connected. If you have access to domain knowledge or have a good understanding of the problem you are trying to solve, you can come up with reasonable solutions.</p>
-<p>What I wanted to talk about in this post is that you can appeal to Graph Signal Processing for help too. I am not going into the details, rather, I am going to discuss the intuition and the motivation and point you to some references if you want to find out more. The ideas are from this paper <span class="citation" data-cites="dong2019learning">(<a href="#ref-dong2019learning" role="doc-biblioref">Dong et al. 2019</a>)</span>. There is an excellent youtube talk that covers the ideas in this paper <span class="citation" data-cites="dong_youtube">(<a href="#ref-dong_youtube" role="doc-biblioref">Dong 2019</a>)</span>.</p>
-<p>Given observations on the nodes of a graph the paper (and talk) discuss three approaches to learning the associated graph.</p>
-<ol type="1">
-<li>By choosing how smooth you want your signal to be. When a signal is observed on the nodes of a graph, the eigen decomposition of the laplacian of the graph tells us how smoothly the signal will vary over the nodes of the graph. We can control the smoothness with a regularization term, i.e., you pick a regularization term that makes the signal smooth enough for your particular problem. This is your choice as a modeler. <strong>Learning the graph laplacian translates to learning the graph</strong>. The graphical lasso <span class="citation" data-cites="friedman2008sparse">(<a href="#ref-friedman2008sparse" role="doc-biblioref">Friedman, Hastie, and Tibshirani 2008</a>)</span> is used to learn the laplacian.</li>
-<li>By selecting how a signal should diffuse through a graph. Diffusion on graphs, associated kernels is an extensive topic. If the diffusion perspective is right for your application, for example in disease modeling, then this might appeal to you.</li>
-<li>By assuming a causal structure. If you have a causal model associated with the variables of the graph, you can use this approach to learning the graph.</li>
-</ol>
-<p>The smoothness idea appeals to me. If you are wondering “what did we actually solve, we just traded threshold selection for smoothness selection?”, here is connecting the dots. It turns out that the covariance matrix that we can compute from the data that we observe can be used to estimate the graph laplacian through the Graphical LASSO. You will need to select a regularization constant. Estimating this is not too difficult, for example if you are working with say temperature data recorded at physical locations, you can note the temperature readings at a set of cities and you can adjust the regularization constant so that the variation produced by the GLASSO model matches the actual observed variation. Tuning the regularization parameter to reduce the model error is a familiar task for a lot of modelers.</p>
-<p>The olist geographical sales by cities in Sau Paulo for 2017 is a good candidate to explore the first approach. So I might try that.</p>
+<section id="feature-engineering-using-graphs" class="level2" style="text-align: justify">
+<h2 class="anchored" data-anchor-id="feature-engineering-using-graphs">Feature Engineering using Graphs</h2>
+<p>Real estate is all about location. Graphs make it possible to do this with your learning problems. Imbalanced datasets are pervasive in real life: Modeling rare diseases and conditions, fraud detection, loan defaults, are all examples of datasets where the event of interest is rare. Using graphs to model such data make it possible to identify neighborhoods of these events and use them as features in your model. This is a simple idea, but it works. Check out an implementation of this idea to predict the performance of loans gauranteed by the SBA. The SBA 7a loan performance data is publicly available. The implementation and results are available in the <a href="https://github.com/rajivsam/descriptive_analytics/blob/main/examples/sba_7a_loans_analysis/sba_7a_loans_desc_analysis.pdf">descriptive analytics repository</a></p>
 </section>
 
 
 
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-dong_youtube" class="csl-entry" role="listitem">
-Dong, Xiaowen. 2019. <span>“Learning Graphs from Data: A Signal Representation Perspective- Youtube.com.”</span> <a href="https://www.youtube.com/watch?v=2ds4A11DSOw&amp;t=2530s" class="uri">https://www.youtube.com/watch?v=2ds4A11DSOw&amp;t=2530s</a>.
-</div>
-<div id="ref-dong2019learning" class="csl-entry" role="listitem">
-Dong, Xiaowen, Dorina Thanou, Michael Rabbat, and Pascal Frossard. 2019. <span>“Learning Graphs from Data: A Signal Representation Perspective.”</span> <em>IEEE Signal Processing Magazine</em> 36 (3): 44–63.
-</div>
-<div id="ref-friedman2008sparse" class="csl-entry" role="listitem">
-Friedman, Jerome, Trevor Hastie, and Robert Tibshirani. 2008. <span>“Sparse Inverse Covariance Estimation with the Graphical Lasso.”</span> <em>Biostatistics</em> 9 (3): 432–41.
-</div>
-</div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2025,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2025,
   author = {Sambasivan, Rajiv},
-  title = {Unsupervised {Learning} and {Graphs}},
+  title = {Feature {Engineering} with {Graphs}},
   date = {2025-09-23},
-  url = {https://rajivsam.github.io/r2ds-blog/posts/graph_learning},
+  url = {https://rajivsam.github.io/r2ds-blog/posts/feature_engg_graph},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2025" class="csl-entry quarto-appendix-citeas" role="listitem">
-Sambasivan, Rajiv. 2025. <span>“Unsupervised Learning and
-Graphs.”</span> September 23, 2025. <a href="https://rajivsam.github.io/r2ds-blog/posts/graph_learning">https://rajivsam.github.io/r2ds-blog/posts/graph_learning</a>.
+Sambasivan, Rajiv. 2025. <span>“Feature Engineering with Graphs.”</span>
+September 23, 2025. <a href="https://rajivsam.github.io/r2ds-blog/posts/feature_engg_graph">https://rajivsam.github.io/r2ds-blog/posts/feature_engg_graph</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
