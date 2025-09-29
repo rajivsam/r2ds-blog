@@ -2,7 +2,8 @@ project:
   type: website
   output-dir: docs
 website:
-  title: "r2ds-blog"
+  title: "Rajiv's blog about data science"
+  site-url: https://rajivsam.github.io/r2ds-blog/
   navbar:
     right:
       - about.qmd
@@ -10,6 +11,8 @@ website:
         href: https://www.r2-ds.com
       - icon: file-earmark-person
         href: https://rajivsam.github.io/
+      - icon: rss
+        href: index.xml  
 format:
   html:
     theme:
