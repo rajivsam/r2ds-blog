@@ -10,41 +10,63 @@
 <atom:link href="https://rajivsam.github.io/r2ds-blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.6.40</generator>
-<lastBuildDate>Mon, 22 Sep 2025 22:31:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 14 Oct 2025 04:26:56 GMT</lastBuildDate>
 <item>
-  <title>Feature Engineering with Graphs</title>
+  <title>Experimentation in Data Science</title>
   <dc:creator>Rajiv Sambasivan</dc:creator>
-  <link>https://rajivsam.github.io/r2ds-blog/posts/feature_engg_graph/</link>
+  <link>https://rajivsam.github.io/r2ds-blog/posts/experimentation_in_DS/</link>
   <description><![CDATA[ 
 
 
 
 
 
-<section id="feature-engineering-using-graphs" class="level2" style="text-align: justify">
-<h2 class="anchored" data-anchor-id="feature-engineering-using-graphs">Feature Engineering using Graphs</h2>
-<p>Real estate is all about location. Graphs make it possible to do this with your learning problems. Imbalanced datasets are pervasive in real life: Modeling rare diseases and conditions, fraud detection, loan defaults, are all examples of datasets where the event of interest is rare. Using graphs to model such data make it possible to identify neighborhoods of these events and use them as features in your model. This is a simple idea, but it works. Check out an implementation of this idea to predict the performance of loans gauranteed by the SBA. The SBA 7a loan performance data is publicly available. The implementation and results are available in the <a href="https://github.com/rajivsam/descriptive_analytics/blob/main/examples/sba_7a_loans_analysis/sba_7a_loans_desc_analysis.pdf">descriptive analytics repository</a></p>
+<hr>
+<section id="the-importance-of-experimentation" class="level2" style="text-align: justify">
+<h2 class="anchored" data-anchor-id="the-importance-of-experimentation">The Importance of Experimentation</h2>
+<p>In core machine learning research—such as NLP, speech recognition, or computer vision—projects are often shaped by well-defined tasks like POS tagging, image segmentation, or pose estimation. In contrast, business data science projects typically center on relational data and require a broader, more flexible approach.</p>
+<p>In these environments, data science teams are responsible for:</p>
+<ol type="1">
+<li>Clarifying business objectives</li>
+<li>Identifying and integrating relevant data sources</li>
+<li>Selecting and testing candidate models</li>
+<li>Evaluating model performance in the context of business goals</li>
+<li>Tuning models for optimal outcomes</li>
+<li>Defining model monitoring strategies</li>
+<li>Estimating model lifespan and planning refresh cycles</li>
+<li>Comparing new models to existing solutions</li>
+<li>Communicating findings and methodologies to the team</li>
+<li>Explaining results and impact to management</li>
+</ol>
+<p>Experimentation is crucial for navigating these tasks and delivering meaningful solutions. When people discuss:</p>
+<ol type="1">
+<li>Low-code or no-code platforms</li>
+<li>“Magic” models—such as deep learning in the past, or today’s foundation models</li>
+</ol>
+<p>They often assume these tools can address all the responsibilities above. Let’s assume they do. Won’t you need to verify this anyway? For those who can verify this, the code generation tools with LLM and the quality of machine learning libraries available today make it easy for you to implement it yourself.</p>
+<p>Don’t get me wrong. For companies with hundreds or even say 50 versions of the same problem manifesting in different lines of business or regions of operation, foundation models make a lot of sense. An insurance company with many different but similar products, an observablity and monitoring company, a wealth managment company etc. How many businesses have that problem though? If your use case is a first implementation or something niche, this does not make sense in my view.</p>
+<p>Building and maintaining a successful model is work. A comparison to a healthcare diagnosis is worth making. Would you accept a carpet bombing approach to your health? You would want to know why something is needed and if it is really needed.</p>
 </section>
 
 
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2025,
   author = {Sambasivan, Rajiv},
-  title = {Feature {Engineering} with {Graphs}},
-  date = {2025-09-23},
-  url = {https://rajivsam.github.io/r2ds-blog/posts/feature_engg_graph},
+  title = {Experimentation in {Data} {Science}},
+  date = {2025-10-14},
+  url = {https://rajivsam.github.io/r2ds-blog/posts/experimentation_in_DS},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2025" class="csl-entry quarto-appendix-citeas">
-Sambasivan, Rajiv. 2025. <span>“Feature Engineering with Graphs.”</span>
-September 23, 2025. <a href="https://rajivsam.github.io/r2ds-blog/posts/feature_engg_graph">https://rajivsam.github.io/r2ds-blog/posts/feature_engg_graph</a>.
+Sambasivan, Rajiv. 2025. <span>“Experimentation in Data Science.”</span>
+October 14, 2025. <a href="https://rajivsam.github.io/r2ds-blog/posts/experimentation_in_DS">https://rajivsam.github.io/r2ds-blog/posts/experimentation_in_DS</a>.
 </div></div></section></div> ]]></description>
   <category>news</category>
   <category>code</category>
   <category>analysis</category>
-  <guid>https://rajivsam.github.io/r2ds-blog/posts/feature_engg_graph/</guid>
-  <pubDate>Mon, 22 Sep 2025 22:31:00 GMT</pubDate>
-  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/feature_engg_graph/house_img.jpeg" medium="image" type="image/jpeg"/>
+  <guid>https://rajivsam.github.io/r2ds-blog/posts/experimentation_in_DS/</guid>
+  <pubDate>Tue, 14 Oct 2025 04:26:56 GMT</pubDate>
+  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/experimentation_in_DS/experiment.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
   <title>Unsupervised Learning and Graphs</title>

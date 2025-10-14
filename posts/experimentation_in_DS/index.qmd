@@ -1,0 +1,41 @@
+---
+title: "Experimentation in Data Science"
+author: "Rajiv Sambasivan"
+date: last-modified
+categories: [news, code, analysis]
+image: "experiment.png"
+citation:
+    url: https://rajivsam.github.io/r2ds-blog/posts/experimentation_in_DS 
+---
+---
+
+::: {style="text-align: justify"}
+## The Importance of Experimentation
+
+In core machine learning research—such as NLP, speech recognition, or computer vision—projects are often shaped by well-defined tasks like POS tagging, image segmentation, or pose estimation. In contrast, business data science projects typically center on relational data and require a broader, more flexible approach.
+
+In these environments, data science teams are responsible for:
+
+1. Clarifying business objectives
+2. Identifying and integrating relevant data sources
+3. Selecting and testing candidate models
+4. Evaluating model performance in the context of business goals
+5. Tuning models for optimal outcomes
+6. Defining model monitoring strategies
+7. Estimating model lifespan and planning refresh cycles
+8. Comparing new models to existing solutions
+9. Communicating findings and methodologies to the team
+10. Explaining results and impact to management
+
+Experimentation is crucial for navigating these tasks and delivering meaningful solutions. When people discuss:
+
+1. Low-code or no-code platforms
+2. "Magic" models—such as deep learning in the past, or today’s foundation models
+
+They often assume these tools can address all the responsibilities above. Let's assume they do. Won't you need to verify this anyway? For those who can verify this, the code generation tools with LLM and the quality of machine learning libraries available today make it easy for you to implement it yourself.
+
+Don't get me wrong. For companies with hundreds or even say 50 versions of the same problem manifesting in different lines of business or regions of operation, foundation models make a lot of sense. An insurance company with many different but similar products, an observablity and monitoring company, a wealth managment company etc. How many businesses have that problem though? If your use case is a first implementation or something niche, this does not make sense in my view. 
+
+Building and maintaining a successful model is work. A comparison to a healthcare diagnosis is worth making. Would you accept a carpet bombing approach to your health? You would want to know why something is needed and if it is really needed. 
+
+:::
