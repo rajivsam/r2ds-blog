@@ -10,7 +10,7 @@
 <atom:link href="https://rajivsam.github.io/r2ds-blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.35</generator>
-<lastBuildDate>Tue, 24 Mar 2026 09:00:47 GMT</lastBuildDate>
+<lastBuildDate>Tue, 24 Mar 2026 09:05:42 GMT</lastBuildDate>
 <item>
   <title>Exploring Time Series Signals</title>
   <dc:creator>Rajiv Sambasivan</dc:creator>
@@ -38,7 +38,7 @@
 <h2 class="anchored" data-anchor-id="why-bother-with-time-series-analysis">Why bother with time series analysis?</h2>
 <p>This post focuses on time series analysis—understanding the signal’s past behavior—as distinct from time series modeling, which is for time series tasks like forecasting, segmentation, anomaly detection. The initial step in analysis is to smooth the signal to reveal its core components: trend, cycles, seasonality, and noise.</p>
 <p>Understanding this structure is crucial. It allows modelers to focus their efforts on the most significant components and provides end-users with actionable insights for planning and control. While modern forecasting methods like deep learning can be effective without this explicit step, structural analysis remains invaluable for a deeper understanding of the data.</p>
-<p>Traditional analysis often uses filtering techniques like Savitzky-Golay or LOESS, which require tuning multiple parameters (e.g., window size, polynomial characteristics). A more streamlined alternative is Singular Spectrum Analysis (SSA), which accomplishes the decomposition with a single, intuitive parameter: the window size. This parameter is typically selected based on the data’s sampling frequency and the analytical goal (e.g., a window of 12 for monthly data to study yearly patterns).</p>
+<p>Traditional analysis often uses filtering techniques like Savitzky-Golay or LOESS, which require tuning multiple parameters (e.g., window size, polynomial characteristics). You start with applying an appropriate filter, study the smoothed time series, then make an informed choice about a decomposition method. A more streamlined alternative is Singular Spectrum Analysis (SSA), which accomplishes the decomposition with a single, intuitive parameter: the window size. This parameter is typically selected based on the data’s sampling frequency and the analytical goal (e.g., a window of 12 for monthly data to study yearly patterns).</p>
 <p>My current workflow begins with SSA to decompose the signal and interpret its components. I then use these insights to set parameters for traditional filters like Savitzky-Golay and LOESS. This approach allows me to verify that all methods yield a consistent and robust interpretation of the time series structure. This post illustrates the application of this SSA-first methodology.</p>
 </section>
 <section id="what-is-singular-spectrum-analysis" class="level2" style="text-align: justify">
@@ -335,7 +335,7 @@ March 24. <a href="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_co
   <category>code</category>
   <category>analysis</category>
   <guid>https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/</guid>
-  <pubDate>Tue, 24 Mar 2026 09:00:47 GMT</pubDate>
+  <pubDate>Tue, 24 Mar 2026 09:05:42 GMT</pubDate>
   <media:content url="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/change_point_plot.png" medium="image" type="image/png"/>
 </item>
 <item>
