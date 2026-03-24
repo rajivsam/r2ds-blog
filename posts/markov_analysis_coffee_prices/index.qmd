@@ -24,7 +24,7 @@ This post originally used a different approach to the analysis. After its public
 ::: {style="text-align: justify"}
 ## Why bother with time series analysis?
 
-This post focuses on time series analysis—understanding the signal's past behavior—as distinct from time series modeling, which is for time series tasks like forecasting, segmentation, anomaly detection. The initial step in analysis is to smooth the signal to reveal its core components: trend, cycles, seasonality, and noise.
+This post focuses on time series analysis—understanding the signal's past behavior—as distinct from time series modeling, which is for time series tasks like forecasting. The initial step in analysis is to smooth the signal to reveal its core components: trend, cycles, seasonality, and noise.
 
 Understanding this structure is crucial. It allows modelers to focus their efforts on the most significant components and provides end-users with actionable insights for planning and control. While modern forecasting methods like deep learning can be effective without this explicit step, structural analysis remains invaluable for a deeper understanding of the data.
 
