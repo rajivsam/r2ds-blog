@@ -8,6 +8,13 @@ citation:
   url: https://rajivsam.github.io/r2ds-blog/posts/accuracy_is_all/
 ---
 
+
+::: {.callout-note appearance="simple"}
+
+## Note
+A better version of this post will come soon.
+
+:::
 ::: {style="text-align: justify"}
 
 # Accuracy, the challenge for every data scientist, is it?

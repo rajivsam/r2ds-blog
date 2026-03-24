@@ -1,123 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://rajivsam.github.io/r2ds-blog/notebooks/download_7a_data_2025.html</loc>
-    <lastmod>2025-05-13T07:03:17.853Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rajivsam.github.io/r2ds-blog/notebooks/generated_code_retail.html</loc>
-    <lastmod>2025-05-13T07:03:18.151Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rajivsam.github.io/r2ds-blog/notebooks/markov_chains_coffee_prices.html</loc>
-    <lastmod>2025-05-13T07:03:18.300Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rajivsam.github.io/r2ds-blog/notebooks/download_coffee.html</loc>
-    <lastmod>2025-05-13T07:03:18.001Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rajivsam.github.io/r2ds-blog/notebooks/R8_HMM_EM.html</loc>
-    <lastmod>2025-05-13T07:03:18.454Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rajivsam.github.io/r2ds-blog/notebooks/bakery_sales_last_40_weeks.html</loc>
-    <lastmod>2025-05-19T04:21:24.428Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rajivsam.github.io/r2ds-blog/notebooks/bakery_stochastic.html</loc>
-    <lastmod>2025-05-13T07:03:17.100Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rajivsam.github.io/r2ds-blog/about.html</loc>
-    <lastmod>2025-05-06T10:55:37.694Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rajivsam.github.io/r2ds-blog/posts/experimentation_in_DS/index.html</loc>
-    <lastmod>2025-10-14T04:26:56.816Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics/index.html</loc>
-    <lastmod>2025-05-30T07:47:42.811Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rajivsam.github.io/r2ds-blog/posts/the_magic_pill/index.html</loc>
-    <lastmod>2025-05-01T00:25:18.022Z</lastmod>
+    <loc>https://rajivsam.github.io/r2ds-blog/data/sba_heterogeneity_analysis.html</loc>
+    <lastmod>2026-01-28T08:18:00.947Z</lastmod>
   </url>
   <url>
     <loc>https://rajivsam.github.io/r2ds-blog/posts/graph_learning/index.html</loc>
-    <lastmod>2025-09-22T22:12:01.009Z</lastmod>
+    <lastmod>2026-03-19T12:16:49.729Z</lastmod>
   </url>
   <url>
-    <loc>https://rajivsam.github.io/r2ds-blog/posts/ice_cream_sales/index.html</loc>
-    <lastmod>2025-04-23T00:00:24.125Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rajivsam.github.io/r2ds-blog/posts/coffee_prices/index.html</loc>
-    <lastmod>2025-04-23T00:00:24.124Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rajivsam.github.io/r2ds-blog/posts/graph_from_relations/index.html</loc>
-    <lastmod>2025-07-27T06:51:24.250Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rajivsam.github.io/r2ds-blog/posts/hmm_r8/index.html</loc>
-    <lastmod>2025-04-26T06:10:34.882Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rajivsam.github.io/r2ds-blog/posts/heterogeneity_in_models/index.html</loc>
-    <lastmod>2025-08-03T04:44:33.591Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rajivsam.github.io/r2ds-blog/posts/accuracy_is_all/index.html</loc>
-    <lastmod>2025-05-05T04:34:45.762Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics_repo/index.html</loc>
-    <lastmod>2025-06-20T00:34:06.823Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/index.html</loc>
-    <lastmod>2025-06-20T23:52:22.022Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rajivsam.github.io/r2ds-blog/posts/olist_SP_shopping/index.html</loc>
-    <lastmod>2025-06-09T00:13:29.911Z</lastmod>
+    <loc>https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics/index.html</loc>
+    <lastmod>2026-01-28T08:18:01.169Z</lastmod>
   </url>
   <url>
     <loc>https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/index.html</loc>
-    <lastmod>2025-05-25T00:28:39.273Z</lastmod>
+    <lastmod>2026-01-28T08:18:01.196Z</lastmod>
   </url>
   <url>
-    <loc>https://rajivsam.github.io/r2ds-blog/index.html</loc>
-    <lastmod>2025-09-29T03:09:16.706Z</lastmod>
+    <loc>https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/index.html</loc>
+    <lastmod>2026-03-24T08:49:45.724Z</lastmod>
   </url>
   <url>
-    <loc>https://rajivsam.github.io/r2ds-blog/data/sba_heterogeneity_analysis.html</loc>
-    <lastmod>2025-04-23T00:00:23.621Z</lastmod>
+    <loc>https://rajivsam.github.io/r2ds-blog/posts/olist_SP_shopping/index.html</loc>
+    <lastmod>2026-01-28T08:18:01.184Z</lastmod>
   </url>
   <url>
-    <loc>https://rajivsam.github.io/r2ds-blog/notebooks/bakery_sales_data.html</loc>
-    <lastmod>2025-05-13T07:03:16.800Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rajivsam.github.io/r2ds-blog/notebooks/coffee_prices.html</loc>
-    <lastmod>2025-05-13T07:03:17.555Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rajivsam.github.io/r2ds-blog/notebooks/daily_ice_cream_sales_exploration.html</loc>
-    <lastmod>2025-05-13T07:03:17.705Z</lastmod>
+    <loc>https://rajivsam.github.io/r2ds-blog/posts/experimentation_in_DS/index.html</loc>
+    <lastmod>2026-01-28T08:18:01.170Z</lastmod>
   </url>
   <url>
     <loc>https://rajivsam.github.io/r2ds-blog/notebooks/coffee_prices_change_point.html</loc>
-    <lastmod>2025-06-20T23:51:11.345Z</lastmod>
+    <lastmod>2026-01-28T08:18:01.159Z</lastmod>
   </url>
   <url>
-    <loc>https://rajivsam.github.io/r2ds-blog/notebooks/retail_transaction_data.html</loc>
-    <lastmod>2025-05-13T07:03:18.604Z</lastmod>
+    <loc>https://rajivsam.github.io/r2ds-blog/notebooks/generated_code_retail.html</loc>
+    <lastmod>2026-01-28T08:18:01.160Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rajivsam.github.io/r2ds-blog/notebooks/R8_HMM_EM.html</loc>
+    <lastmod>2026-01-28T08:18:01.057Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rajivsam.github.io/r2ds-blog/notebooks/download_7a_data_2025.html</loc>
+    <lastmod>2026-01-28T08:18:01.160Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rajivsam.github.io/r2ds-blog/notebooks/bakery_sales_last_40_weeks.html</loc>
+    <lastmod>2026-01-28T08:18:01.058Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rajivsam.github.io/r2ds-blog/notebooks/markov_chains_coffee_prices.html</loc>
+    <lastmod>2026-01-28T08:18:01.160Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rajivsam.github.io/r2ds-blog/index.html</loc>
+    <lastmod>2026-01-28T08:18:01.057Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rajivsam.github.io/r2ds-blog/about.html</loc>
+    <lastmod>2026-01-28T08:18:00.745Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rajivsam.github.io/r2ds-blog/notebooks/coffee_prices.html</loc>
+    <lastmod>2026-01-28T08:18:01.058Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rajivsam.github.io/r2ds-blog/notebooks/download_coffee.html</loc>
+    <lastmod>2026-01-28T08:18:01.160Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rajivsam.github.io/r2ds-blog/notebooks/bakery_stochastic.html</loc>
+    <lastmod>2026-01-28T08:18:01.058Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rajivsam.github.io/r2ds-blog/notebooks/bakery_sales_data.html</loc>
+    <lastmod>2026-01-28T08:18:01.058Z</lastmod>
   </url>
   <url>
     <loc>https://rajivsam.github.io/r2ds-blog/notebooks/coffee_prices_discretization.html</loc>
-    <lastmod>2025-05-13T07:03:17.403Z</lastmod>
+    <lastmod>2026-01-28T08:18:01.160Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rajivsam.github.io/r2ds-blog/notebooks/daily_ice_cream_sales_exploration.html</loc>
+    <lastmod>2026-01-28T08:18:01.160Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rajivsam.github.io/r2ds-blog/notebooks/retail_transaction_data.html</loc>
+    <lastmod>2026-01-28T08:18:01.160Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rajivsam.github.io/r2ds-blog/posts/heterogeneity_in_models/index.html</loc>
+    <lastmod>2026-01-28T08:18:01.174Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics_repo/index.html</loc>
+    <lastmod>2026-01-28T08:18:01.170Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rajivsam.github.io/r2ds-blog/posts/graph_from_relations/index.html</loc>
+    <lastmod>2026-01-28T08:18:01.173Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rajivsam.github.io/r2ds-blog/posts/ice_cream_sales/index.html</loc>
+    <lastmod>2026-01-28T08:18:01.183Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rajivsam.github.io/r2ds-blog/posts/accuracy_is_all/index.html</loc>
+    <lastmod>2026-03-19T12:14:47.584Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rajivsam.github.io/r2ds-blog/posts/the_magic_pill/index.html</loc>
+    <lastmod>2026-01-28T08:18:01.199Z</lastmod>
   </url>
 </urlset>
