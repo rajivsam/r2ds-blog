@@ -10,7 +10,7 @@
 <atom:link href="https://rajivsam.github.io/r2ds-blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.35</generator>
-<lastBuildDate>Tue, 24 Mar 2026 09:25:34 GMT</lastBuildDate>
+<lastBuildDate>Tue, 24 Mar 2026 12:09:48 GMT</lastBuildDate>
 <item>
   <title>Exploring Time Series Signals</title>
   <dc:creator>Rajiv Sambasivan</dc:creator>
@@ -335,7 +335,7 @@ March 24. <a href="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_co
   <category>code</category>
   <category>analysis</category>
   <guid>https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/</guid>
-  <pubDate>Tue, 24 Mar 2026 09:25:34 GMT</pubDate>
+  <pubDate>Tue, 24 Mar 2026 12:09:48 GMT</pubDate>
   <media:content url="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/change_point_plot.png" medium="image" type="image/png"/>
 </item>
 <item>
