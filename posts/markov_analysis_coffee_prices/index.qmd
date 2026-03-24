@@ -7,6 +7,8 @@ author:
     affiliation-url: https://www.r2-ds.com
 date: last-modified
 categories: [news, code, analysis]
+description: "Master time series decomposition with Singular Spectrum Analysis (SSA). Explore practical examples using coffee prices, energy data, and car sales to identify trends, seasonality, and noise for better data insights."
+keywords: [time series analysis, Singular Spectrum Analysis, SSA, signal decomposition, trend extraction, seasonality detection, noise reduction, Python data science, forecasting preparation, coffee price analysis]
 bibliography: mc_ref.bib
 image: "change_point_plot.png"
 citation:
