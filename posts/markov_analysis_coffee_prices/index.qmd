@@ -82,11 +82,11 @@ The eigenvalues you get from the _Singular Value Decomposition_ can be ordered i
 
 <!-- plots for coffee - ev, exp var, cexpvar -->
 :::{layout-ncol=3}
-![Coffee_Eigen_Values](coffee_eigen_values.png)
+![Coffee_Eigen_Values](coffee_eigen_values.png){width="100%" height="100%" style="vertical-align: bottom;"}
 
-![Coffee_Explained_Variance](coffee_eig_var.png)
+![Coffee_Explained_Variance](coffee_eig_var.png){width="100%" height="100%" style="vertical-align: bottom;"}
 
-![Coffee_Cumulative_Explained_Variance](coffee_eig_var_cum.png)
+![Coffee_Cumulative_Explained_Variance](coffee_eig_var_cum.png){width="100%" height="100%" style="vertical-align: bottom;"}
 :::
 
 The plots above illustrate the eigenvalue plots for coffee. If you review the second plot with reference to the first plot, you can see that the proportion of the variance explained is directly related to the size of the eigenvalue. The last plot is a cumulative plot of the explained variance. In this plot, the eigenvalues are distinct and the dataset has no seasonalities. This pattern changes when the time series has seasonalities. As you can see with the same plots shown for the car sales dataset below. 
@@ -94,11 +94,11 @@ The plots above illustrate the eigenvalue plots for coffee. If you review the se
 
 <!-- plots for car sales - ev, exp var, cexpvar -->
 :::{layout-ncol=3}
-![Car Sales_Eigen_Values](car_sales_eigen_values.png)
+![Car Sales_Eigen_Values](car_sales_eigen_values.png){width="100%" height="100%" style="vertical-align: bottom;"}
 
-![Car Sales_Explained_Variance](car_sales_eig_var.png)
+![Car Sales_Explained_Variance](car_sales_eig_var.png){width="100%" height="100%" style="vertical-align: bottom;"}
 
-![Car_Sales_Cumulative_Explained_Variance](car_sales_eig_var_cum.png)
+![Car_Sales_Cumulative_Explained_Variance](car_sales_eig_var_cum.png){width="100%" height="100%" style="vertical-align: bottom;"}
 :::
 The fact about the variance explained being directly related to the size of the eigenvalue still holds (it is an SSA property). The feature to note in the plot of the eigenvalues for the car sales is the nearly similar values of eigenvalues 3 and 4. Whenever we have a seasonality in the dataset, we will see a pair of eigenvalues that are very similar in magnitude. It turns out that this is because a harmonic component (a component that has a regular behavior) requires both _frequency_ and _phase_ for a complete specification and this is what the pair of eigenvalues encode. While on this subject of seasonality, it is important to contrast this with _trend cycles_. These have an up and down behavior, they are just not periodic. Usually, most decomposition software implementations group trend cycles with the trend component. So if you see a pair of eigenvalues of similar size, they encode a seasonal component. If the size of the eigenvalue is not small, they contribute towards explaining a sizeable amount of variation in the data. This brings up the question of what constitutes a sizeable variation? This is application specific. For example, if you are using this analysis results to inform a downstream forecasting task. You may want to extract as many signals as needed to make the remainder behave like Independent, Identically, Distributed noise. How do you know if the signal that is remaining has no correlation? You can use the _Durbin-Watson_[@durbin1950testing] test from the statsmodels package[@seabold2010statsmodels]. If your test statistic reports a statistic in the range of 1.5 to 2.5, it is generally okay to conclude there is no correlation in the noise. If your noise model is _Gaussian_, which is a common assumption, then no correlation, in a joint distribution sense, implies independence. You can run the PELT change point detection algorithm [@Killick01122012], implemented in the _ruptures_ package[@truong2020selective] to see if the algorithm reports any change points. No change points suggests _homogeneous_ noise. So, using the _Durbin-Watson_ test and the _PELT_ change point detection you can verify if IID is a reasonable assumption for your noise.
 If you are not going to use the analysis results for a downstream task that is based on a specific _probabilistic model structure_, then you may decide based on a variance threshold that is adequate for that application. For example, finding motifs (patterns) or segmenting your time series may be the downstream task you are interested in. In that case you can stop with signals you are interested in analyzing. You may not care that the signal that you are not interested in has some serial correlation. The Matrix Profile [@yeh2016matrix] and the excellent python implementation [@law2019stumpy] and great resources for these tasks. Change point detection is another example. This was used as the pivotal step in the previous analysis approach. It turns out that the signal we extract from the first few eigenvectors is smooth. We can use the traditional derivative test, or, analogously, peak finding algorithms to find the change points in the signal. The _find-peaks_ method in [@2020SciPy-NMeth] can be used for this. The meaning and the relevance of the change points is application dependent. You may not care about the noise since it explains very little variance.
@@ -172,7 +172,7 @@ The first image above shows the reconstruction obtained with _SSA_. The next ima
 ::: {style="text-align: justify"}
 
 ## Implementation Repository
-The analysis for all the datasets is at [@sambasivan_ts_explore_26]. Check the notebooks folder for the notebook implementations. The knowledge graph extracts or the pdf versions of the notebooks can be used with notebook LM to create documentation based on this analysis. The knowledge graphs in the _kmds_ subfolder of the _data_ folder. The generative AI content is in the _generative ai_ folder.
+The analysis for all the datasets is at [@sambasivan_ts_explore_26]. Check the [notebooks](https://github.com/rajivsam/ts_exploration/tree/master/notebooks) folder for the notebook implementations. The knowledge graph extracts or the pdf versions of the notebooks can be used with notebook LM to create documentation based on this analysis. The knowledge graphs in the _kmds_ subfolder of the _data_ folder. The generative AI content is in the [_generative ai_](https://github.com/rajivsam/ts_exploration/tree/master/generative_ai_content) folder.
 
 
 

@@ -10,7 +10,7 @@
 <atom:link href="https://rajivsam.github.io/r2ds-blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.35</generator>
-<lastBuildDate>Tue, 24 Mar 2026 12:09:48 GMT</lastBuildDate>
+<lastBuildDate>Wed, 25 Mar 2026 00:02:43 GMT</lastBuildDate>
 <item>
   <title>Exploring Time Series Signals</title>
   <dc:creator>Rajiv Sambasivan</dc:creator>
@@ -72,25 +72,25 @@
 <div class="quarto-layout-panel" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
+<div class="quarto-figure quarto-figure-center" style="vertical-align: bottom;">
 <figure class="figure">
-<p><img src="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/coffee_eigen_values.png" class="img-fluid figure-img"></p>
+<p><img src="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/coffee_eigen_values.png" style="width:100.0%;height:100.0%" class="figure-img"></p>
 <figcaption>Coffee_Eigen_Values</figcaption>
 </figure>
 </div>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
+<div class="quarto-figure quarto-figure-center" style="vertical-align: bottom;">
 <figure class="figure">
-<p><img src="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/coffee_eig_var.png" class="img-fluid figure-img"></p>
+<p><img src="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/coffee_eig_var.png" style="width:100.0%;height:100.0%" class="figure-img"></p>
 <figcaption>Coffee_Explained_Variance</figcaption>
 </figure>
 </div>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
+<div class="quarto-figure quarto-figure-center" style="vertical-align: bottom;">
 <figure class="figure">
-<p><img src="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/coffee_eig_var_cum.png" class="img-fluid figure-img"></p>
+<p><img src="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/coffee_eig_var_cum.png" style="width:100.0%;height:100.0%" class="figure-img"></p>
 <figcaption>Coffee_Cumulative_Explained_Variance</figcaption>
 </figure>
 </div>
@@ -102,25 +102,25 @@
 <div class="quarto-layout-panel" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
+<div class="quarto-figure quarto-figure-center" style="vertical-align: bottom;">
 <figure class="figure">
-<p><img src="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/car_sales_eigen_values.png" class="img-fluid figure-img"></p>
+<p><img src="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/car_sales_eigen_values.png" style="width:100.0%;height:100.0%" class="figure-img"></p>
 <figcaption>Car Sales_Eigen_Values</figcaption>
 </figure>
 </div>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
+<div class="quarto-figure quarto-figure-center" style="vertical-align: bottom;">
 <figure class="figure">
-<p><img src="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/car_sales_eig_var.png" class="img-fluid figure-img"></p>
+<p><img src="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/car_sales_eig_var.png" style="width:100.0%;height:100.0%" class="figure-img"></p>
 <figcaption>Car Sales_Explained_Variance</figcaption>
 </figure>
 </div>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
+<div class="quarto-figure quarto-figure-center" style="vertical-align: bottom;">
 <figure class="figure">
-<p><img src="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/car_sales_eig_var_cum.png" class="img-fluid figure-img"></p>
+<p><img src="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/car_sales_eig_var_cum.png" style="width:100.0%;height:100.0%" class="figure-img"></p>
 <figcaption>Car_Sales_Cumulative_Explained_Variance</figcaption>
 </figure>
 </div>
@@ -209,7 +209,7 @@
 </section>
 <section id="implementation-repository" class="level2" style="text-align: justify">
 <h2 class="anchored" data-anchor-id="implementation-repository">Implementation Repository</h2>
-<p>The analysis for all the datasets is at <span class="citation" data-cites="sambasivan_ts_explore_26">(Sambasivan 2026)</span>. Check the notebooks folder for the notebook implementations. The knowledge graph extracts or the pdf versions of the notebooks can be used with notebook LM to create documentation based on this analysis. The knowledge graphs in the <em>kmds</em> subfolder of the <em>data</em> folder. The generative AI content is in the <em>generative ai</em> folder.</p>
+<p>The analysis for all the datasets is at <span class="citation" data-cites="sambasivan_ts_explore_26">(Sambasivan 2026)</span>. Check the <a href="https://github.com/rajivsam/ts_exploration/tree/master/notebooks">notebooks</a> folder for the notebook implementations. The knowledge graph extracts or the pdf versions of the notebooks can be used with notebook LM to create documentation based on this analysis. The knowledge graphs in the <em>kmds</em> subfolder of the <em>data</em> folder. The generative AI content is in the <a href="https://github.com/rajivsam/ts_exploration/tree/master/generative_ai_content"><em>generative ai</em></a> folder.</p>
 </section>
 <section id="software-package" class="level2" style="text-align: justify">
 <h2 class="anchored" data-anchor-id="software-package">Software Package</h2>
@@ -323,19 +323,19 @@ York, University of. 2026. <em><span>T</span>ime <span>S</span>eries for <span>M
 </div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
   author = {Sambasivan, Rajiv},
   title = {Exploring {Time} {Series} {Signals}},
-  date = {2026-03-24},
+  date = {2026-03-25},
   url = {https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas">
 Sambasivan, Rajiv. 2026. <span>“Exploring Time Series Signals.”</span>
-March 24. <a href="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/">https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/</a>.
+March 25. <a href="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/">https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/</a>.
 </div></div></section></div> ]]></description>
   <category>news</category>
   <category>code</category>
   <category>analysis</category>
   <guid>https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/</guid>
-  <pubDate>Tue, 24 Mar 2026 12:09:48 GMT</pubDate>
+  <pubDate>Wed, 25 Mar 2026 00:02:43 GMT</pubDate>
   <media:content url="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/change_point_plot.png" medium="image" type="image/png"/>
 </item>
 <item>
