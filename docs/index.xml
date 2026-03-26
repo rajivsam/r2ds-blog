@@ -10,7 +10,7 @@
 <atom:link href="https://rajivsam.github.io/r2ds-blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.35</generator>
-<lastBuildDate>Wed, 25 Mar 2026 00:22:52 GMT</lastBuildDate>
+<lastBuildDate>Thu, 26 Mar 2026 08:27:59 GMT</lastBuildDate>
 <item>
   <title>Exploring Time Series Signals</title>
   <dc:creator>Rajiv Sambasivan</dc:creator>
@@ -82,7 +82,7 @@
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center" style="vertical-align: bottom;">
 <figure class="figure">
-<p><img src="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/coffee_eig_var.png" style="width:100.0%;height:100.0%" class="figure-img"></p>
+<p><img src="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/coffee_eig_var_x.png" style="width:100.0%;height:100.0%" class="figure-img"></p>
 <figcaption>Coffee_Explained_Variance</figcaption>
 </figure>
 </div>
@@ -90,7 +90,7 @@
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center" style="vertical-align: bottom;">
 <figure class="figure">
-<p><img src="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/coffee_eig_var_cum.png" style="width:100.0%;height:100.0%" class="figure-img"></p>
+<p><img src="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/coffee_eig_var_cum_x.png" style="width:100.0%;height:100.0%" class="figure-img"></p>
 <figcaption>Coffee_Cumulative_Explained_Variance</figcaption>
 </figure>
 </div>
@@ -112,7 +112,7 @@
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center" style="vertical-align: bottom;">
 <figure class="figure">
-<p><img src="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/car_sales_eig_var.png" style="width:100.0%;height:100.0%" class="figure-img"></p>
+<p><img src="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/car_sales_eig_var_x.png" style="width:100.0%;height:100.0%" class="figure-img"></p>
 <figcaption>Car Sales_Explained_Variance</figcaption>
 </figure>
 </div>
@@ -120,7 +120,7 @@
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center" style="vertical-align: bottom;">
 <figure class="figure">
-<p><img src="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/car_sales_eig_var_cum.png" style="width:100.0%;height:100.0%" class="figure-img"></p>
+<p><img src="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/car_sales_eig_var_cum_x.png" style="width:100.0%;height:100.0%" class="figure-img"></p>
 <figcaption>Car_Sales_Cumulative_Explained_Variance</figcaption>
 </figure>
 </div>
@@ -323,19 +323,19 @@ York, University of. 2026. <em><span>T</span>ime <span>S</span>eries for <span>M
 </div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
   author = {Sambasivan, Rajiv},
   title = {Exploring {Time} {Series} {Signals}},
-  date = {2026-03-25},
+  date = {2026-03-26},
   url = {https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas">
 Sambasivan, Rajiv. 2026. <span>“Exploring Time Series Signals.”</span>
-March 25. <a href="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/">https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/</a>.
+March 26. <a href="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/">https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/</a>.
 </div></div></section></div> ]]></description>
   <category>news</category>
   <category>code</category>
   <category>analysis</category>
   <guid>https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/</guid>
-  <pubDate>Wed, 25 Mar 2026 00:22:52 GMT</pubDate>
+  <pubDate>Thu, 26 Mar 2026 08:27:59 GMT</pubDate>
   <media:content url="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/change_point_plot.png" medium="image" type="image/png"/>
 </item>
 <item>
