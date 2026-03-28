@@ -5,6 +5,8 @@ date: last-modified
 categories: [news, code, analysis]
 image: "graph.png"
 bibliography: references.bib
+description: "This article addresses graph learning, unsupervised learning, graph signal processing, Laplacian estimation, total variation smoothing, manifold regularization, and anomaly detection for state-level SBA loan charge-off rates."
+keywords: graph-learning, manifold regularization, anomaly detection, total variation smoothing
 citation:
   url: https://rajivsam.github.io/r2ds-blog/posts/graph_learning 
 ---
@@ -18,6 +20,8 @@ This post was a hand-wavy sketch of an idea. It now has a concrete example.
 
 ::: {style="text-align: justify"}
 ## Unsupervised Learning and Graphs
+
+
 The problem discussed in this post is this: you have a signal recorded at different nodes of a graph. These could be prices of the same commodity at different locations, or blood sugar measurements on a given day for different individuals. You choose the graph definition and the signal to measure at each node. Can you infer which nodes to connect to create the edges of the graph based on the signal values?
 
 The graph is considered _undirected_. The intuition is to fit a model to the nodes of the graph that _smooths_ the signal, i.e., when you connect the nodes of the graph, you get a smooth signal value. The implication is that nodes with similar values will be connected. This is a _filtering_ approach to learning a graph.
