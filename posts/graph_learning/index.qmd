@@ -22,7 +22,7 @@ The problem discussed in this post is this: you have a signal recorded at differ
 
 The graph is considered _undirected_. The intuition is to fit a model to the nodes of the graph that _smooths_ the signal, i.e., when you connect the nodes of the graph, you get a smooth signal value. The implication is that nodes with similar values will be connected. This is a _filtering_ approach to learning a graph.
 
-There are two unknowns here: the connectivity of the graph and the _smoothed_ signal value. The graph is defined by its _Laplacian_ matrix, $L$. This is what you want to learn. The smoothing idea is called _Total Variation Smoothing_ and is quite popular. The algorithm and consists of two steps:
+There are two unknowns here: the connectivity of the graph and the _smoothed_ signal value. The graph is defined by its _Laplacian_ matrix, $L$. This is what you want to learn. The smoothing idea is called _Total Variation Smoothing_ and is quite popular. The algorithm consists of two steps:
 
 1. Initially, assume the smoothed signal is the same as the observed signal; in subsequent iterations, use the smoothed signal from the smoothing step (value from step 2 in the previous iteration) and learn the _Laplacian_ that makes the signal smooth.
 2. Using the Laplacian from the previous step and the raw observation values, learn a smooth signal.
