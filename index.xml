@@ -10,7 +10,7 @@
 <atom:link href="https://rajivsam.github.io/r2ds-blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.35</generator>
-<lastBuildDate>Sat, 28 Mar 2026 05:35:22 GMT</lastBuildDate>
+<lastBuildDate>Sat, 28 Mar 2026 06:24:45 GMT</lastBuildDate>
 <item>
   <title>Unsupervised Learning and Graphs</title>
   <dc:creator>Rajiv Sambasivan</dc:creator>
@@ -84,7 +84,7 @@ Graphs.”</span> March 28. <a href="https://rajivsam.github.io/r2ds-blog/posts/
   <category>code</category>
   <category>analysis</category>
   <guid>https://rajivsam.github.io/r2ds-blog/posts/graph_learning/</guid>
-  <pubDate>Sat, 28 Mar 2026 05:35:22 GMT</pubDate>
+  <pubDate>Sat, 28 Mar 2026 06:24:45 GMT</pubDate>
   <media:content url="https://rajivsam.github.io/r2ds-blog/posts/graph_learning/graph.png" medium="image" type="image/png" height="89" width="144"/>
 </item>
 <item>
