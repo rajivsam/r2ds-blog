@@ -7,7 +7,6 @@ image: "experiment.png"
 citation:
     url: https://rajivsam.github.io/r2ds-blog/posts/experimentation_in_DS 
 ---
----
 
 ::: {style="text-align: justify"}
 ## The Importance of Experimentation
@@ -37,5 +36,4 @@ They often assume these tools can address all the responsibilities above. Let's 
 Don't get me wrong. For companies with hundreds or even say 50 versions of the same problem manifesting in different lines of business or regions of operation, foundation models make a lot of sense. An insurance company with many different but similar products, an observablity and monitoring company, a wealth managment company etc. How many businesses have that problem though? If your use case is a first implementation or something niche, this does not make sense in my view. 
 
 Building and maintaining a successful model is work. A comparison to a healthcare diagnosis is worth making. Would you accept a carpet bombing approach to your health? You would want to know why something is needed and if it is really needed. 
-
 :::

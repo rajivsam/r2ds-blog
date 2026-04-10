@@ -2,3 +2,13 @@
 .caption{
     text-align: center;
  }
+
+.caption-center-grid figcaption,
+.caption-center-grid .figure-caption {
+    text-align: center;
+}
+
+.caption-center-grid .quarto-figure {
+    margin-left: auto;
+    margin-right: auto;
+}
