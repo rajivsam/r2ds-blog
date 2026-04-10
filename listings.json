@@ -2,10 +2,11 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/tseda announcement/index.html",
+      "/posts/experimentation_in_DS/index.html",
       "/posts/graph_learning/index.html",
       "/posts/markov_analysis_coffee_prices/index.html",
       "/posts/accuracy_is_all/index.html",
-      "/posts/experimentation_in_DS/index.html",
       "/posts/heterogeneity_in_models/index.html",
       "/posts/olist_SP_shopping/index.html",
       "/posts/descriptive_analytics_repo/index.html",
