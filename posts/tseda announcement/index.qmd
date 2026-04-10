@@ -8,7 +8,7 @@ citation:
 ---
 
 ::: {style="text-align: justify"}
-This is an update on a Python package I have been working on for the past few months. The package is called `tseda` (short for Time Series Exploratory Data Analysis). It is what I talked about in my [previous post](https://rajivsam.github.io/r2ds-blog/posts/tseda%20announcement), and I now have a basic version ready. I am currently working on the documentation and will be releasing it soon.
+This is an update on a Python package I have been working on for the past few months. The package is called `tseda` (short for Time Series Exploratory Data Analysis). It is what I talked about in my [previous post](https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/), and I now have a basic version ready. I am currently working on the documentation and will be releasing it soon.
 
 The usage scenario for `tseda` is as follows: you have a regularly sampled time series dataset with a sampling frequency of one hour or higher. You have some downstream task in mind (e.g. forecasting, anomaly detection, etc.), and you want to explore the structure in the data and get a sense of what it looks like. You want to do this quickly and easily, without having to write a lot of code. `tseda` is designed to help you with this.
 
