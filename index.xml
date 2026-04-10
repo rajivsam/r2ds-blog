@@ -10,7 +10,7 @@
 <atom:link href="https://rajivsam.github.io/r2ds-blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.35</generator>
-<lastBuildDate>Fri, 10 Apr 2026 00:28:07 GMT</lastBuildDate>
+<lastBuildDate>Fri, 10 Apr 2026 01:12:18 GMT</lastBuildDate>
 <item>
   <title>An Upcoming Python Package for Time Series Exploration</title>
   <dc:creator>Rajiv Sambasivan</dc:creator>
@@ -22,7 +22,7 @@
 
 
 <div style="text-align: justify">
-<p>This is an update on a Python package I have been working on for the past few months. The package is called <code>tseda</code> (short for Time Series Exploratory Data Analysis). It is what I talked about in my <a href="https://rajivsam.github.io/r2ds-blog/posts/tseda%20announcement">previous post</a>, and I now have a basic version ready. I am currently working on the documentation and will be releasing it soon.</p>
+<p>This is an update on a Python package I have been working on for the past few months. The package is called <code>tseda</code> (short for Time Series Exploratory Data Analysis). It is what I talked about in my <a href="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/">previous post</a>, and I now have a basic version ready. I am currently working on the documentation and will be releasing it soon.</p>
 <p>The usage scenario for <code>tseda</code> is as follows: you have a regularly sampled time series dataset with a sampling frequency of one hour or higher. You have some downstream task in mind (e.g.&nbsp;forecasting, anomaly detection, etc.), and you want to explore the structure in the data and get a sense of what it looks like. You want to do this quickly and easily, without having to write a lot of code. <code>tseda</code> is designed to help you with this.</p>
 <p>You can, of course, work through a notebook and use the various functions in <code>tseda</code> to explore your data. This is the most flexible way to use the package and allows you to customize your analysis as much as you want. However, there is a <em>Dash</em> app built using <code>tseda</code> that allows you to explore your data in a more interactive way. Create a Python environment with Python 3.13 or higher. Activate it, install <code>tseda</code>, then run the command <code>tseda</code> in your terminal. This starts the Dash app, and you can explore your data using its various features.</p>
 <p>There is a three-step workflow for using <code>tseda</code>:</p>
@@ -35,7 +35,7 @@
 <li>A PACF and ACF plot to give you a sense of the autocorrelation in the data. The ACF should also show you the seasonality in the data if there is any.</li>
 </ul></li>
 </ol>
-<div class="caption-center-grid quarto-layout-panel" data-layout-ncol="2" style="column-gap: 1.5rem;">
+<div class="caption-center-grid quarto-layout-panel" style="column-gap: 1.5rem;" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
@@ -58,7 +58,7 @@
 <ol start="2" type="1">
 <li>A decomposition of the data using SSA is done for you. This is based on a heuristic window selection. This should be reasonable for most datasets, but you can change the window size and see how the decomposition changes. You then pick the grouping of components for the decomposition. You do this by looking initially at the ACF plot, the eigenvector plots, and the explained variance plot. You apply the grouping and assess the quality of the decomposition by looking at the reconstructed components and the residuals. You can also look at the weighted correlation matrix to see how the components are correlated with each other. The grouping is important because it determines how the data is decomposed and what structure is captured in the various components. In data with strong structure (e.g.&nbsp;strong seasonality, strong trend, etc.), you can use the derivative idea to see where the signal changes. This is additional information that you get with this tool. If your data has weak structure (for example, if you upload white noise), this tool will indicate that it is not a good fit for your data.</li>
 </ol>
-<div class="caption-center-grid quarto-layout-panel" data-layout-ncol="2" style="column-gap: 1.5rem; row-gap: 1rem;">
+<div class="caption-center-grid quarto-layout-panel" style="column-gap: 1.5rem; row-gap: 1rem;" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
@@ -126,7 +126,7 @@ Series Exploration.”</span> April 10. <a href="https://rajivsam.github.io/r2ds
   <category>python</category>
   <category>time-series</category>
   <guid>https://rajivsam.github.io/r2ds-blog/posts/tseda announcement/</guid>
-  <pubDate>Fri, 10 Apr 2026 00:28:07 GMT</pubDate>
+  <pubDate>Fri, 10 Apr 2026 01:12:18 GMT</pubDate>
 </item>
 <item>
   <title>Experimentation in Data Science</title>
