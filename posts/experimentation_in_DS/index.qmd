@@ -8,32 +8,16 @@ citation:
     url: https://rajivsam.github.io/r2ds-blog/posts/experimentation_in_DS 
 ---
 
+> **Note:** This post updates an older write-up to reflect my current opinions.
+
 ::: {style="text-align: justify"}
 ## The Importance of Experimentation
+Recently, I built a tool for exploratory data analysis of time series data. I used co-pilot for coding the tool, I used gemini for mathematical research and undertanding new literature and research. I wanted to write this based on what I learned about the importance of experimentation in data science and how it is a critical part of the data science process.
 
-In core machine learning research—such as NLP, speech recognition, or computer vision—projects are often shaped by well-defined tasks like POS tagging, image segmentation, or pose estimation. In contrast, business data science projects typically center on relational data and require a broader, more flexible approach.
+Sure, co-pilot was great for writing code and iterating fast, but even for a simple application that is just three stages, there were so many iterations. So many times that the app was broken. Maybe Claude would have been a different experience, but I definitely did not have the experience that some people claim - write the idea broadly and presto you have a working app. I had to iterate a lot, and I had to experiment a lot. I had to try different things, see what worked, see what didn't work, and then iterate again. This is the essence of experimentation in data science. You have an idea, you try it out, you see what happens, and then you iterate based on what you learn.
 
-In these environments, data science teams are responsible for:
+Here is the thing I realized though, you can have the best tool that implements what you think, but at least in the data science world, there are a lot of corner cases, these are things that you don't necessarily see right away. Your tool reporting that it implemented what you wanted maybe true (let's go with that for now), but what you missed may be critical. It reminds me of a bumper sticker I saw about 25-30 years ago that was mocking parents who had a child in a prestigious school and had bumper stickers about it. This mock as something like "Your kid may go to <some famous schoo>, but you are still an idiot". The point is that real-world applications are complex with a lot of edge cases, and you need to experiment and iterate to get it right. None of us are clairvoyant, and if you are building an app for a data science task, I definitely don't buy the idea that you write the requirements in a broad way and then the tool just gives you what you want. 
 
-1. Clarifying business objectives
-2. Identifying and integrating relevant data sources
-3. Selecting and testing candidate models
-4. Evaluating model performance in the context of business goals
-5. Tuning models for optimal outcomes
-6. Defining model monitoring strategies
-7. Estimating model lifespan and planning refresh cycles
-8. Comparing new models to existing solutions
-9. Communicating findings and methodologies to the team
-10. Explaining results and impact to management
+Deployment was another area where I have heard people say, yeah AI will just replace all the dev-ops people. I had one bug in Arrow and it had to do with different versions of pandas havind different initializations for the default variables. I spent a good 2 hours on that. Every software engineer has war stories about some gnarly bug that they would never have imagined. So I am still sticking with my belief that AI is a great tool for data science, but at the end of the day, tools are as good as the guys making them.
 
-Experimentation is crucial for navigating these tasks and delivering meaningful solutions. When people discuss:
-
-1. Low-code or no-code platforms
-2. "Magic" models—such as deep learning in the past, or today’s foundation models
-
-They often assume these tools can address all the responsibilities above. Let's assume they do. Won't you need to verify this anyway? For those who can verify this, the code generation tools with LLM and the quality of machine learning libraries available today make it easy for you to implement it yourself.
-
-Don't get me wrong. For companies with hundreds or even say 50 versions of the same problem manifesting in different lines of business or regions of operation, foundation models make a lot of sense. An insurance company with many different but similar products, an observablity and monitoring company, a wealth managment company etc. How many businesses have that problem though? If your use case is a first implementation or something niche, this does not make sense in my view. 
-
-Building and maintaining a successful model is work. A comparison to a healthcare diagnosis is worth making. Would you accept a carpet bombing approach to your health? You would want to know why something is needed and if it is really needed. 
 :::
