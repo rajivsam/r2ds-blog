@@ -7,7 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Rajiv Sambasivan">
-<meta name="dcterms.date" content="2026-01-28">
+<meta name="dcterms.date" content="2026-04-13">
+<meta name="keywords" content="stochastic optimization, demand uncertainty, negative binomial, gamma distribution, newsvendor, AMPL, operations research">
+<meta name="description" content="An applied introduction to stochastic optimization for bakery demand planning, showing how statistical estimation drives optimization decisions under uncertainty.">
 
 <title>Stochastic Optimization – Rajiv’s blog about data science</title>
 <style>
@@ -91,6 +93,15 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true});
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -123,9 +134,21 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Stochastic Optimization – Rajiv’s blog about data science">
+<meta property="og:description" content="An applied introduction to stochastic optimization for bakery demand planning, showing how statistical estimation drives optimization decisions under uncertainty.">
+<meta property="og:image" content="https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/kde_hist_baguette_sales.png">
+<meta property="og:site_name" content="Rajiv’s blog about data science">
+<meta property="og:image:height" content="1194">
+<meta property="og:image:width" content="2074">
+<meta name="twitter:title" content="Stochastic Optimization – Rajiv’s blog about data science">
+<meta name="twitter:description" content="An applied introduction to stochastic optimization for bakery demand planning, showing how statistical estimation drives optimization decisions under uncertainty.">
+<meta name="twitter:image" content="https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/kde_hist_baguette_sales.png">
+<meta name="twitter:image-height" content="1194">
+<meta name="twitter:image-width" content="2074">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -173,7 +196,12 @@ window.Quarto = {
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">Stochastic Optimization</h1>
-                                <div class="quarto-categories">
+                  <div>
+        <div class="description">
+          An applied introduction to stochastic optimization for bakery demand planning, showing how statistical estimation drives optimization decisions under uncertainty.
+        </div>
+      </div>
+                          <div class="quarto-categories">
                 <div class="quarto-category">news</div>
                 <div class="quarto-category">code</div>
                 <div class="quarto-category">analysis</div>
@@ -203,18 +231,36 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">January 28, 2026</p>
+        <p class="date">April 13, 2026</p>
       </div>
     </div>
     
       
     </div>
     
+
+  <div>
+    <div class="keywords">
+      <div class="block-title">Keywords</div>
+      <p>stochastic optimization, demand uncertainty, negative binomial, gamma distribution, newsvendor, AMPL, operations research</p>
+    </div>
+  </div>
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#the-synergy-between-statistics-and-stochastic-optimization" id="toc-the-synergy-between-statistics-and-stochastic-optimization" class="nav-link active" data-scroll-target="#the-synergy-between-statistics-and-stochastic-optimization">The Synergy Between Statistics and Stochastic Optimization</a>
+  <ul class="collapse">
+  <li><a href="#practical-example" id="toc-practical-example" class="nav-link" data-scroll-target="#practical-example">Practical Example</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -235,13 +281,13 @@ window.Quarto = {
 <section id="practical-example" class="level2">
 <h2 class="anchored" data-anchor-id="practical-example">Practical Example</h2>
 <p>To illustrate the role of statistical estimation in a simplified stochastic optimization problem, consider a bakery that sells baguettes. Each morning, the bakery must decide how many baguettes to bake, knowing that daily demand is uncertain. The challenge lies in understanding this uncertainty and fitting an appropriate probability distribution to model the demand. This step is crucial for making informed decisions that balance the risks of overproduction and underproduction.</p>
-<p>Here is the cost data. The cost of baking a baguette is 53 cents, and the selling price is 90 cents. I used <a href="https://www.busbysbakery.com/how-to-price-bread-to-make-profit/">this article</a> to arrive at pricing information. The gist of the price information is: <span class="math display">\[
+<p>Here is the cost data. The cost of baking a baguette is 53 cents, and the selling price is 90 cents. I used <a href="https://www.busbysbakery.com/how-to-price-bread-to-make-profit/?utm_source=r2ds_blog&amp;utm_medium=post&amp;utm_campaign=stochastic_opt_post">this article</a> to arrive at pricing information. The gist of the price information is: <span class="math display">\[
 \text{Costs} \times \text{Profit Index} = \text{Selling Price}
 \]</span></p>
-<p>The article uses a profit index of <span class="math inline">\(1.7\)</span>, the selling price is available from the data. I am going with the version that you can use baguette’s for up to a day, so what you need to bake each day is what is the sum of what is held (unsold) from yesterday and what you expect to sell today. This is based on an adaptation of <a href="https://ampl.com/mo-book/notebooks/09/seafood.html">this model</a>.</p>
+<p>The article uses a profit index of <span class="math inline">\(1.7\)</span>, the selling price is available from the data. I am going with the version that you can use baguette’s for up to a day, so what you need to bake each day is what is the sum of what is held (unsold) from yesterday and what you expect to sell today. This is based on an adaptation of <a href="https://ampl.com/mo-book/notebooks/09/seafood.html?utm_source=r2ds_blog&amp;utm_medium=post&amp;utm_campaign=stochastic_opt_post">this model</a>.</p>
 <p>Here are the basic steps to solve the problem:</p>
 <ol type="1">
-<li><strong>Profile the Data</strong> I am going to build on the preview I talked about in my previous post. The data for this example comes from <a href="https://www.kaggle.com/datasets/matthieugimbert/french-bakery-daily-sales">kaggle</a>. The code for downloading the data and preliminary data exploration is available in <a href="../../notebooks/bakery_sales_data.html">this notebook</a>. As discussed in the previous post, there are two trends in this data. If you restrict the time period to the last <span class="math inline">\(40\)</span> weeks then the data is unimodal with a mean of <span class="math inline">\(38\)</span> and a variance of <span class="math inline">\(341\)</span>. The variable of interest, the number of baguettes sold everyday, is a count. The histogram and KDE are shown below.</li>
+<li><strong>Profile the Data</strong> I am going to build on the preview I talked about in my previous post. The data for this example comes from <a href="https://www.kaggle.com/datasets/matthieugimbert/french-bakery-daily-sales?utm_source=r2ds_blog&amp;utm_medium=post&amp;utm_campaign=stochastic_opt_post">kaggle</a>. The code for downloading the data and preliminary data exploration is available in <a href="../../notebooks/bakery_sales_data.html">this notebook</a>. As discussed in the previous post, there are two trends in this data. If you restrict the time period to the last <span class="math inline">\(40\)</span> weeks then the data is unimodal with a mean of <span class="math inline">\(38\)</span> and a variance of <span class="math inline">\(341\)</span>. The variable of interest, the number of baguettes sold everyday, is a count. The histogram and KDE are shown below.</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -318,13 +364,13 @@ Postek, Krzysztof, Alessandro Zocca, Joaquim Gromicho, and Jeffrey Kantor. 2024.
 </div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
   author = {Sambasivan, Rajiv},
   title = {Stochastic {Optimization}},
-  date = {2026-01-28},
+  date = {2026-04-13},
   url = {https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas" role="listitem">
-Sambasivan, Rajiv. 2026. <span>“Stochastic Optimization.”</span> January
-28. <a href="https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/">https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/</a>.
+Sambasivan, Rajiv. 2026. <span>“Stochastic Optimization.”</span> April
+13. <a href="https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/">https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

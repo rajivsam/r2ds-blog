@@ -10,7 +10,403 @@
 <atom:link href="https://rajivsam.github.io/r2ds-blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.35</generator>
-<lastBuildDate>Sat, 11 Apr 2026 06:40:20 GMT</lastBuildDate>
+<lastBuildDate>Mon, 13 Apr 2026 07:16:46 GMT</lastBuildDate>
+<item>
+  <title>The Magic Pill Approach</title>
+  <dc:creator>Rajiv Sambasivan</dc:creator>
+  <link>https://rajivsam.github.io/r2ds-blog/posts/the_magic_pill/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<div style="text-align: justify">
+<p>This post is more of a rant, really. I’m fine with asking ChatGPT for movie recommendations on Netflix or Prime, but when it comes to answering complex, nuanced questions that demand rigor and careful validation of assumptions, I draw the line. Yet, it seems impossible to escape the ubiquitous question: “But what does ChatGPT say?”</p>
+<p>Foundational models for everything? Really? Let’s break this down at a basic level. Assuming I’m even solving the right problem for my use case—which is far from trivial—here’s what I aim to do when tackling a problem:</p>
+<ol type="1">
+<li><strong>Identify sources of variation</strong>: For tasks like regression, I want to pinpoint every factor that contributes to variation in the data.</li>
+<li><strong>Validate these sources</strong>: This requires rigor and due diligence to ensure they are legitimate contributors.</li>
+<li><strong>Account for unexplained variance</strong>: Ideally, this should be minimal. If it’s significant, I need to investigate further and determine how to address it. Even then, I want to ensure the model remains useful—better than having no model or sticking with the status quo.</li>
+</ol>
+<p>I’m skeptical of the notion that all problems can be reduced to the same sources of variation or that there’s a universal method to identify them. If such a method exists, it must be demonstrated rigorously—not through cherry-picked examples.</p>
+<p>Sure, I understand that certain approaches work well within specific problem domains. However, what I often encounter is this: “This approach worked for situation A, so let’s try it for situation B,” without any solid justification that A and B are meaningfully similar.</p>
+</div>
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
+  author = {Sambasivan, Rajiv},
+  title = {The {Magic} {Pill} {Approach}},
+  date = {2026-04-13},
+  url = {https://rajivsam.github.io/r2ds-blog/posts/the_magic_pill/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas">
+Sambasivan, Rajiv. 2026. <span>“The Magic Pill Approach.”</span> April
+13. <a href="https://rajivsam.github.io/r2ds-blog/posts/the_magic_pill/">https://rajivsam.github.io/r2ds-blog/posts/the_magic_pill/</a>.
+</div></div></section></div> ]]></description>
+  <category>news</category>
+  <category>code</category>
+  <category>analysis</category>
+  <guid>https://rajivsam.github.io/r2ds-blog/posts/the_magic_pill/</guid>
+  <pubDate>Mon, 13 Apr 2026 07:16:46 GMT</pubDate>
+  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/the_magic_pill/magic_pill.jpeg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>Chat GPT and Data Analysis</title>
+  <dc:creator>Rajiv Sambasivan</dc:creator>
+  <link>https://rajivsam.github.io/r2ds-blog/posts/ice_cream_sales/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="data-analysis-with-chat-gpt-a-test-drive" class="level1" style="text-align: justify">
+<h1>Data Analysis with Chat GPT, a test drive</h1>
+<p>For a while now I have been meaning to explore how Copilot and Chat GPT are useful for data analysis. I have also been meaning to transition to Quarto for a while, so I grabbed a dataset from Kaggle, picked some interesting questions to analyze, and threw it at Copilot and Chat GPT. Here’s my experience. I used Chat GPT to generate the content initially, so what you see here is my own writing interlaced with generated content. I used VSCode with extensions for quarto and copilot for this article.</p>
+<p>By leveraging Chat GPT, we can automate and enhance various aspects of time series analysis, including data preprocessing, model selection, and interpretation of results.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>While the above statement is true, it can be somewhat misleading. The assistance we get for the tasks like data preprocessing in comparison to tasks like result interpretation and model selection is very different. Code generation for manipulating and transforming pandas dataframes was useful, I did’t really find anything useful for interpretation or model selection.</p>
+</div>
+</div>
+<section id="the-time-series-analysis-task" class="level2">
+<h2 class="anchored" data-anchor-id="the-time-series-analysis-task">The Time Series Analysis Task</h2>
+<p>The data analyzed in this post is a collection of transactions from a national retailer. The transactions span major metropolitan cities in the US and cover a four and half year period. The dataset is available on <a href="https://www.kaggle.com/datasets/prasad22/retail-transactions-dataset?utm_source=r2ds_blog&amp;utm_medium=post&amp;utm_campaign=ice_cream_sales_post">Kaggle</a>. The objective was to analyze this data to get answers to a representative set of questions. The questions addressed in this post represent a subset of a comprehensive analysis exercise, and it is not intended to be exhaustive or rigorous. Some example questions include:</p>
+<ol type="1">
+<li><p>What does the plot of daily ice cream sales nationwide over the analysis period look like?</p></li>
+<li><p>How do ice cream sales vary across the four years within the analysis period? Are there significant differences in the summary statistics year over year?</p></li>
+<li><p>Is there variability in ice cream sales based on location? In other words, is there heterogeneity in consumption patterns based on location?</p></li>
+<li><p>What does the autocorrelation function of the ice cream sales indicate? Is the time series stationary?</p></li>
+<li><p>What are the key components of the time series (trend, seasonality, etc.)?</p></li>
+<li><p>How does the plot of the maximum daily ice cream sales for each week of the year look? Can we model these maximum values using a Gumbel distribution to understand the distribution of peak daily demand nationally?</p></li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The relevant analysis tasks (the list above) is something the analyst has to generate. In my view, this comes with experience with similar data and use cases. Asking Chat GPT on how to do time series analysis got me very general guidelines. I did not find the response very useful (see below). The ACF suggests a white noise process (which is the ground truth), Chat GPT was trying find patterns in it. A notebook implementation of most of these questions is <a href="../../notebooks/daily_ice_cream_sales_exploration.html">available</a></p>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://rajivsam.github.io/r2ds-blog/posts/ice_cream_sales/chat_gpt_analysis.png" class="img-fluid figure-img"></p>
+<figcaption>Chat GPT Analysis</figcaption>
+</figure>
+</div>
+</section>
+<section id="data-preparation" class="level2">
+<h2 class="anchored" data-anchor-id="data-preparation">Data Preparation</h2>
+<p>Transforming the raw dataset to a format that was suitable to answer the analysis questions required an understanding of the various fields in the data. To get the daily ice cream sales from the raw transaction data, I had the identify the transactions that contained ice creams and then aggregate the transactions on a daily basis. Doing this required an analysis of how the line items for each transaction is encoded. Once the data description was analyzed, providing the prompts to Chat GPT generated code that was pretty close to what I developed manually.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The real effort in the data preparation task went into developing an understanding of the various elements of the raw dataset and then coming up with the process of identifying the transactions containing ice cream. Aggregating these transactions to a daily or weekly cadence was fairly straight forward. Chat GPT was helpful in generating the specific pandas code for each step. The <a href="../../notebooks/retail_transaction_data.html">manual</a> and the <a href="../../notebooks/generated_code_retail.html">generated</a> were pretty close.</p>
+</div>
+</div>
+</section>
+<section id="summary-of-chat-gpts-utility-for-this-particular-exercise" class="level2">
+<h2 class="anchored" data-anchor-id="summary-of-chat-gpts-utility-for-this-particular-exercise">Summary of Chat GPT’s utility for this particular exercise</h2>
+<ul>
+<li><p>Chat GPT was definitely very helpful in developing and organizing the content.</p></li>
+<li><p>Identifying the key questions that are relevant to the analysis requires formal training and experience - I don’t really see this replacing a data scientist at this point.</p></li>
+<li><p>Chat GPT was definitely useful for various code generation tasks.</p></li>
+<li><p>In summary, it was impressive as an assistant, but at this point, it is an assistant not a data scientist replacement.</p></li>
+</ul>
+</section>
+</section>
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
+  author = {Sambasivan, Rajiv},
+  title = {Chat {GPT} and {Data} {Analysis}},
+  date = {2026-04-13},
+  url = {https://rajivsam.github.io/r2ds-blog/posts/ice_cream_sales/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas">
+Sambasivan, Rajiv. 2026. <span>“Chat GPT and Data Analysis.”</span>
+April 13. <a href="https://rajivsam.github.io/r2ds-blog/posts/ice_cream_sales/">https://rajivsam.github.io/r2ds-blog/posts/ice_cream_sales/</a>.
+</div></div></section></div> ]]></description>
+  <category>news</category>
+  <category>code</category>
+  <category>analysis</category>
+  <guid>https://rajivsam.github.io/r2ds-blog/posts/ice_cream_sales/</guid>
+  <pubDate>Mon, 13 Apr 2026 07:16:39 GMT</pubDate>
+  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/ice_cream_sales/ice_cream_sales.png" medium="image" type="image/png" height="110" width="144"/>
+</item>
+<item>
+  <title>Stochastic Optimization</title>
+  <dc:creator>Rajiv Sambasivan</dc:creator>
+  <link>https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="the-synergy-between-statistics-and-stochastic-optimization" class="level1" style="text-align: justify">
+<h1>The Synergy Between Statistics and Stochastic Optimization</h1>
+<p>Synergy and complementarity are terms that aptly describe the relationship between machine learning and optimization. In machine learning, optimization is often the tool used to determine the best parameters for a model. For instance, when fitting a straight line to data, optimization helps identify the slope that best represents the relationship.</p>
+<p>My interest in decision-making under cost constraints led me to explore stochastic optimization. This field is particularly relevant for those aiming to make data-driven decisions while explicitly accounting for:</p>
+<ol type="1">
+<li>Uncertainty in the decision variables of an optimization problem.</li>
+<li>The sequential or hierarchical nature of decision variables, where some decisions influence others.</li>
+</ol>
+<p>Stochastic optimization encompasses various approaches, but I will focus on one here. In this approach, problems are structured sequentially, with uncertainty typically associated with the primary decision variables, which are treated as random variables. Once these variables are realized, the optimal values for the dependent variables are determined accordingly.</p>
+<p>Interestingly, the interplay between statistics and optimization in this context contrasts with what we observe in machine learning. Here, statistical estimation informs and drives the optimization process. This synergy between the two fields highlights their potential to complement each other. As data collection and analysis techniques continue to evolve, I anticipate that stochastic optimization will gain prominence, fostering collaboration between machine learning and optimization practitioners.</p>
+<section id="practical-example" class="level2">
+<h2 class="anchored" data-anchor-id="practical-example">Practical Example</h2>
+<p>To illustrate the role of statistical estimation in a simplified stochastic optimization problem, consider a bakery that sells baguettes. Each morning, the bakery must decide how many baguettes to bake, knowing that daily demand is uncertain. The challenge lies in understanding this uncertainty and fitting an appropriate probability distribution to model the demand. This step is crucial for making informed decisions that balance the risks of overproduction and underproduction.</p>
+<p>Here is the cost data. The cost of baking a baguette is 53 cents, and the selling price is 90 cents. I used <a href="https://www.busbysbakery.com/how-to-price-bread-to-make-profit/?utm_source=r2ds_blog&amp;utm_medium=post&amp;utm_campaign=stochastic_opt_post">this article</a> to arrive at pricing information. The gist of the price information is: <img src="https://latex.codecogs.com/png.latex?%0A%5Ctext%7BCosts%7D%20%5Ctimes%20%5Ctext%7BProfit%20Index%7D%20=%20%5Ctext%7BSelling%20Price%7D%0A"></p>
+<p>The article uses a profit index of <img src="https://latex.codecogs.com/png.latex?1.7">, the selling price is available from the data. I am going with the version that you can use baguette’s for up to a day, so what you need to bake each day is what is the sum of what is held (unsold) from yesterday and what you expect to sell today. This is based on an adaptation of <a href="https://ampl.com/mo-book/notebooks/09/seafood.html?utm_source=r2ds_blog&amp;utm_medium=post&amp;utm_campaign=stochastic_opt_post">this model</a>.</p>
+<p>Here are the basic steps to solve the problem:</p>
+<ol type="1">
+<li><strong>Profile the Data</strong> I am going to build on the preview I talked about in my previous post. The data for this example comes from <a href="https://www.kaggle.com/datasets/matthieugimbert/french-bakery-daily-sales?utm_source=r2ds_blog&amp;utm_medium=post&amp;utm_campaign=stochastic_opt_post">kaggle</a>. The code for downloading the data and preliminary data exploration is available in <a href="../../notebooks/bakery_sales_data.html">this notebook</a>. As discussed in the previous post, there are two trends in this data. If you restrict the time period to the last <img src="https://latex.codecogs.com/png.latex?40"> weeks then the data is unimodal with a mean of <img src="https://latex.codecogs.com/png.latex?38"> and a variance of <img src="https://latex.codecogs.com/png.latex?341">. The variable of interest, the number of baguettes sold everyday, is a count. The histogram and KDE are shown below.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/kde_hist_baguette_sales.png" class="img-fluid figure-img"></p>
+<figcaption>Daily Sales of Baguettes in a bakery</figcaption>
+</figure>
+</div>
+<p>The code for the detailed data profile for the last <img src="https://latex.codecogs.com/png.latex?40"> weeks of data is available <a href="../../notebooks/bakery_sales_last_40_weeks.html">here</a>.</p>
+<ol type="1">
+<li><strong>Statistical Estimation</strong>: The demand is a count variable that is <em>over dispersed</em>, that is, the variance is larger than the mean. We cannot use a Poisson distribution for the demand because of this <em>over dispersion</em>. For a Poisson distributed random variable, the mean and variance need to be identical, we can probably live with similar, but this is an order of magnitude difference. We can use a Negative Binomial distribution instead. This can work with <em>over dispersed</em> data. One interpretation of a Negative Binomial distribution is as a compound distribution. It is a distribution where one of the parameters is also a distribution, so you can think of it as a <em>mixture</em> of Poisson random variables where the <em>rate</em> parameter is a Gamma distribution. We have the daily arrival rates here (which happen to be integral, but in general, they do not need to be), we fit a Gamma distribution to the daily purchase rates using maximum likelihood estimation. This is available in <code>scipy.stats</code> package. We can then use the relationship between the Negative Binomial and its associated Gamma distribution to work out the details of the parameters of the Negative Binomial distribution. For the relationship between the Gamma and the Negative Binomial arameters, please see <a href="https://en.wikipedia.org/wiki/Negative_binomial_distribution#Gamma%E2%80%93Poisson_mixture">this wikipedia article</a>. Please see <a href="../../notebooks/bakery_sales_last_40_weeks.html">this notebook</a> for the details of the estimation. The fitted Negative Binomial distribution and the actual demand data are shown below.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/neg_binomial_fit.png" class="img-fluid figure-img"></p>
+<figcaption>Estimated Negative Binomial Demand Fit</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Optimizing the Gamma Likelihood, why?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you are wondering why I am not doing maximum likelihood estimation on the Negative Binomial, but instead I am choosing to do it on the associated Gamma distribution, it is because the Gamma distribution is continuous. Once you have fitted the Gamma to the data, you can work out the associated (optimal) Negative Binomial. The <code>scipy.stats</code> package does not provide a fit method for the Negative Binomial, probably for this reason - the fact that you can always use the Gamma MLE to work this out.</p>
+</div>
+</div>
+<ol start="3" type="1">
+<li><strong>Stochastic Optimization</strong>: Here, I will outline the procedure, highlight the intuition behind it, and provide a link to the implementation. The primary decision variable is the number of baguettes to bake each day. This decision is influenced by the demand distribution and any unsold stock from the previous day. In essence, the total stock available (unsold stock plus freshly baked baguettes) must not exceed the expected demand for the day.</li>
+</ol>
+<p>The demand distribution plays a pivotal role in guiding the optimization process. The implementation of this narrative leverages a mathematical modeling language for optimization, specifically <a href="https://ampl.com/">AMPL</a> <span class="citation" data-cites="amplAMPLAdvanced">(<em><span>A</span><span>M</span><span>P</span><span>L</span></em>)</span>. For details, refer to the <code>bakery.mod</code> section in the <a href="../../notebooks/bakery_stochastic.html">model implementation notebook</a>. The book “Introduction to Stochastic Programming” <span class="citation" data-cites="birge2011introduction">(Birge and Louveaux 2011)</span> served as an excellent resource, offering clear explanations and practical examples of real-world business problems that can be effectively addressed using stochastic optimization techniques.</p>
+<p>So what are the results of doing all of this. To run an efficient business, when holding some inventory is allowed, with the price and cost data assumed, we should expect to bake about <img src="https://latex.codecogs.com/png.latex?50"> baguettes a day and make <img src="https://latex.codecogs.com/png.latex?14.73"> euro of average profit a day.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/opt_results.png" class="img-fluid figure-img"></p>
+<figcaption>Optimization Results</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Note:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>The primary goal of this post is to highlight how statistical estimation serves as a critical component of stochastic optimization. While the newsvendor model could be a better fit compared to the stock optimization model used here —the idea was to show that statistical estimation primes the optimization process.</p></li>
+<li><p>If you are wondering why not just use the mean and what really do we get by working with the distribution, please check out the AMPL <a href="https://ampl.com/mo-book/notebooks/09/seafood.html">seafood stock optimization example</a>. It provides the difference in profits between using the expected value and using the distribution. Retail margins are sometimes small. So doing this may matter.</p></li>
+</ol>
+</div>
+</div>
+</section>
+</section>
+
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-amplAMPLAdvanced" class="csl-entry">
+<em><span>A</span><span>M</span><span>P</span><span>L</span>: <span>A</span>dvanced <span>M</span>odeling for <span>O</span>ptimization <span>S</span>olutions — Ampl.com</em>. <a href="https://ampl.com/products/ampl/" class="uri">Https://ampl.com/products/ampl/</a>.
+</div>
+<div id="ref-birge2011introduction" class="csl-entry">
+Birge, John R, and Francois Louveaux. 2011. <em>Introduction to Stochastic Programming</em>. Springer Science &amp; Business Media.
+</div>
+<div id="ref-PostekZoccaAMPL2024" class="csl-entry">
+Postek, Krzysztof, Alessandro Zocca, Joaquim Gromicho, and Jeffrey Kantor. 2024. <em>Hands-on Mathematical Optimization with AMPL in Python</em>. Online. <a href="https://ampl.com/mo-book">https://ampl.com/mo-book</a>.
+</div>
+</div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
+  author = {Sambasivan, Rajiv},
+  title = {Stochastic {Optimization}},
+  date = {2026-04-13},
+  url = {https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas">
+Sambasivan, Rajiv. 2026. <span>“Stochastic Optimization.”</span> April
+13. <a href="https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/">https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/</a>.
+</div></div></section></div> ]]></description>
+  <category>news</category>
+  <category>code</category>
+  <category>analysis</category>
+  <guid>https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/</guid>
+  <pubDate>Mon, 13 Apr 2026 07:14:33 GMT</pubDate>
+  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/kde_hist_baguette_sales.png" medium="image" type="image/png" height="83" width="144"/>
+</item>
+<item>
+  <title>Descriptive Analysis of Olist Customers in SP, 2017</title>
+  <dc:creator>Rajiv Sambasivan</dc:creator>
+  <link>https://rajivsam.github.io/r2ds-blog/posts/olist_SP_shopping/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="shopping-on-olist-by-customers-in-sau-paulo-in-2017" class="level2" style="text-align: justify">
+<h2 class="anchored" data-anchor-id="shopping-on-olist-by-customers-in-sau-paulo-in-2017">Shopping on Olist by Customers in Sau Paulo in 2017</h2>
+<p>This post is the first sketch of a descriptive analysis task for the <a href="https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce?utm_source=r2ds_blog&amp;utm_medium=post&amp;utm_campaign=olist_sp_post">Olist</a> dataset. Last week I had an incremental update. If you saw that, you’d see that this week’s increment has many simpilications. A lot of deletions. For those who do this, you know that this is typical. Sao Paulo turns out to be the biggest market for Olist. So this post covers just the description of the Sao Paulo market. The analysis for the other markets should be similar. Rio De Janero and Minas Gerias are other decent size geographic market segments. Customers from all other states in Brazil are small. So to get a complete picture you need analysis for the Rio De Janero and the Mias Gerias states.</p>
+<p>A couple of thoughts worth sharing. To go from a dataset with say 100 K records to say 10 to 20 facts is a logarithmic reduction. Of these 10 to 20 facts, some of them are irrelevant to what you are interested in analyzing the data for, some are redundant (other facts convey the same information), say 5 facts truly shape your analysis. Descriptive analytics helps us get this picture.</p>
+<p>Here is the <a href="https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/picture_summary_SP_2017.md?utm_source=r2ds_blog&amp;utm_medium=post&amp;utm_campaign=olist_sp_post">summary</a></p>
+</section>
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
+  author = {Sambasivan, Rajiv},
+  title = {Descriptive {Analysis} of {Olist} {Customers} in {SP,} 2017},
+  date = {2026-04-13},
+  url = {https://rajivsam.github.io/r2ds-blog/posts/olist_SP_shopping},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas">
+Sambasivan, Rajiv. 2026. <span>“Descriptive Analysis of Olist Customers
+in SP, 2017.”</span> April 13. <a href="https://rajivsam.github.io/r2ds-blog/posts/olist_SP_shopping">https://rajivsam.github.io/r2ds-blog/posts/olist_SP_shopping</a>.
+</div></div></section></div> ]]></description>
+  <category>news</category>
+  <category>code</category>
+  <category>analysis</category>
+  <guid>https://rajivsam.github.io/r2ds-blog/posts/olist_SP_shopping/</guid>
+  <pubDate>Mon, 13 Apr 2026 07:14:17 GMT</pubDate>
+  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/olist_SP_shopping/shopping_in_SP.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
+<item>
+  <title>Heterogeneity in Modeling</title>
+  <dc:creator>Rajiv Sambasivan</dc:creator>
+  <link>https://rajivsam.github.io/r2ds-blog/posts/heterogeneity_in_models/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="heterogeneity" class="level2" style="text-align: justify">
+<h2 class="anchored" data-anchor-id="heterogeneity">Heterogeneity</h2>
+<p>In previous posts, I have frequently mentioned the term <strong>heterogeneity</strong>. Since it is a recurring concept, I wanted to explain what I was talking about</p>
+<p><em>Heterogeneity</em> refers to the variability we observe in what we are analyzing—either across different observation units or within the same unit over time. Let’s break this down with some examples.</p>
+<p>Analyses typically fall into one of the following categories:</p>
+<ol type="1">
+<li><strong>Cross-Sectional Analysis:</strong> Here, we examine multiple units at a single point in time. For example, analyzing average apartment rents across US cities in 2017 provides a snapshot comparison.</li>
+<li><strong>Longitudinal Analysis:</strong> This involves tracking a single unit over time. For instance, monitoring an individual’s blood sugar levels daily for 3 years.</li>
+<li><strong>Panel Data Analysis:</strong> This combines both approaches, observing multiple units over multiple time periods. For example, tracking monthly apartment rents in Chicago from 2015 to 2020.</li>
+</ol>
+<p><em>Heterogeneity</em> appears differently in each type of analysis. In cross-sectional data, such as average rents in 2017, variability can arise from factors like: - City - Apartment features (e.g., size, amenities)</p>
+<p>These are sources of <em>heterogeneity</em>. Model heterogeneity occurs when we observe a difference in how each of these sources relate to the rents for each city. For example if there is a linear relationship between apartment size and rent, the coefficient term in a New York State model may be different from Illinois. In some states, we may find that the relationship between size and rent is non-linear.</p>
+<p>In a longitudinal setting, such as tracking an individual’s daily 7 am blood sugar over 3 years along with diet and lifestyle factors (e.g., carb intake, sleep, exercise), heterogeneity can arise over time. For instance, as the person becomes fitter, the effect of these lifestyle factors on blood sugar may change from year to year.</p>
+<p>In a panel data setting, such as tracking apartment rents in Chicago over several years, heterogeneity can arise both across groups and over time. For example, the impact of free utilities on monthly rents may change from year to year, and this effect might differ between single-bedroom and two-bedroom apartments. These differences could be driven by factors like rising fuel costs, which affect heating and cooling expenses differently depending on apartment size.</p>
+<p>The above discussion covers what heterogeneity is and how it manifests in different types of data. Let’s talk about how this is addressed. Heterogeneity is a well recognized problem in the statistics and economics communities. Random effects models is the standard approach to dealing with this. Please see <span class="citation" data-cites="faraway2016extending">(Faraway 2016)</span> for a discussion of the method. Modeling your analysis with graphs is another approach to dealing heterogeneity.</p>
+<p>In graph-based models, the neighborhood of a node—its most similar peers—is used to predict the value of a property at that node. This approach naturally accounts for heterogeneity, since predictions are informed by local structure and relationships. For example, the predicted rent for an apartment is influenced by the rents of apartments most similar to it; the definition of “similarity” and the size of the neighborhood are modeling choices.</p>
+<p>By framing your analysis as a graph problem, you can leverage a rich body of theory and methods developed for network data. This not only provides a principled way to address heterogeneity, but also offers interpretable insights into how local relationships drive outcomes. Developing tools to map relational data into graph structures is an ongoing effort, and I am working on this.</p>
+</section>
+
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-faraway2016extending" class="csl-entry">
+Faraway, Julian J. 2016. <em>Extending the Linear Model with r: Generalized Linear, Mixed Effects and Nonparametric Regression Models</em>. Chapman; Hall/CRC.
+</div>
+</div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
+  author = {Sambasivan, Rajiv},
+  title = {Heterogeneity in {Modeling}},
+  date = {2026-04-13},
+  url = {https://rajivsam.github.io/r2ds-blog/posts/heterogeneity_in_models},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas">
+Sambasivan, Rajiv. 2026. <span>“Heterogeneity in Modeling.”</span> April
+13. <a href="https://rajivsam.github.io/r2ds-blog/posts/heterogeneity_in_models">https://rajivsam.github.io/r2ds-blog/posts/heterogeneity_in_models</a>.
+</div></div></section></div> ]]></description>
+  <category>news</category>
+  <category>code</category>
+  <category>analysis</category>
+  <guid>https://rajivsam.github.io/r2ds-blog/posts/heterogeneity_in_models/</guid>
+  <pubDate>Mon, 13 Apr 2026 07:13:57 GMT</pubDate>
+  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/heterogeneity_in_models/mixed_bag.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
+<item>
+  <title>Graph From Relations</title>
+  <dc:creator>Rajiv Sambasivan</dc:creator>
+  <link>https://rajivsam.github.io/r2ds-blog/posts/graph_from_relations/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="graphs-as-a-descriptive-analytics-tool" class="level2" style="text-align: justify">
+<h2 class="anchored" data-anchor-id="graphs-as-a-descriptive-analytics-tool">Graphs as a Descriptive Analytics Tool</h2>
+<p>If you have had a chance to look at the <a href="https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/picture_summary_SP_2017.md?utm_source=r2ds_blog&amp;utm_medium=post&amp;utm_campaign=graph_from_relations_post">Olist Case Study</a>, you can see that even within one geographic region, IID (Independent Identically Distributed) is not a reasonable assumption to analyze purchasing patterns of customers. For some cities it is, but for others it is not. As discussed in the post, a reasonable approach in such scenarios is to use methods used to analyze IID data for the group of cities for which IID is a reasonable assumption. For the remainder, we can use Graph based analysis methods.</p>
+<p>This pattern of finding different behaviors for different subsets of the data is a very frequent finding in real life datasets. Using a monolithic modeling approach can be sub-optimal. If we use an IID assumption for all the data, then we have a model that is not correctly specified for some parts of the data. We could use a graph based approach for the entire dataset, but we don’t need the neighborhood features for some parts of the data (the IID parts). So we have a lot of redundant computation. Doing a descriptive analytics exercise lets us pick the right modeling approach for each subset of the data.</p>
+<p>If you look at all the examples, the raw dataset is tabular. This can be viewed as a mathematical relation. Conceptually, each row in the input dataset can be viewed as a set an interaction between one or more entities. In the Olist case, it is a customer’s interaction with the store’s inventory. For some subset of this input dataset, a graph representation is useful to analyze it. Since non-IID (dependent) data does occur frequently, learning a graph from a set of relations is a frequent problem.</p>
+<p>I have a write up about this problem and a proposed solution sketch in the descriptive analytics repository: <a href="https://github.com/rajivsam/descriptive_analytics/blob/main/examples/graph_from_relations/graph_creation.pdf?utm_source=r2ds_blog&amp;utm_medium=post&amp;utm_campaign=graph_from_relations_post">Learning Graphs from Relations</a>.</p>
+</section>
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
+  author = {Sambasivan, Rajiv},
+  title = {Graph {From} {Relations}},
+  date = {2026-04-13},
+  url = {https://rajivsam.github.io/r2ds-blog/posts/graph_from_relations},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas">
+Sambasivan, Rajiv. 2026. <span>“Graph From Relations.”</span> April 13.
+<a href="https://rajivsam.github.io/r2ds-blog/posts/graph_from_relations">https://rajivsam.github.io/r2ds-blog/posts/graph_from_relations</a>.
+</div></div></section></div> ]]></description>
+  <category>news</category>
+  <category>code</category>
+  <category>analysis</category>
+  <guid>https://rajivsam.github.io/r2ds-blog/posts/graph_from_relations/</guid>
+  <pubDate>Mon, 13 Apr 2026 07:13:51 GMT</pubDate>
+  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/graph_from_relations/graph-rell.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>Experimentation in Data Science</title>
   <dc:creator>Rajiv Sambasivan</dc:creator>
@@ -37,20 +433,204 @@
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
   author = {Sambasivan, Rajiv},
   title = {Experimentation in {Data} {Science}},
-  date = {2026-04-11},
+  date = {2026-04-13},
   url = {https://rajivsam.github.io/r2ds-blog/posts/experimentation_in_DS},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas">
 Sambasivan, Rajiv. 2026. <span>“Experimentation in Data Science.”</span>
-April 11. <a href="https://rajivsam.github.io/r2ds-blog/posts/experimentation_in_DS">https://rajivsam.github.io/r2ds-blog/posts/experimentation_in_DS</a>.
+April 13. <a href="https://rajivsam.github.io/r2ds-blog/posts/experimentation_in_DS">https://rajivsam.github.io/r2ds-blog/posts/experimentation_in_DS</a>.
 </div></div></section></div> ]]></description>
   <category>news</category>
   <category>code</category>
   <category>analysis</category>
   <guid>https://rajivsam.github.io/r2ds-blog/posts/experimentation_in_DS/</guid>
-  <pubDate>Sat, 11 Apr 2026 06:40:20 GMT</pubDate>
+  <pubDate>Mon, 13 Apr 2026 07:13:39 GMT</pubDate>
   <media:content url="https://rajivsam.github.io/r2ds-blog/posts/experimentation_in_DS/experiment.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
+<item>
+  <title>Descriptive Analytics Repository</title>
+  <dc:creator>Rajiv Sambasivan</dc:creator>
+  <link>https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics_repo/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="descriptive-analytics" class="level2" style="text-align: justify">
+<h2 class="anchored" data-anchor-id="descriptive-analytics">Descriptive Analytics</h2>
+<p>I have a created a github repository for descriptive analytics. The goal of this reository is to illustrate the utility of decribing facets of your data in relation to analysis and modeling objectives. Except in a very small well defined set of scenarios, it takes a lot of contextual analysis to understand how business concepts are connected in your data. Often there are different sub-populations in your data. Achieving your objectives may need different approaches for each sub-population. LLM’s have certainly helped in code generation and in content development. However, for complex business tasks, you still need the human expert to develop the analysis approach. The repository contains an example directory with case studies from this blog as well independent examples. Each case study has a subdirectory and a markdown file that describes the case study.</p>
+<p><a href="https://github.com/rajivsam/descriptive_analytics/?utm_source=r2ds_blog&amp;utm_medium=post&amp;utm_campaign=descriptive_analytics_repo_post">The descriptive analytics repository</a></p>
+</section>
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
+  author = {Sambasivan, Rajiv},
+  title = {Descriptive {Analytics} {Repository}},
+  date = {2026-04-13},
+  url = {https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics_repo},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas">
+Sambasivan, Rajiv. 2026. <span>“Descriptive Analytics
+Repository.”</span> April 13. <a href="https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics_repo">https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics_repo</a>.
+</div></div></section></div> ]]></description>
+  <category>news</category>
+  <category>code</category>
+  <category>analysis</category>
+  <guid>https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics_repo/</guid>
+  <pubDate>Mon, 13 Apr 2026 07:13:35 GMT</pubDate>
+  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics_repo/lost_child.jpeg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>Accuracy, is that what we are after?</title>
+  <dc:creator>Rajiv Sambasivan</dc:creator>
+  <link>https://rajivsam.github.io/r2ds-blog/posts/accuracy_is_all/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A better version of this post will come soon.</p>
+</div>
+</div>
+<section id="accuracy-the-challenge-for-every-data-scientist-is-it" class="level1" style="text-align: justify">
+<h1>Accuracy, the challenge for every data scientist, is it?</h1>
+<p>Is accuracy the ultimate goal of a data scientist’s work? A recent WhatsApp forward I received portrayed data scientists as being singularly focused on model accuracy, as if it were the sole purpose of the profession. This stereotype caught me off guard because, in my experience, the reality couldn’t be further from the truth.</p>
+<p>For data scientists working with business applications, particularly those dealing with tabular data, the challenges are uniquely complex. While colleagues in fields like computer vision, natural language processing, or signal processing may face their own hurdles, their datasets—images, videos, documents, or audio—often appear more structured, with well-defined tasks such as segmentation, object recognition, or speech recognition. In contrast, business data often requires grappling with ambiguous problem definitions, messy datasets, and evolving objectives. Data scientists working with business data face a unique set of challenges. Often, the task begins with a vague directive: “If you can predict X, we can improve Y. Build a model to predict X.” This raises numerous open-ended questions and assumptions that need to be clarified before meaningful progress can be made.</p>
+<p>Is there any preliminary evidence or pilot study suggesting that predicting X will indeed improve Y? While data science offers robust tools to validate such assumptions, in practice, we rarely get the opportunity to do so upfront. Often, the problem itself is framed incorrectly. Collaborating with your data science team to refine the problem statement and identify what truly drives Y can be far more impactful.</p>
+<p>One of the most challenging aspects of data science is characterizing the dataset—understanding the factors that contribute to explaining the target variable. This complexity varies depending on the type of data you’re working with—be it longitudinal, cross-sectional, or panel data. Each type introduces unique sources of variation that must be accounted for to build meaningful models.</p>
+<p>Coming to the accuracy question, say you have a noisy signal with which you are trying to predict something, let’s say your body temperature with a wearable device. The signal might have noise due to motion artifacts, environmental factors, or sensor limitations. In such cases, you may get a model that has wide confidence intervals for its predictions.</p>
+<p>The real effort is in identifying what causes the errors - the motion artifacts, the variation in enviromental factors as well as sensor limitations. Building accurate models in this case may require sensors that are more reliable and techniques that reduce noise artifacts - the best you can do is explain why your predictions have a wide confidence interval. No amount of modeling sophistication if fixing this problem. You can throw your best neural network at it.</p>
+<p>Achieving good accuracy is often an iterative process. We frequently start with no baseline or baselines that obscure flawed modeling assumptions. Personally, I don’t view accuracy as the ultimate goal; instead, I focus on understanding the limitations of the current accuracy. Accuracy is a reflection of how well we understand the data in the context of the task and the engineering efforts supporting it. Improving accuracy doesn’t always mean refining the model—it might require enhancing the data itself. Data improvement often demands collaboration and buy-in from sponsors and stakeholders. So, no, a lack of high accuracy is not necessarily a reflection of your modeling skills.</p>
+<p>Switching to another topic, I was thinking about what I mentioned about identifying changepoints in my post about coffee prices. In it I was talking about visually analyzing the trend and seasonalities and then counting the change points. Could I show this with more clarity? So here is take 2 on a new dataset.</p>
+<p>The problem setting is as follows, we have daily transaction data from a Bakery in the UK. The dataset is from Kaggle. Suppose we are interested in the number of baguette’s that are sold daily, we have a time series associated with this.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://rajivsam.github.io/r2ds-blog/posts/accuracy_is_all/baguette_sales.png" class="img-fluid figure-img"></p>
+<figcaption>Daily Sales of Baguettes in a bakery</figcaption>
+</figure>
+</div>
+<p>As with the coffee prices data, we run it through a time series decomposition algorithm and we get a trend cycle shown below:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://rajivsam.github.io/r2ds-blog/posts/accuracy_is_all/baguette_trend.png" class="img-fluid figure-img"></p>
+<figcaption>Daily Baguette Sales, trend-cycle</figcaption>
+</figure>
+</div>
+<p>The seasonality is shown below:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://rajivsam.github.io/r2ds-blog/posts/accuracy_is_all/baguette_seasonality.png" class="img-fluid figure-img"></p>
+<figcaption>Daily Baguette Sales, seasonality</figcaption>
+</figure>
+</div>
+<p>Visual inspection definitely shows different trend-cycles. Similarly, the seasonality plot also shows different seasoanalities. The question is how do we find the number of distinct trend components from the figure? Similarly, how do we find the number of seasonality components from the figure? I subsequently realized we can estimate this by simply plotting the KDE’s for the trend and seasonality.</p>
+<p>Here is the KDE for the trend component:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://rajivsam.github.io/r2ds-blog/posts/accuracy_is_all/baguette_trend_kde.png" class="img-fluid figure-img"></p>
+<figcaption>Daily Baguette Sales Trend Component</figcaption>
+</figure>
+</div>
+<p>Here is the KDE for the seasonality component:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://rajivsam.github.io/r2ds-blog/posts/accuracy_is_all/baguette_seasonality_kde.png" class="img-fluid figure-img"></p>
+<figcaption>Daily Baguette Sales Seasonality Component</figcaption>
+</figure>
+</div>
+<p>Examining the trend KDE reveals two distinct clusters, indicating the presence of two separate trends during the observed period. Similarly, the seasonality KDE shows three overlapping clusters, suggesting three distinct seasonal patterns.</p>
+<p>In essence, counting the peaks (modes) in the trend and seasonality KDE plots provides a straightforward way to estimate the number of changes in trends and seasonalities.</p>
+<p>And with that, we wrap up this post.</p>
+<section id="note-1" class="level2">
+<h2 class="anchored" data-anchor-id="note-1">Note:</h2>
+<p>If you are interested in the <a href="../../notebooks/bakery_sales_data.html">code</a></p>
+</section>
+</section>
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
+  author = {Sambasivan, Rajiv},
+  title = {Accuracy, Is That What We Are After?},
+  date = {2026-04-13},
+  url = {https://rajivsam.github.io/r2ds-blog/posts/accuracy_is_all/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas">
+Sambasivan, Rajiv. 2026. <span>“Accuracy, Is That What We Are
+After?”</span> April 13. <a href="https://rajivsam.github.io/r2ds-blog/posts/accuracy_is_all/">https://rajivsam.github.io/r2ds-blog/posts/accuracy_is_all/</a>.
+</div></div></section></div> ]]></description>
+  <category>news</category>
+  <category>code</category>
+  <category>analysis</category>
+  <guid>https://rajivsam.github.io/r2ds-blog/posts/accuracy_is_all/</guid>
+  <pubDate>Mon, 13 Apr 2026 07:13:26 GMT</pubDate>
+  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/accuracy_is_all/baguette_sales.png" medium="image" type="image/png" height="105" width="144"/>
+</item>
+<item>
+  <title>Descriptive Analytics, the lost idea in the current AI hype</title>
+  <dc:creator>Rajiv Sambasivan</dc:creator>
+  <link>https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<div style="text-align: justify">
+<section id="descriptive-analytics" class="level2">
+<h2 class="anchored" data-anchor-id="descriptive-analytics">Descriptive Analytics</h2>
+<p>In the current wave of excitement around AI and generative technologies, the value of descriptive analytics as a foundation for predictive modeling is often overlooked. Descriptive analytics goes beyond traditional exploratory data analysis; it leverages statistical and machine learning methods to systematically summarize, interpret, and explain the essential patterns and concepts within your business data. This process provides critical insights that should inform and guide subsequent predictive modeling efforts.</p>
+<p>As datasets grow in size, summarizing them becomes increasingly essential. Traditional visual inspection methods, effective for small datasets, quickly become impractical as data scales to thousands or millions of rows. To extract meaningful insights, it is crucial to identify the most informative subsets of data, distinguishing them from less relevant portions. Both the optimization and machine learning communities have developed innovative techniques to efficiently summarize and interpret large, complex datasets.</p>
+<p>Many organizations are eager to implement machine learning in their business operations. However, effective application requires careful due diligence to ensure a thorough understanding of the data generated by underlying business processes. Ideally, the characteristics of the data should inform the choice of modeling approach. In practice, though, modeling techniques are often predetermined for various reasons, and the focus shifts to adapting the data to fit the chosen model, rather than the other way around.</p>
+<p>I started a repository with recipes for descriptive analytics. I hope to add to this incrementally. To begin with I picked a transactions dataset from a national retailer in Brazil.</p>
+</section>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<p>You can check out the <a href="https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/part_1_revenue_segmentation.md?utm_source=r2ds_blog&amp;utm_medium=post&amp;utm_campaign=descriptive_analytics_post">narrative and notebook</a>.</p>
+<p>You can also explore the full repository here: <a href="https://github.com/rajivsam/descriptive_analytics?utm_source=r2ds_blog&amp;utm_medium=post&amp;utm_campaign=descriptive_analytics_post">descriptive_analytics repository</a>.</p>
+</section>
+<section id="why-this-matters-for-ml-projects" class="level2">
+<h2 class="anchored" data-anchor-id="why-this-matters-for-ml-projects">Why this matters for ML projects</h2>
+<p>Descriptive analytics reduces modeling risk by helping teams verify data quality, identify structure, and align model choice with business process behavior before optimization or prediction stages.</p>
+</section>
+</div>
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
+  author = {Sambasivan, Rajiv},
+  title = {Descriptive {Analytics,} the Lost Idea in the Current {AI}
+    Hype},
+  date = {2026-04-13},
+  url = {https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas">
+Sambasivan, Rajiv. 2026. <span>“Descriptive Analytics, the Lost Idea in
+the Current AI Hype.”</span> April 13. <a href="https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics">https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics</a>.
+</div></div></section></div> ]]></description>
+  <category>news</category>
+  <category>code</category>
+  <category>analysis</category>
+  <guid>https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics/</guid>
+  <pubDate>Mon, 13 Apr 2026 07:11:47 GMT</pubDate>
+  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics/lost_child.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>An Upcoming Python Package for Time Series Exploration</title>
@@ -65,17 +645,13 @@ April 11. <a href="https://rajivsam.github.io/r2ds-blog/posts/experimentation_in
 <div style="text-align: justify">
 <p>This is an update on a Python package I have been working on for the past few months. The package is called <code>tseda</code> (short for Time Series Exploratory Data Analysis). It is what I talked about in my <a href="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/">previous post</a>, and I now have a basic version ready. I am currently working on the documentation and will be releasing it soon.</p>
 <p>The usage scenario for <code>tseda</code> is as follows: you have a regularly sampled time series dataset with a sampling frequency of one hour or higher. You have some downstream task in mind (e.g.&nbsp;forecasting, anomaly detection, etc.), and you want to explore the structure in the data and get a sense of what it looks like. You want to do this quickly and easily, without having to write a lot of code. <code>tseda</code> is designed to help you with this.</p>
+<section id="how-tseda-works" class="level2">
+<h2 class="anchored" data-anchor-id="how-tseda-works">How <code>tseda</code> works</h2>
 <p>You can, of course, work through a notebook and use the various functions in <code>tseda</code> to explore your data. This is the most flexible way to use the package and allows you to customize your analysis as much as you want. However, there is a <em>Dash</em> app built using <code>tseda</code> that allows you to explore your data in a more interactive way. Create a Python environment with Python 3.13 or higher. Activate it, install <code>tseda</code>, then run the command <code>tseda</code> in your terminal. This starts the Dash app, and you can explore your data using its various features.</p>
 <p>There is a three-step workflow for using <code>tseda</code>:</p>
-<ol type="1">
-<li>Upload your data (CSV) file. The data should be in long format, with a timestamp column and a value column. You get an initial assessment of the data and its structure through the following:
-<ul>
-<li>A meta-summary of the data: sampling frequency, dataset size, etc. To use this tool, your data needs to have a sampling frequency of one hour or higher. If your data has missing values, you need to impute them before uploading to the app. The app does not handle missing values at the moment.</li>
-<li>A kernel density plot and a box plot to show you some sense of the concentration of values and the spread of values in the data.</li>
-<li>A plot of the raw data to give you a sense of the structure in the data. This is a line plot with time on the x-axis and value on the y-axis.</li>
-<li>A PACF and ACF plot to give you a sense of the autocorrelation in the data. The ACF should also show you the seasonality in the data if there is any.</li>
-</ul></li>
-</ol>
+<section id="upload-your-time-series-csv" class="level3">
+<h3 class="anchored" data-anchor-id="upload-your-time-series-csv">1. Upload your time series CSV</h3>
+<p>The data should be in long format, with a timestamp column and a value column. You get an initial assessment of the data and its structure through the following: - A meta-summary of the data: sampling frequency, dataset size, etc. To use this tool, your data needs to have a sampling frequency of one hour or higher. If your data has missing values, you need to impute them before uploading to the app. The app does not handle missing values at the moment. - A kernel density plot and a box plot to show you some sense of the concentration of values and the spread of values in the data. - A plot of the raw data to give you a sense of the structure in the data. This is a line plot with time on the x-axis and value on the y-axis. - A PACF and ACF plot to give you a sense of the autocorrelation in the data. The ACF should also show you the seasonality in the data if there is any.</p>
 <div class="caption-center-grid quarto-layout-panel" style="column-gap: 1.5rem;" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -96,9 +672,10 @@ April 11. <a href="https://rajivsam.github.io/r2ds-blog/posts/experimentation_in
 </div>
 </div>
 </div>
-<ol start="2" type="1">
-<li>A decomposition of the data using SSA is done for you. This is based on a heuristic window selection. This should be reasonable for most datasets, but you can change the window size and see how the decomposition changes. You then pick the grouping of components for the decomposition. You do this by looking initially at the ACF plot, the eigenvector plots, and the explained variance plot. You apply the grouping and assess the quality of the decomposition by looking at the reconstructed components and the residuals. You can also look at the weighted correlation matrix to see how the components are correlated with each other. The grouping is important because it determines how the data is decomposed and what structure is captured in the various components. In data with strong structure (e.g.&nbsp;strong seasonality, strong trend, etc.), you can use the derivative idea to see where the signal changes. This is additional information that you get with this tool. If your data has weak structure (for example, if you upload white noise), this tool will indicate that it is not a good fit for your data.</li>
-</ol>
+</section>
+<section id="decompose-the-signal-with-ssa" class="level3">
+<h3 class="anchored" data-anchor-id="decompose-the-signal-with-ssa">2. Decompose the signal with SSA</h3>
+<p>A decomposition of the data using SSA is done for you. This is based on a heuristic window selection. This should be reasonable for most datasets, but you can change the window size and see how the decomposition changes. You then pick the grouping of components for the decomposition. You do this by looking initially at the ACF plot, the eigenvector plots, and the explained variance plot. You apply the grouping and assess the quality of the decomposition by looking at the reconstructed components and the residuals. You can also look at the weighted correlation matrix to see how the components are correlated with each other. The grouping is important because it determines how the data is decomposed and what structure is captured in the various components. In data with strong structure (e.g.&nbsp;strong seasonality, strong trend, etc.), you can use the derivative idea to see where the signal changes. This is additional information that you get with this tool. If your data has weak structure (for example, if you upload white noise), this tool will indicate that it is not a good fit for your data.</p>
 <div class="caption-center-grid quarto-layout-panel" style="column-gap: 1.5rem; row-gap: 1rem;" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -137,16 +714,37 @@ April 11. <a href="https://rajivsam.github.io/r2ds-blog/posts/experimentation_in
 </div>
 </div>
 </div>
-<ol start="3" type="1">
-<li>An AIC-based model selection report is done for you. Recall that SSA is based on an eigen-decomposition of the trajectory matrix. The eigenvalues of the trajectory matrix can be used to determine the number of components to keep for the decomposition. The AIC-based model selection report shows explained variance and noise as a function of model rank. An automatic summary of all the plots and the report is generated for you. You can then correlate this with your monitoring, modeling, and control objectives, add or change anything you want, and save the report for future reference.</li>
-</ol>
+</section>
+<section id="generate-an-aic-based-model-selection-report" class="level3">
+<h3 class="anchored" data-anchor-id="generate-an-aic-based-model-selection-report">3. Generate an AIC-based model selection report</h3>
+<p>An AIC-based model selection report is done for you. Recall that SSA is based on an eigen-decomposition of the trajectory matrix. The eigenvalues of the trajectory matrix can be used to determine the number of components to keep for the decomposition. The AIC-based model selection report shows explained variance and noise as a function of model rank. An automatic summary of all the plots and the report is generated for you. You can then correlate this with your monitoring, modeling, and control objectives, add or change anything you want, and save the report for future reference.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://rajivsam.github.io/r2ds-blog/posts/tseda announcement/tseda_observation_logging.png" class="img-fluid figure-img" style="width:70.0%"></p>
 <figcaption>Observation logging screen</figcaption>
 </figure>
 </div>
-<p>The package is still in development, and I am working on the documentation. I will be releasing it soon. If you are interested in trying it out or contributing to the development, please check out the GitHub repository. Repository: <a href="https://github.com/rajivsam/tseda" class="uri">https://github.com/rajivsam/tseda</a></p>
+<p>The package is still in development, and I am working on the documentation. I will be releasing it soon. If you are interested in trying it out or contributing to the development, please check out the GitHub repository.</p>
+</section>
+</section>
+<section id="try-tseda-and-follow-updates" class="level2">
+<h2 class="anchored" data-anchor-id="try-tseda-and-follow-updates">Try <code>tseda</code> and follow updates</h2>
+<ul>
+<li>Repository: <a href="https://github.com/rajivsam/tseda?utm_source=r2ds_blog&amp;utm_medium=post&amp;utm_campaign=tseda_announcement">GitHub - tseda</a></li>
+<li>Related background post: <a href="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/?utm_source=r2ds_blog&amp;utm_medium=post&amp;utm_campaign=tseda_announcement">Exploring Time Series Signals</a></li>
+</ul>
+</section>
+<section id="faq" class="level2">
+<h2 class="anchored" data-anchor-id="faq">FAQ</h2>
+<section id="what-data-does-tseda-support-right-now" class="level3">
+<h3 class="anchored" data-anchor-id="what-data-does-tseda-support-right-now">What data does <code>tseda</code> support right now?</h3>
+<p>Regularly sampled time series with frequency of one hour or higher, uploaded as CSV in long format.</p>
+</section>
+<section id="can-i-use-tseda-for-forecasting-directly" class="level3">
+<h3 class="anchored" data-anchor-id="can-i-use-tseda-for-forecasting-directly">Can I use <code>tseda</code> for forecasting directly?</h3>
+<p><code>tseda</code> is focused on time series exploratory analysis and structural diagnostics. It is intended to improve downstream forecasting, anomaly detection, and monitoring workflows.</p>
+</section>
+</section>
 </div>
 
 
@@ -155,19 +753,20 @@ April 11. <a href="https://rajivsam.github.io/r2ds-blog/posts/experimentation_in
   author = {Sambasivan, Rajiv},
   title = {An {Upcoming} {Python} {Package} for {Time} {Series}
     {Exploration}},
-  date = {2026-04-10},
+  date = {2026-04-13},
   url = {https://rajivsam.github.io/r2ds-blog/posts/tseda%20announcement},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas">
 Sambasivan, Rajiv. 2026. <span>“An Upcoming Python Package for Time
-Series Exploration.”</span> April 10. <a href="https://rajivsam.github.io/r2ds-blog/posts/tseda%20announcement">https://rajivsam.github.io/r2ds-blog/posts/tseda%20announcement</a>.
+Series Exploration.”</span> April 13. <a href="https://rajivsam.github.io/r2ds-blog/posts/tseda%20announcement">https://rajivsam.github.io/r2ds-blog/posts/tseda%20announcement</a>.
 </div></div></section></div> ]]></description>
   <category>news</category>
   <category>python</category>
   <category>time-series</category>
   <guid>https://rajivsam.github.io/r2ds-blog/posts/tseda announcement/</guid>
-  <pubDate>Fri, 10 Apr 2026 01:12:18 GMT</pubDate>
+  <pubDate>Mon, 13 Apr 2026 07:09:16 GMT</pubDate>
+  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/tseda announcement/tseda_init_screen_1.png" medium="image" type="image/png" height="83" width="144"/>
 </item>
 <item>
   <title>Unsupervised Learning and Graphs</title>
@@ -571,555 +1170,6 @@ March 26. <a href="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_co
   <guid>https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/</guid>
   <pubDate>Thu, 26 Mar 2026 08:27:59 GMT</pubDate>
   <media:content url="https://rajivsam.github.io/r2ds-blog/posts/markov_analysis_coffee_prices/change_point_plot.png" medium="image" type="image/png"/>
-</item>
-<item>
-  <title>Accuracy, is that what we are after?</title>
-  <dc:creator>Rajiv Sambasivan</dc:creator>
-  <link>https://rajivsam.github.io/r2ds-blog/posts/accuracy_is_all/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>A better version of this post will come soon.</p>
-</div>
-</div>
-<section id="accuracy-the-challenge-for-every-data-scientist-is-it" class="level1" style="text-align: justify">
-<h1>Accuracy, the challenge for every data scientist, is it?</h1>
-<p>Is accuracy the ultimate goal of a data scientist’s work? A recent WhatsApp forward I received portrayed data scientists as being singularly focused on model accuracy, as if it were the sole purpose of the profession. This stereotype caught me off guard because, in my experience, the reality couldn’t be further from the truth.</p>
-<p>For data scientists working with business applications, particularly those dealing with tabular data, the challenges are uniquely complex. While colleagues in fields like computer vision, natural language processing, or signal processing may face their own hurdles, their datasets—images, videos, documents, or audio—often appear more structured, with well-defined tasks such as segmentation, object recognition, or speech recognition. In contrast, business data often requires grappling with ambiguous problem definitions, messy datasets, and evolving objectives. Data scientists working with business data face a unique set of challenges. Often, the task begins with a vague directive: “If you can predict X, we can improve Y. Build a model to predict X.” This raises numerous open-ended questions and assumptions that need to be clarified before meaningful progress can be made.</p>
-<p>Is there any preliminary evidence or pilot study suggesting that predicting X will indeed improve Y? While data science offers robust tools to validate such assumptions, in practice, we rarely get the opportunity to do so upfront. Often, the problem itself is framed incorrectly. Collaborating with your data science team to refine the problem statement and identify what truly drives Y can be far more impactful.</p>
-<p>One of the most challenging aspects of data science is characterizing the dataset—understanding the factors that contribute to explaining the target variable. This complexity varies depending on the type of data you’re working with—be it longitudinal, cross-sectional, or panel data. Each type introduces unique sources of variation that must be accounted for to build meaningful models.</p>
-<p>Coming to the accuracy question, say you have a noisy signal with which you are trying to predict something, let’s say your body temperature with a wearable device. The signal might have noise due to motion artifacts, environmental factors, or sensor limitations. In such cases, you may get a model that has wide confidence intervals for its predictions.</p>
-<p>The real effort is in identifying what causes the errors - the motion artifacts, the variation in enviromental factors as well as sensor limitations. Building accurate models in this case may require sensors that are more reliable and techniques that reduce noise artifacts - the best you can do is explain why your predictions have a wide confidence interval. No amount of modeling sophistication if fixing this problem. You can throw your best neural network at it.</p>
-<p>Achieving good accuracy is often an iterative process. We frequently start with no baseline or baselines that obscure flawed modeling assumptions. Personally, I don’t view accuracy as the ultimate goal; instead, I focus on understanding the limitations of the current accuracy. Accuracy is a reflection of how well we understand the data in the context of the task and the engineering efforts supporting it. Improving accuracy doesn’t always mean refining the model—it might require enhancing the data itself. Data improvement often demands collaboration and buy-in from sponsors and stakeholders. So, no, a lack of high accuracy is not necessarily a reflection of your modeling skills.</p>
-<p>Switching to another topic, I was thinking about what I mentioned about identifying changepoints in my post about coffee prices. In it I was talking about visually analyzing the trend and seasonalities and then counting the change points. Could I show this with more clarity? So here is take 2 on a new dataset.</p>
-<p>The problem setting is as follows, we have daily transaction data from a Bakery in the UK. The dataset is from Kaggle. Suppose we are interested in the number of baguette’s that are sold daily, we have a time series associated with this.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://rajivsam.github.io/r2ds-blog/posts/accuracy_is_all/baguette_sales.png" class="img-fluid figure-img"></p>
-<figcaption>Daily Sales of Baguettes in a bakery</figcaption>
-</figure>
-</div>
-<p>As with the coffee prices data, we run it through a time series decomposition algorithm and we get a trend cycle shown below:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://rajivsam.github.io/r2ds-blog/posts/accuracy_is_all/baguette_trend.png" class="img-fluid figure-img"></p>
-<figcaption>Daily Baguette Sales, trend-cycle</figcaption>
-</figure>
-</div>
-<p>The seasonality is shown below:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://rajivsam.github.io/r2ds-blog/posts/accuracy_is_all/baguette_seasonality.png" class="img-fluid figure-img"></p>
-<figcaption>Daily Baguette Sales, seasonality</figcaption>
-</figure>
-</div>
-<p>Visual inspection definitely shows different trend-cycles. Similarly, the seasonality plot also shows different seasoanalities. The question is how do we find the number of distinct trend components from the figure? Similarly, how do we find the number of seasonality components from the figure? I subsequently realized we can estimate this by simply plotting the KDE’s for the trend and seasonality.</p>
-<p>Here is the KDE for the trend component:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://rajivsam.github.io/r2ds-blog/posts/accuracy_is_all/baguette_trend_kde.png" class="img-fluid figure-img"></p>
-<figcaption>Daily Baguette Sales Trend Component</figcaption>
-</figure>
-</div>
-<p>Here is the KDE for the seasonality component:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://rajivsam.github.io/r2ds-blog/posts/accuracy_is_all/baguette_seasonality_kde.png" class="img-fluid figure-img"></p>
-<figcaption>Daily Baguette Sales Seasonality Component</figcaption>
-</figure>
-</div>
-<p>Examining the trend KDE reveals two distinct clusters, indicating the presence of two separate trends during the observed period. Similarly, the seasonality KDE shows three overlapping clusters, suggesting three distinct seasonal patterns.</p>
-<p>In essence, counting the peaks (modes) in the trend and seasonality KDE plots provides a straightforward way to estimate the number of changes in trends and seasonalities.</p>
-<p>And with that, we wrap up this post.</p>
-<section id="note-1" class="level2">
-<h2 class="anchored" data-anchor-id="note-1">Note:</h2>
-<p>If you are interested in the <a href="../../notebooks/bakery_sales_data.html">code</a></p>
-</section>
-</section>
-
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
-  author = {Sambasivan, Rajiv},
-  title = {Accuracy, Is That What We Are After?},
-  date = {2026-03-19},
-  url = {https://rajivsam.github.io/r2ds-blog/posts/accuracy_is_all/},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas">
-Sambasivan, Rajiv. 2026. <span>“Accuracy, Is That What We Are
-After?”</span> March 19. <a href="https://rajivsam.github.io/r2ds-blog/posts/accuracy_is_all/">https://rajivsam.github.io/r2ds-blog/posts/accuracy_is_all/</a>.
-</div></div></section></div> ]]></description>
-  <category>news</category>
-  <category>code</category>
-  <category>analysis</category>
-  <guid>https://rajivsam.github.io/r2ds-blog/posts/accuracy_is_all/</guid>
-  <pubDate>Thu, 19 Mar 2026 12:14:47 GMT</pubDate>
-  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/accuracy_is_all/baguette_sales.png" medium="image" type="image/png" height="105" width="144"/>
-</item>
-<item>
-  <title>Heterogeneity in Modeling</title>
-  <dc:creator>Rajiv Sambasivan</dc:creator>
-  <link>https://rajivsam.github.io/r2ds-blog/posts/heterogeneity_in_models/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="heterogeneity" class="level2" style="text-align: justify">
-<h2 class="anchored" data-anchor-id="heterogeneity">Heterogeneity</h2>
-<p>In previous posts, I have frequently mentioned the term <strong>heterogeneity</strong>. Since it is a recurring concept, I wanted to explain what I was talking about</p>
-<p><em>Heterogeneity</em> refers to the variability we observe in what we are analyzing—either across different observation units or within the same unit over time. Let’s break this down with some examples.</p>
-<p>Analyses typically fall into one of the following categories:</p>
-<ol type="1">
-<li><strong>Cross-Sectional Analysis:</strong> Here, we examine multiple units at a single point in time. For example, analyzing average apartment rents across US cities in 2017 provides a snapshot comparison.</li>
-<li><strong>Longitudinal Analysis:</strong> This involves tracking a single unit over time. For instance, monitoring an individual’s blood sugar levels daily for 3 years.</li>
-<li><strong>Panel Data Analysis:</strong> This combines both approaches, observing multiple units over multiple time periods. For example, tracking monthly apartment rents in Chicago from 2015 to 2020.</li>
-</ol>
-<p><em>Heterogeneity</em> appears differently in each type of analysis. In cross-sectional data, such as average rents in 2017, variability can arise from factors like: - City - Apartment features (e.g., size, amenities)</p>
-<p>These are sources of <em>heterogeneity</em>. Model heterogeneity occurs when we observe a difference in how each of these sources relate to the rents for each city. For example if there is a linear relationship between apartment size and rent, the coefficient term in a New York State model may be different from Illinois. In some states, we may find that the relationship between size and rent is non-linear.</p>
-<p>In a longitudinal setting, such as tracking an individual’s daily 7 am blood sugar over 3 years along with diet and lifestyle factors (e.g., carb intake, sleep, exercise), heterogeneity can arise over time. For instance, as the person becomes fitter, the effect of these lifestyle factors on blood sugar may change from year to year.</p>
-<p>In a panel data setting, such as tracking apartment rents in Chicago over several years, heterogeneity can arise both across groups and over time. For example, the impact of free utilities on monthly rents may change from year to year, and this effect might differ between single-bedroom and two-bedroom apartments. These differences could be driven by factors like rising fuel costs, which affect heating and cooling expenses differently depending on apartment size.</p>
-<p>The above discussion covers what heterogeneity is and how it manifests in different types of data. Let’s talk about how this is addressed. Heterogeneity is a well recognized problem in the statistics and economics communities. Random effects models is the standard approach to dealing with this. Please see <span class="citation" data-cites="faraway2016extending">(Faraway 2016)</span> for a discussion of the method. Modeling your analysis with graphs is another approach to dealing heterogeneity.</p>
-<p>In graph-based models, the neighborhood of a node—its most similar peers—is used to predict the value of a property at that node. This approach naturally accounts for heterogeneity, since predictions are informed by local structure and relationships. For example, the predicted rent for an apartment is influenced by the rents of apartments most similar to it; the definition of “similarity” and the size of the neighborhood are modeling choices.</p>
-<p>By framing your analysis as a graph problem, you can leverage a rich body of theory and methods developed for network data. This not only provides a principled way to address heterogeneity, but also offers interpretable insights into how local relationships drive outcomes. Developing tools to map relational data into graph structures is an ongoing effort, and I am working on this.</p>
-</section>
-
-
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-faraway2016extending" class="csl-entry">
-Faraway, Julian J. 2016. <em>Extending the Linear Model with r: Generalized Linear, Mixed Effects and Nonparametric Regression Models</em>. Chapman; Hall/CRC.
-</div>
-</div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
-  author = {Sambasivan, Rajiv},
-  title = {Heterogeneity in {Modeling}},
-  date = {2026-01-28},
-  url = {https://rajivsam.github.io/r2ds-blog/posts/heterogeneity_in_models},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas">
-Sambasivan, Rajiv. 2026. <span>“Heterogeneity in Modeling.”</span>
-January 28. <a href="https://rajivsam.github.io/r2ds-blog/posts/heterogeneity_in_models">https://rajivsam.github.io/r2ds-blog/posts/heterogeneity_in_models</a>.
-</div></div></section></div> ]]></description>
-  <category>news</category>
-  <category>code</category>
-  <category>analysis</category>
-  <guid>https://rajivsam.github.io/r2ds-blog/posts/heterogeneity_in_models/</guid>
-  <pubDate>Wed, 28 Jan 2026 08:18:01 GMT</pubDate>
-  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/heterogeneity_in_models/mixed_bag.png" medium="image" type="image/png" height="144" width="144"/>
-</item>
-<item>
-  <title>Descriptive Analysis of Olist Customers in SP, 2017</title>
-  <dc:creator>Rajiv Sambasivan</dc:creator>
-  <link>https://rajivsam.github.io/r2ds-blog/posts/olist_SP_shopping/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="shopping-on-olist-by-customers-in-sau-paulo-in-2017" class="level2" style="text-align: justify">
-<h2 class="anchored" data-anchor-id="shopping-on-olist-by-customers-in-sau-paulo-in-2017">Shopping on Olist by Customers in Sau Paulo in 2017</h2>
-<p>This post is the first sketch of a descriptive analysis task for the <a href="https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce">Olist</a> dataset. Last week I had an incremental update. If you saw that, you’d see that this week’s increment has many simpilications. A lot of deletions. For those who do this, you know that this is typical. Sao Paulo turns out to be the biggest market for Olist. So this post covers just the description of the Sao Paulo market. The analysis for the other markets should be similar. Rio De Janero and Minas Gerias are other decent size geographic market segments. Customers from all other states in Brazil are small. So to get a complete picture you need analysis for the Rio De Janero and the Mias Gerias states.</p>
-<p>A couple of thoughts worth sharing. To go from a dataset with say 100 K records to say 10 to 20 facts is a logarithmic reduction. Of these 10 to 20 facts, some of them are irrelevant to what you are interested in analyzing the data for, some are redundant (other facts convey the same information), say 5 facts truly shape your analysis. Descriptive analytics helps us get this picture.</p>
-<p>Here is the <a href="https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/picture_summary_SP_2017.md">summary</a></p>
-</section>
-
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
-  author = {Sambasivan, Rajiv},
-  title = {Descriptive {Analysis} of {Olist} {Customers} in {SP,} 2017},
-  date = {2026-01-28},
-  url = {https://rajivsam.github.io/r2ds-blog/posts/olist_SP_shopping},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas">
-Sambasivan, Rajiv. 2026. <span>“Descriptive Analysis of Olist Customers
-in SP, 2017.”</span> January 28. <a href="https://rajivsam.github.io/r2ds-blog/posts/olist_SP_shopping">https://rajivsam.github.io/r2ds-blog/posts/olist_SP_shopping</a>.
-</div></div></section></div> ]]></description>
-  <category>news</category>
-  <category>code</category>
-  <category>analysis</category>
-  <guid>https://rajivsam.github.io/r2ds-blog/posts/olist_SP_shopping/</guid>
-  <pubDate>Wed, 28 Jan 2026 08:18:01 GMT</pubDate>
-  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/olist_SP_shopping/shopping_in_SP.png" medium="image" type="image/png" height="144" width="144"/>
-</item>
-<item>
-  <title>Descriptive Analytics Repository</title>
-  <dc:creator>Rajiv Sambasivan</dc:creator>
-  <link>https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics_repo/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="descriptive-analytics" class="level2" style="text-align: justify">
-<h2 class="anchored" data-anchor-id="descriptive-analytics">Descriptive Analytics</h2>
-<p>I have a created a github repository for descriptive analytics. The goal of this reository is to illustrate the utility of decribing facets of your data in relation to analysis and modeling objectives. Except in a very small well defined set of scenarios, it takes a lot of contextual analysis to understand how business concepts are connected in your data. Often there are different sub-populations in your data. Achieving your objectives may need different approaches for each sub-population. LLM’s have certainly helped in code generation and in content development. However, for complex business tasks, you still need the human expert to develop the analysis approach. The repository contains an example directory with case studies from this blog as well independent examples. Each case study has a subdirectory and a markdown file that describes the case study.</p>
-<p><a href="https://github.com/rajivsam/descriptive_analytics/">The descriptive analytics repository</a></p>
-</section>
-
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
-  author = {Sambasivan, Rajiv},
-  title = {Descriptive {Analytics} {Repository}},
-  date = {2026-01-28},
-  url = {https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics_repo},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas">
-Sambasivan, Rajiv. 2026. <span>“Descriptive Analytics
-Repository.”</span> January 28. <a href="https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics_repo">https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics_repo</a>.
-</div></div></section></div> ]]></description>
-  <category>news</category>
-  <category>code</category>
-  <category>analysis</category>
-  <guid>https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics_repo/</guid>
-  <pubDate>Wed, 28 Jan 2026 08:18:01 GMT</pubDate>
-  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics_repo/lost_child.jpeg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>Graph From Relations</title>
-  <dc:creator>Rajiv Sambasivan</dc:creator>
-  <link>https://rajivsam.github.io/r2ds-blog/posts/graph_from_relations/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="graphs-as-a-descriptive-analytics-tool" class="level2" style="text-align: justify">
-<h2 class="anchored" data-anchor-id="graphs-as-a-descriptive-analytics-tool">Graphs as a Descriptive Analytics Tool</h2>
-<p>If you have had a chance to look at the <a href="https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/picture_summary_SP_2017.md">Olist Case Study</a>, you can see that even within one geographic region, IID (Independent Identically Distributed) is not a reasonable assumption to analyze purchasing patterns of customers. For some cities it is, but for others it is not. As discussed in the post, a reasonable approach in such scenarios is to use methods used to analyze IID data for the group of cities for which IID is a reasonable assumption. For the remainder, we can use Graph based analysis methods.</p>
-<p>This pattern of finding different behaviors for different subsets of the data is a very frequent finding in real life datasets. Using a monolithic modeling approach can be sub-optimal. If we use an IID assumption for all the data, then we have a model that is not correctly specified for some parts of the data. We could use a graph based approach for the entire dataset, but we don’t need the neighborhood features for some parts of the data (the IID parts). So we have a lot of redundant computation. Doing a descriptive analytics exercise lets us pick the right modeling approach for each subset of the data.</p>
-<p>If you look at all the examples, the raw dataset is tabular. This can be viewed as a mathematical relation. Conceptually, each row in the input dataset can be viewed as a set an interaction between one or more entities. In the Olist case, it is a customer’s interaction with the store’s inventory. For some subset of this input dataset, a graph representation is useful to analyze it. Since non-IID (dependent) data does occur frequently, learning a graph from a set of relations is a frequent problem.</p>
-<p>I have a write up about this problem and a proposed solution sketch in the descriptive analytics repository: <a href="https://github.com/rajivsam/descriptive_analytics/blob/main/examples/graph_from_relations/graph_creation.pdf">Learning Graphs from Relations</a>.</p>
-</section>
-
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
-  author = {Sambasivan, Rajiv},
-  title = {Graph {From} {Relations}},
-  date = {2026-01-28},
-  url = {https://rajivsam.github.io/r2ds-blog/posts/graph_from_relations},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas">
-Sambasivan, Rajiv. 2026. <span>“Graph From Relations.”</span> January
-28. <a href="https://rajivsam.github.io/r2ds-blog/posts/graph_from_relations">https://rajivsam.github.io/r2ds-blog/posts/graph_from_relations</a>.
-</div></div></section></div> ]]></description>
-  <category>news</category>
-  <category>code</category>
-  <category>analysis</category>
-  <guid>https://rajivsam.github.io/r2ds-blog/posts/graph_from_relations/</guid>
-  <pubDate>Wed, 28 Jan 2026 08:18:01 GMT</pubDate>
-  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/graph_from_relations/graph-rell.jpg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>Stochastic Optimization</title>
-  <dc:creator>Rajiv Sambasivan</dc:creator>
-  <link>https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="the-synergy-between-statistics-and-stochastic-optimization" class="level1" style="text-align: justify">
-<h1>The Synergy Between Statistics and Stochastic Optimization</h1>
-<p>Synergy and complementarity are terms that aptly describe the relationship between machine learning and optimization. In machine learning, optimization is often the tool used to determine the best parameters for a model. For instance, when fitting a straight line to data, optimization helps identify the slope that best represents the relationship.</p>
-<p>My interest in decision-making under cost constraints led me to explore stochastic optimization. This field is particularly relevant for those aiming to make data-driven decisions while explicitly accounting for:</p>
-<ol type="1">
-<li>Uncertainty in the decision variables of an optimization problem.</li>
-<li>The sequential or hierarchical nature of decision variables, where some decisions influence others.</li>
-</ol>
-<p>Stochastic optimization encompasses various approaches, but I will focus on one here. In this approach, problems are structured sequentially, with uncertainty typically associated with the primary decision variables, which are treated as random variables. Once these variables are realized, the optimal values for the dependent variables are determined accordingly.</p>
-<p>Interestingly, the interplay between statistics and optimization in this context contrasts with what we observe in machine learning. Here, statistical estimation informs and drives the optimization process. This synergy between the two fields highlights their potential to complement each other. As data collection and analysis techniques continue to evolve, I anticipate that stochastic optimization will gain prominence, fostering collaboration between machine learning and optimization practitioners.</p>
-<section id="practical-example" class="level2">
-<h2 class="anchored" data-anchor-id="practical-example">Practical Example</h2>
-<p>To illustrate the role of statistical estimation in a simplified stochastic optimization problem, consider a bakery that sells baguettes. Each morning, the bakery must decide how many baguettes to bake, knowing that daily demand is uncertain. The challenge lies in understanding this uncertainty and fitting an appropriate probability distribution to model the demand. This step is crucial for making informed decisions that balance the risks of overproduction and underproduction.</p>
-<p>Here is the cost data. The cost of baking a baguette is 53 cents, and the selling price is 90 cents. I used <a href="https://www.busbysbakery.com/how-to-price-bread-to-make-profit/">this article</a> to arrive at pricing information. The gist of the price information is: <img src="https://latex.codecogs.com/png.latex?%0A%5Ctext%7BCosts%7D%20%5Ctimes%20%5Ctext%7BProfit%20Index%7D%20=%20%5Ctext%7BSelling%20Price%7D%0A"></p>
-<p>The article uses a profit index of <img src="https://latex.codecogs.com/png.latex?1.7">, the selling price is available from the data. I am going with the version that you can use baguette’s for up to a day, so what you need to bake each day is what is the sum of what is held (unsold) from yesterday and what you expect to sell today. This is based on an adaptation of <a href="https://ampl.com/mo-book/notebooks/09/seafood.html">this model</a>.</p>
-<p>Here are the basic steps to solve the problem:</p>
-<ol type="1">
-<li><strong>Profile the Data</strong> I am going to build on the preview I talked about in my previous post. The data for this example comes from <a href="https://www.kaggle.com/datasets/matthieugimbert/french-bakery-daily-sales">kaggle</a>. The code for downloading the data and preliminary data exploration is available in <a href="../../notebooks/bakery_sales_data.html">this notebook</a>. As discussed in the previous post, there are two trends in this data. If you restrict the time period to the last <img src="https://latex.codecogs.com/png.latex?40"> weeks then the data is unimodal with a mean of <img src="https://latex.codecogs.com/png.latex?38"> and a variance of <img src="https://latex.codecogs.com/png.latex?341">. The variable of interest, the number of baguettes sold everyday, is a count. The histogram and KDE are shown below.</li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/kde_hist_baguette_sales.png" class="img-fluid figure-img"></p>
-<figcaption>Daily Sales of Baguettes in a bakery</figcaption>
-</figure>
-</div>
-<p>The code for the detailed data profile for the last <img src="https://latex.codecogs.com/png.latex?40"> weeks of data is available <a href="../../notebooks/bakery_sales_last_40_weeks.html">here</a>.</p>
-<ol type="1">
-<li><strong>Statistical Estimation</strong>: The demand is a count variable that is <em>over dispersed</em>, that is, the variance is larger than the mean. We cannot use a Poisson distribution for the demand because of this <em>over dispersion</em>. For a Poisson distributed random variable, the mean and variance need to be identical, we can probably live with similar, but this is an order of magnitude difference. We can use a Negative Binomial distribution instead. This can work with <em>over dispersed</em> data. One interpretation of a Negative Binomial distribution is as a compound distribution. It is a distribution where one of the parameters is also a distribution, so you can think of it as a <em>mixture</em> of Poisson random variables where the <em>rate</em> parameter is a Gamma distribution. We have the daily arrival rates here (which happen to be integral, but in general, they do not need to be), we fit a Gamma distribution to the daily purchase rates using maximum likelihood estimation. This is available in <code>scipy.stats</code> package. We can then use the relationship between the Negative Binomial and its associated Gamma distribution to work out the details of the parameters of the Negative Binomial distribution. For the relationship between the Gamma and the Negative Binomial arameters, please see <a href="https://en.wikipedia.org/wiki/Negative_binomial_distribution#Gamma%E2%80%93Poisson_mixture">this wikipedia article</a>. Please see <a href="../../notebooks/bakery_sales_last_40_weeks.html">this notebook</a> for the details of the estimation. The fitted Negative Binomial distribution and the actual demand data are shown below.</li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/neg_binomial_fit.png" class="img-fluid figure-img"></p>
-<figcaption>Estimated Negative Binomial Demand Fit</figcaption>
-</figure>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Optimizing the Gamma Likelihood, why?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you are wondering why I am not doing maximum likelihood estimation on the Negative Binomial, but instead I am choosing to do it on the associated Gamma distribution, it is because the Gamma distribution is continuous. Once you have fitted the Gamma to the data, you can work out the associated (optimal) Negative Binomial. The <code>scipy.stats</code> package does not provide a fit method for the Negative Binomial, probably for this reason - the fact that you can always use the Gamma MLE to work this out.</p>
-</div>
-</div>
-<ol start="3" type="1">
-<li><strong>Stochastic Optimization</strong>: Here, I will outline the procedure, highlight the intuition behind it, and provide a link to the implementation. The primary decision variable is the number of baguettes to bake each day. This decision is influenced by the demand distribution and any unsold stock from the previous day. In essence, the total stock available (unsold stock plus freshly baked baguettes) must not exceed the expected demand for the day.</li>
-</ol>
-<p>The demand distribution plays a pivotal role in guiding the optimization process. The implementation of this narrative leverages a mathematical modeling language for optimization, specifically <a href="https://ampl.com/">AMPL</a> <span class="citation" data-cites="amplAMPLAdvanced">(<em><span>A</span><span>M</span><span>P</span><span>L</span></em>)</span>. For details, refer to the <code>bakery.mod</code> section in the <a href="../../notebooks/bakery_stochastic.html">model implementation notebook</a>. The book “Introduction to Stochastic Programming” <span class="citation" data-cites="birge2011introduction">(Birge and Louveaux 2011)</span> served as an excellent resource, offering clear explanations and practical examples of real-world business problems that can be effectively addressed using stochastic optimization techniques.</p>
-<p>So what are the results of doing all of this. To run an efficient business, when holding some inventory is allowed, with the price and cost data assumed, we should expect to bake about <img src="https://latex.codecogs.com/png.latex?50"> baguettes a day and make <img src="https://latex.codecogs.com/png.latex?14.73"> euro of average profit a day.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/opt_results.png" class="img-fluid figure-img"></p>
-<figcaption>Optimization Results</figcaption>
-</figure>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Note:
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li><p>The primary goal of this post is to highlight how statistical estimation serves as a critical component of stochastic optimization. While the newsvendor model could be a better fit compared to the stock optimization model used here —the idea was to show that statistical estimation primes the optimization process.</p></li>
-<li><p>If you are wondering why not just use the mean and what really do we get by working with the distribution, please check out the AMPL <a href="https://ampl.com/mo-book/notebooks/09/seafood.html">seafood stock optimization example</a>. It provides the difference in profits between using the expected value and using the distribution. Retail margins are sometimes small. So doing this may matter.</p></li>
-</ol>
-</div>
-</div>
-</section>
-</section>
-
-
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-amplAMPLAdvanced" class="csl-entry">
-<em><span>A</span><span>M</span><span>P</span><span>L</span>: <span>A</span>dvanced <span>M</span>odeling for <span>O</span>ptimization <span>S</span>olutions — Ampl.com</em>. <a href="https://ampl.com/products/ampl/" class="uri">Https://ampl.com/products/ampl/</a>.
-</div>
-<div id="ref-birge2011introduction" class="csl-entry">
-Birge, John R, and Francois Louveaux. 2011. <em>Introduction to Stochastic Programming</em>. Springer Science &amp; Business Media.
-</div>
-<div id="ref-PostekZoccaAMPL2024" class="csl-entry">
-Postek, Krzysztof, Alessandro Zocca, Joaquim Gromicho, and Jeffrey Kantor. 2024. <em>Hands-on Mathematical Optimization with AMPL in Python</em>. Online. <a href="https://ampl.com/mo-book">https://ampl.com/mo-book</a>.
-</div>
-</div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
-  author = {Sambasivan, Rajiv},
-  title = {Stochastic {Optimization}},
-  date = {2026-01-28},
-  url = {https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas">
-Sambasivan, Rajiv. 2026. <span>“Stochastic Optimization.”</span> January
-28. <a href="https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/">https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/</a>.
-</div></div></section></div> ]]></description>
-  <category>news</category>
-  <category>code</category>
-  <category>analysis</category>
-  <guid>https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/</guid>
-  <pubDate>Wed, 28 Jan 2026 08:18:01 GMT</pubDate>
-  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/kde_hist_baguette_sales.png" medium="image" type="image/png" height="83" width="144"/>
-</item>
-<item>
-  <title>Chat GPT and Data Analysis</title>
-  <dc:creator>Rajiv Sambasivan</dc:creator>
-  <link>https://rajivsam.github.io/r2ds-blog/posts/ice_cream_sales/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="data-analysis-with-chat-gpt-a-test-drive" class="level1" style="text-align: justify">
-<h1>Data Analysis with Chat GPT, a test drive</h1>
-<p>For a while now I have been meaning to explore how Copilot and Chat GPT are useful for data analysis. I have also been meaning to transition to Quarto for a while, so I grabbed a dataset from Kaggle, picked some interesting questions to analyze, and threw it at Copilot and Chat GPT. Here’s my experience. I used Chat GPT to generate the content initially, so what you see here is my own writing interlaced with generated content. I used VSCode with extensions for quarto and copilot for this article.</p>
-<p>By leveraging Chat GPT, we can automate and enhance various aspects of time series analysis, including data preprocessing, model selection, and interpretation of results.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>While the above statement is true, it can be somewhat misleading. The assistance we get for the tasks like data preprocessing in comparison to tasks like result interpretation and model selection is very different. Code generation for manipulating and transforming pandas dataframes was useful, I did’t really find anything useful for interpretation or model selection.</p>
-</div>
-</div>
-<section id="the-time-series-analysis-task" class="level2">
-<h2 class="anchored" data-anchor-id="the-time-series-analysis-task">The Time Series Analysis Task</h2>
-<p>The data analyzed in this post is a collection of transactions from a national retailer. The transactions span major metropolitan cities in the US and cover a four and half year period. The dataset is available on <a href="https://www.kaggle.com/datasets/prasad22/retail-transactions-dataset">Kaggle</a>. The objective was to analyze this data to get answers to a representative set of questions. The questions addressed in this post represent a subset of a comprehensive analysis exercise, and it is not intended to be exhaustive or rigorous. Some example questions include:</p>
-<ol type="1">
-<li><p>What does the plot of daily ice cream sales nationwide over the analysis period look like?</p></li>
-<li><p>How do ice cream sales vary across the four years within the analysis period? Are there significant differences in the summary statistics year over year?</p></li>
-<li><p>Is there variability in ice cream sales based on location? In other words, is there heterogeneity in consumption patterns based on location?</p></li>
-<li><p>What does the autocorrelation function of the ice cream sales indicate? Is the time series stationary?</p></li>
-<li><p>What are the key components of the time series (trend, seasonality, etc.)?</p></li>
-<li><p>How does the plot of the maximum daily ice cream sales for each week of the year look? Can we model these maximum values using a Gumbel distribution to understand the distribution of peak daily demand nationally?</p></li>
-</ol>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The relevant analysis tasks (the list above) is something the analyst has to generate. In my view, this comes with experience with similar data and use cases. Asking Chat GPT on how to do time series analysis got me very general guidelines. I did not find the response very useful (see below). The ACF suggests a white noise process (which is the ground truth), Chat GPT was trying find patterns in it. A notebook implementation of most of these questions is <a href="../../notebooks/daily_ice_cream_sales_exploration.html">available</a></p>
-</div>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://rajivsam.github.io/r2ds-blog/posts/ice_cream_sales/chat_gpt_analysis.png" class="img-fluid figure-img"></p>
-<figcaption>Chat GPT Analysis</figcaption>
-</figure>
-</div>
-</section>
-<section id="data-preparation" class="level2">
-<h2 class="anchored" data-anchor-id="data-preparation">Data Preparation</h2>
-<p>Transforming the raw dataset to a format that was suitable to answer the analysis questions required an understanding of the various fields in the data. To get the daily ice cream sales from the raw transaction data, I had the identify the transactions that contained ice creams and then aggregate the transactions on a daily basis. Doing this required an analysis of how the line items for each transaction is encoded. Once the data description was analyzed, providing the prompts to Chat GPT generated code that was pretty close to what I developed manually.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The real effort in the data preparation task went into developing an understanding of the various elements of the raw dataset and then coming up with the process of identifying the transactions containing ice cream. Aggregating these transactions to a daily or weekly cadence was fairly straight forward. Chat GPT was helpful in generating the specific pandas code for each step. The <a href="../../notebooks/retail_transaction_data.html">manual</a> and the <a href="../../notebooks/generated_code_retail.html">generated</a> were pretty close.</p>
-</div>
-</div>
-</section>
-<section id="summary-of-chat-gpts-utility-for-this-particular-exercise" class="level2">
-<h2 class="anchored" data-anchor-id="summary-of-chat-gpts-utility-for-this-particular-exercise">Summary of Chat GPT’s utility for this particular exercise</h2>
-<ul>
-<li><p>Chat GPT was definitely very helpful in developing and organizing the content.</p></li>
-<li><p>Identifying the key questions that are relevant to the analysis requires formal training and experience - I don’t really see this replacing a data scientist at this point.</p></li>
-<li><p>Chat GPT was definitely useful for various code generation tasks.</p></li>
-<li><p>In summary, it was impressive as an assistant, but at this point, it is an assistant not a data scientist replacement.</p></li>
-</ul>
-</section>
-</section>
-
-
-
- ]]></description>
-  <category>news</category>
-  <category>code</category>
-  <category>analysis</category>
-  <guid>https://rajivsam.github.io/r2ds-blog/posts/ice_cream_sales/</guid>
-  <pubDate>Wed, 28 Jan 2026 08:18:01 GMT</pubDate>
-  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/ice_cream_sales/ice_cream_sales.png" medium="image" type="image/png" height="110" width="144"/>
-</item>
-<item>
-  <title>Descriptive Analytics, the lost idea in the current AI hype</title>
-  <dc:creator>Rajiv Sambasivan</dc:creator>
-  <link>https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="descriptive-analytics" class="level2" style="text-align: justify">
-<h2 class="anchored" data-anchor-id="descriptive-analytics">Descriptive Analytics</h2>
-<p>In the current wave of excitement around AI and generative technologies, the value of descriptive analytics as a foundation for predictive modeling is often overlooked. Descriptive analytics goes beyond traditional exploratory data analysis; it leverages statistical and machine learning methods to systematically summarize, interpret, and explain the essential patterns and concepts within your business data. This process provides critical insights that should inform and guide subsequent predictive modeling efforts.</p>
-<p>As datasets grow in size, summarizing them becomes increasingly essential. Traditional visual inspection methods, effective for small datasets, quickly become impractical as data scales to thousands or millions of rows. To extract meaningful insights, it is crucial to identify the most informative subsets of data, distinguishing them from less relevant portions. Both the optimization and machine learning communities have developed innovative techniques to efficiently summarize and interpret large, complex datasets.</p>
-<p>Many organizations are eager to implement machine learning in their business operations. However, effective application requires careful due diligence to ensure a thorough understanding of the data generated by underlying business processes. Ideally, the characteristics of the data should inform the choice of modeling approach. In practice, though, modeling techniques are often predetermined for various reasons, and the focus shifts to adapting the data to fit the chosen model, rather than the other way around.</p>
-<p>I started a repository with recipes for descriptive analytics. I hope to add to this incrementally. To begin with I picked a transactions dataset from a national retailer in Brazil. You can check out the <a href="https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/part_1_revenue_segmentation.md">narrative and notebook</a>.</p>
-</section>
-
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
-  author = {Sambasivan, Rajiv},
-  title = {Descriptive {Analytics,} the Lost Idea in the Current {AI}
-    Hype},
-  date = {2026-01-28},
-  url = {https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas">
-Sambasivan, Rajiv. 2026. <span>“Descriptive Analytics, the Lost Idea in
-the Current AI Hype.”</span> January 28. <a href="https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics">https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics</a>.
-</div></div></section></div> ]]></description>
-  <category>news</category>
-  <category>code</category>
-  <category>analysis</category>
-  <guid>https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics/</guid>
-  <pubDate>Wed, 28 Jan 2026 08:18:01 GMT</pubDate>
-  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics/lost_child.jpeg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>The Magic Pill Approach</title>
-  <dc:creator>Rajiv Sambasivan</dc:creator>
-  <link>https://rajivsam.github.io/r2ds-blog/posts/the_magic_pill/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<div style="text-align: justify">
-<p>This post is more of a rant, really. I’m fine with asking ChatGPT for movie recommendations on Netflix or Prime, but when it comes to answering complex, nuanced questions that demand rigor and careful validation of assumptions, I draw the line. Yet, it seems impossible to escape the ubiquitous question: “But what does ChatGPT say?”</p>
-<p>Foundational models for everything? Really? Let’s break this down at a basic level. Assuming I’m even solving the right problem for my use case—which is far from trivial—here’s what I aim to do when tackling a problem:</p>
-<ol type="1">
-<li><strong>Identify sources of variation</strong>: For tasks like regression, I want to pinpoint every factor that contributes to variation in the data.</li>
-<li><strong>Validate these sources</strong>: This requires rigor and due diligence to ensure they are legitimate contributors.</li>
-<li><strong>Account for unexplained variance</strong>: Ideally, this should be minimal. If it’s significant, I need to investigate further and determine how to address it. Even then, I want to ensure the model remains useful—better than having no model or sticking with the status quo.</li>
-</ol>
-<p>I’m skeptical of the notion that all problems can be reduced to the same sources of variation or that there’s a universal method to identify them. If such a method exists, it must be demonstrated rigorously—not through cherry-picked examples.</p>
-<p>Sure, I understand that certain approaches work well within specific problem domains. However, what I often encounter is this: “This approach worked for situation A, so let’s try it for situation B,” without any solid justification that A and B are meaningfully similar.</p>
-</div>
-
-
-
- ]]></description>
-  <category>news</category>
-  <category>code</category>
-  <category>analysis</category>
-  <guid>https://rajivsam.github.io/r2ds-blog/posts/the_magic_pill/</guid>
-  <pubDate>Wed, 28 Jan 2026 08:18:01 GMT</pubDate>
-  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/the_magic_pill/magic_pill.jpeg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>

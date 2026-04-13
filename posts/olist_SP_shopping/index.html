@@ -7,7 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Rajiv Sambasivan">
-<meta name="dcterms.date" content="2026-01-28">
+<meta name="dcterms.date" content="2026-04-13">
+<meta name="keywords" content="descriptive analytics, olist dataset, sao paulo ecommerce, customer behavior, market segmentation, non-IID data">
+<meta name="description" content="A descriptive analytics sketch of Olist customer shopping behavior in Sao Paulo for 2017, focused on market structure and practical data reduction.">
 
 <title>Descriptive Analysis of Olist Customers in SP, 2017 – Rajiv’s blog about data science</title>
 <style>
@@ -72,12 +74,33 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true});
+</script>
 
 
 <link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Descriptive Analysis of Olist Customers in SP, 2017 – Rajiv’s blog about data science">
+<meta property="og:description" content="A descriptive analytics sketch of Olist customer shopping behavior in Sao Paulo for 2017, focused on market structure and practical data reduction.">
+<meta property="og:image" content="https://rajivsam.github.io/r2ds-blog/posts/olist_SP_shopping/shopping_in_SP.png">
+<meta property="og:site_name" content="Rajiv’s blog about data science">
+<meta property="og:image:height" content="2048">
+<meta property="og:image:width" content="2048">
+<meta name="twitter:title" content="Descriptive Analysis of Olist Customers in SP, 2017 – Rajiv’s blog about data science">
+<meta name="twitter:description" content="A descriptive analytics sketch of Olist customer shopping behavior in Sao Paulo for 2017, focused on market structure and practical data reduction.">
+<meta name="twitter:image" content="https://rajivsam.github.io/r2ds-blog/posts/olist_SP_shopping/shopping_in_SP.png">
+<meta name="twitter:image-height" content="2048">
+<meta name="twitter:image-width" content="2048">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -125,7 +148,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">Descriptive Analysis of Olist Customers in SP, 2017</h1>
-                                <div class="quarto-categories">
+                  <div>
+        <div class="description">
+          A descriptive analytics sketch of Olist customer shopping behavior in Sao Paulo for 2017, focused on market structure and practical data reduction.
+        </div>
+      </div>
+                          <div class="quarto-categories">
                 <div class="quarto-category">news</div>
                 <div class="quarto-category">code</div>
                 <div class="quarto-category">analysis</div>
@@ -146,18 +174,33 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">January 28, 2026</p>
+        <p class="date">April 13, 2026</p>
       </div>
     </div>
     
       
     </div>
     
+
+  <div>
+    <div class="keywords">
+      <div class="block-title">Keywords</div>
+      <p>descriptive analytics, olist dataset, sao paulo ecommerce, customer behavior, market segmentation, non-IID data</p>
+    </div>
+  </div>
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#shopping-on-olist-by-customers-in-sau-paulo-in-2017" id="toc-shopping-on-olist-by-customers-in-sau-paulo-in-2017" class="nav-link active" data-scroll-target="#shopping-on-olist-by-customers-in-sau-paulo-in-2017">Shopping on Olist by Customers in Sau Paulo in 2017</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -167,9 +210,9 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="shopping-on-olist-by-customers-in-sau-paulo-in-2017" class="level2" style="text-align: justify">
 <h2 class="anchored" data-anchor-id="shopping-on-olist-by-customers-in-sau-paulo-in-2017">Shopping on Olist by Customers in Sau Paulo in 2017</h2>
-<p>This post is the first sketch of a descriptive analysis task for the <a href="https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce">Olist</a> dataset. Last week I had an incremental update. If you saw that, you’d see that this week’s increment has many simpilications. A lot of deletions. For those who do this, you know that this is typical. Sao Paulo turns out to be the biggest market for Olist. So this post covers just the description of the Sao Paulo market. The analysis for the other markets should be similar. Rio De Janero and Minas Gerias are other decent size geographic market segments. Customers from all other states in Brazil are small. So to get a complete picture you need analysis for the Rio De Janero and the Mias Gerias states.</p>
+<p>This post is the first sketch of a descriptive analysis task for the <a href="https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce?utm_source=r2ds_blog&amp;utm_medium=post&amp;utm_campaign=olist_sp_post">Olist</a> dataset. Last week I had an incremental update. If you saw that, you’d see that this week’s increment has many simpilications. A lot of deletions. For those who do this, you know that this is typical. Sao Paulo turns out to be the biggest market for Olist. So this post covers just the description of the Sao Paulo market. The analysis for the other markets should be similar. Rio De Janero and Minas Gerias are other decent size geographic market segments. Customers from all other states in Brazil are small. So to get a complete picture you need analysis for the Rio De Janero and the Mias Gerias states.</p>
 <p>A couple of thoughts worth sharing. To go from a dataset with say 100 K records to say 10 to 20 facts is a logarithmic reduction. Of these 10 to 20 facts, some of them are irrelevant to what you are interested in analyzing the data for, some are redundant (other facts convey the same information), say 5 facts truly shape your analysis. Descriptive analytics helps us get this picture.</p>
-<p>Here is the <a href="https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/picture_summary_SP_2017.md">summary</a></p>
+<p>Here is the <a href="https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/picture_summary_SP_2017.md?utm_source=r2ds_blog&amp;utm_medium=post&amp;utm_campaign=olist_sp_post">summary</a></p>
 </section>
 
 
@@ -177,13 +220,13 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
   author = {Sambasivan, Rajiv},
   title = {Descriptive {Analysis} of {Olist} {Customers} in {SP,} 2017},
-  date = {2026-01-28},
+  date = {2026-04-13},
   url = {https://rajivsam.github.io/r2ds-blog/posts/olist_SP_shopping},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas" role="listitem">
 Sambasivan, Rajiv. 2026. <span>“Descriptive Analysis of Olist Customers
-in SP, 2017.”</span> January 28. <a href="https://rajivsam.github.io/r2ds-blog/posts/olist_SP_shopping">https://rajivsam.github.io/r2ds-blog/posts/olist_SP_shopping</a>.
+in SP, 2017.”</span> April 13. <a href="https://rajivsam.github.io/r2ds-blog/posts/olist_SP_shopping">https://rajivsam.github.io/r2ds-blog/posts/olist_SP_shopping</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
