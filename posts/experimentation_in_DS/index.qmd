@@ -4,8 +4,14 @@ author: "Rajiv Sambasivan"
 date: last-modified
 categories: [news, code, analysis]
 image: "experiment.png"
+description: "Why experimentation and iteration remain central to data science workflows, even with modern AI coding assistants and faster prototyping tools."
+keywords: [experimentation in data science, AI coding assistants, iterative development, edge cases, data science engineering, deployment challenges]
 citation:
     url: https://rajivsam.github.io/r2ds-blog/posts/experimentation_in_DS 
+format:
+    html:
+        toc: true
+        toc-depth: 2
 ---
 
 > **Note:** This post updates an older write-up to reflect my current opinions.

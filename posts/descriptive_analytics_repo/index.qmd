@@ -4,8 +4,14 @@ author: "Rajiv Sambasivan"
 date: last-modified
 categories: [news, code, analysis]
 image: "lost_child.jpeg"
+description: "An overview of the descriptive analytics repository and why contextual, sub-population-aware analysis is essential before modeling business data."
+keywords: [descriptive analytics, business data analysis, sub-populations, model readiness, contextual analysis, repository]
 citation:
   url: https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics_repo 
+format:
+  html:
+    toc: true
+    toc-depth: 2
 ---
 
 ::: {style="text-align: justify"}
@@ -13,7 +19,7 @@ citation:
 ## Descriptive Analytics
 I have a created a github repository for descriptive analytics. The goal of this reository is to illustrate the utility of decribing facets of your data in relation to analysis and modeling objectives. Except in a very small well defined set of scenarios, it takes a lot of contextual analysis to understand how business concepts are connected in your data. Often there are different sub-populations in your data. Achieving your objectives may need different approaches for each sub-population. LLM's have certainly helped in code generation and in content development. However, for complex business tasks, you still need the human expert to develop the analysis approach. The repository contains an example directory with case studies from this blog as well independent examples. Each case study has a subdirectory and a markdown file that describes the case study. 
 
-[The descriptive analytics repository](https://github.com/rajivsam/descriptive_analytics/)
+[The descriptive analytics repository](https://github.com/rajivsam/descriptive_analytics/?utm_source=r2ds_blog&utm_medium=post&utm_campaign=descriptive_analytics_repo_post)
 
 
 

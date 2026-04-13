@@ -7,7 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Rajiv Sambasivan">
-<meta name="dcterms.date" content="2026-01-28">
+<meta name="dcterms.date" content="2026-04-13">
+<meta name="keywords" content="graph learning, relational data, descriptive analytics, non-IID data, network modeling, tabular data analysis">
+<meta name="description" content="How to derive graph-based descriptive analytics from relational/tabular data to handle non-IID structure and improve modeling strategy.">
 
 <title>Graph From Relations – Rajiv’s blog about data science</title>
 <style>
@@ -72,12 +74,29 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true});
+</script>
 
 
 <link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Graph From Relations – Rajiv’s blog about data science">
+<meta property="og:description" content="How to derive graph-based descriptive analytics from relational/tabular data to handle non-IID structure and improve modeling strategy.">
+<meta property="og:image" content="https://rajivsam.github.io/r2ds-blog/posts/graph_from_relations/graph-rell.jpg">
+<meta property="og:site_name" content="Rajiv’s blog about data science">
+<meta name="twitter:title" content="Graph From Relations – Rajiv’s blog about data science">
+<meta name="twitter:description" content="How to derive graph-based descriptive analytics from relational/tabular data to handle non-IID structure and improve modeling strategy.">
+<meta name="twitter:image" content="https://rajivsam.github.io/r2ds-blog/posts/graph_from_relations/graph-rell.jpg">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -125,7 +144,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">Graph From Relations</h1>
-                                <div class="quarto-categories">
+                  <div>
+        <div class="description">
+          How to derive graph-based descriptive analytics from relational/tabular data to handle non-IID structure and improve modeling strategy.
+        </div>
+      </div>
+                          <div class="quarto-categories">
                 <div class="quarto-category">news</div>
                 <div class="quarto-category">code</div>
                 <div class="quarto-category">analysis</div>
@@ -146,18 +170,33 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">January 28, 2026</p>
+        <p class="date">April 13, 2026</p>
       </div>
     </div>
     
       
     </div>
     
+
+  <div>
+    <div class="keywords">
+      <div class="block-title">Keywords</div>
+      <p>graph learning, relational data, descriptive analytics, non-IID data, network modeling, tabular data analysis</p>
+    </div>
+  </div>
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#graphs-as-a-descriptive-analytics-tool" id="toc-graphs-as-a-descriptive-analytics-tool" class="nav-link active" data-scroll-target="#graphs-as-a-descriptive-analytics-tool">Graphs as a Descriptive Analytics Tool</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -167,10 +206,10 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="graphs-as-a-descriptive-analytics-tool" class="level2" style="text-align: justify">
 <h2 class="anchored" data-anchor-id="graphs-as-a-descriptive-analytics-tool">Graphs as a Descriptive Analytics Tool</h2>
-<p>If you have had a chance to look at the <a href="https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/picture_summary_SP_2017.md">Olist Case Study</a>, you can see that even within one geographic region, IID (Independent Identically Distributed) is not a reasonable assumption to analyze purchasing patterns of customers. For some cities it is, but for others it is not. As discussed in the post, a reasonable approach in such scenarios is to use methods used to analyze IID data for the group of cities for which IID is a reasonable assumption. For the remainder, we can use Graph based analysis methods.</p>
+<p>If you have had a chance to look at the <a href="https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/picture_summary_SP_2017.md?utm_source=r2ds_blog&amp;utm_medium=post&amp;utm_campaign=graph_from_relations_post">Olist Case Study</a>, you can see that even within one geographic region, IID (Independent Identically Distributed) is not a reasonable assumption to analyze purchasing patterns of customers. For some cities it is, but for others it is not. As discussed in the post, a reasonable approach in such scenarios is to use methods used to analyze IID data for the group of cities for which IID is a reasonable assumption. For the remainder, we can use Graph based analysis methods.</p>
 <p>This pattern of finding different behaviors for different subsets of the data is a very frequent finding in real life datasets. Using a monolithic modeling approach can be sub-optimal. If we use an IID assumption for all the data, then we have a model that is not correctly specified for some parts of the data. We could use a graph based approach for the entire dataset, but we don’t need the neighborhood features for some parts of the data (the IID parts). So we have a lot of redundant computation. Doing a descriptive analytics exercise lets us pick the right modeling approach for each subset of the data.</p>
 <p>If you look at all the examples, the raw dataset is tabular. This can be viewed as a mathematical relation. Conceptually, each row in the input dataset can be viewed as a set an interaction between one or more entities. In the Olist case, it is a customer’s interaction with the store’s inventory. For some subset of this input dataset, a graph representation is useful to analyze it. Since non-IID (dependent) data does occur frequently, learning a graph from a set of relations is a frequent problem.</p>
-<p>I have a write up about this problem and a proposed solution sketch in the descriptive analytics repository: <a href="https://github.com/rajivsam/descriptive_analytics/blob/main/examples/graph_from_relations/graph_creation.pdf">Learning Graphs from Relations</a>.</p>
+<p>I have a write up about this problem and a proposed solution sketch in the descriptive analytics repository: <a href="https://github.com/rajivsam/descriptive_analytics/blob/main/examples/graph_from_relations/graph_creation.pdf?utm_source=r2ds_blog&amp;utm_medium=post&amp;utm_campaign=graph_from_relations_post">Learning Graphs from Relations</a>.</p>
 </section>
 
 
@@ -178,13 +217,13 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
   author = {Sambasivan, Rajiv},
   title = {Graph {From} {Relations}},
-  date = {2026-01-28},
+  date = {2026-04-13},
   url = {https://rajivsam.github.io/r2ds-blog/posts/graph_from_relations},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas" role="listitem">
-Sambasivan, Rajiv. 2026. <span>“Graph From Relations.”</span> January
-28. <a href="https://rajivsam.github.io/r2ds-blog/posts/graph_from_relations">https://rajivsam.github.io/r2ds-blog/posts/graph_from_relations</a>.
+Sambasivan, Rajiv. 2026. <span>“Graph From Relations.”</span> April 13.
+<a href="https://rajivsam.github.io/r2ds-blog/posts/graph_from_relations">https://rajivsam.github.io/r2ds-blog/posts/graph_from_relations</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

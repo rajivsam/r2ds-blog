@@ -7,7 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Rajiv Sambasivan">
-<meta name="dcterms.date" content="2026-01-28">
+<meta name="dcterms.date" content="2026-04-13">
+<meta name="keywords" content="descriptive analytics, exploratory data analysis, predictive modeling, retail analytics, data summarization, machine learning workflow, business intelligence">
+<meta name="description" content="Why descriptive analytics is essential before predictive modeling, with a practical retail transaction case study and reproducible notebook resources.">
 
 <title>Descriptive Analytics, the lost idea in the current AI hype – Rajiv’s blog about data science</title>
 <style>
@@ -72,12 +74,29 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true});
+</script>
 
 
 <link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Descriptive Analytics, the lost idea in the current AI hype – Rajiv’s blog about data science">
+<meta property="og:description" content="Why descriptive analytics is essential before predictive modeling, with a practical retail transaction case study and reproducible notebook resources.">
+<meta property="og:image" content="https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics/lost_child.jpeg">
+<meta property="og:site_name" content="Rajiv’s blog about data science">
+<meta name="twitter:title" content="Descriptive Analytics, the lost idea in the current AI hype – Rajiv’s blog about data science">
+<meta name="twitter:description" content="Why descriptive analytics is essential before predictive modeling, with a practical retail transaction case study and reproducible notebook resources.">
+<meta name="twitter:image" content="https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics/lost_child.jpeg">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -125,7 +144,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">Descriptive Analytics, the lost idea in the current AI hype</h1>
-                                <div class="quarto-categories">
+                  <div>
+        <div class="description">
+          Why descriptive analytics is essential before predictive modeling, with a practical retail transaction case study and reproducible notebook resources.
+        </div>
+      </div>
+                          <div class="quarto-categories">
                 <div class="quarto-category">news</div>
                 <div class="quarto-category">code</div>
                 <div class="quarto-category">analysis</div>
@@ -146,18 +170,27 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">January 28, 2026</p>
+        <p class="date">April 13, 2026</p>
       </div>
     </div>
     
       
     </div>
     
+
+  <div>
+    <div class="keywords">
+      <div class="block-title">Keywords</div>
+      <p>descriptive analytics, exploratory data analysis, predictive modeling, retail analytics, data summarization, machine learning workflow, business intelligence</p>
+    </div>
+  </div>
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -165,13 +198,24 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="descriptive-analytics" class="level2" style="text-align: justify">
+<div style="text-align: justify">
+<section id="descriptive-analytics" class="level2">
 <h2 class="anchored" data-anchor-id="descriptive-analytics">Descriptive Analytics</h2>
 <p>In the current wave of excitement around AI and generative technologies, the value of descriptive analytics as a foundation for predictive modeling is often overlooked. Descriptive analytics goes beyond traditional exploratory data analysis; it leverages statistical and machine learning methods to systematically summarize, interpret, and explain the essential patterns and concepts within your business data. This process provides critical insights that should inform and guide subsequent predictive modeling efforts.</p>
 <p>As datasets grow in size, summarizing them becomes increasingly essential. Traditional visual inspection methods, effective for small datasets, quickly become impractical as data scales to thousands or millions of rows. To extract meaningful insights, it is crucial to identify the most informative subsets of data, distinguishing them from less relevant portions. Both the optimization and machine learning communities have developed innovative techniques to efficiently summarize and interpret large, complex datasets.</p>
 <p>Many organizations are eager to implement machine learning in their business operations. However, effective application requires careful due diligence to ensure a thorough understanding of the data generated by underlying business processes. Ideally, the characteristics of the data should inform the choice of modeling approach. In practice, though, modeling techniques are often predetermined for various reasons, and the focus shifts to adapting the data to fit the chosen model, rather than the other way around.</p>
-<p>I started a repository with recipes for descriptive analytics. I hope to add to this incrementally. To begin with I picked a transactions dataset from a national retailer in Brazil. You can check out the <a href="https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/part_1_revenue_segmentation.md">narrative and notebook</a>.</p>
+<p>I started a repository with recipes for descriptive analytics. I hope to add to this incrementally. To begin with I picked a transactions dataset from a national retailer in Brazil.</p>
 </section>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<p>You can check out the <a href="https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/part_1_revenue_segmentation.md?utm_source=r2ds_blog&amp;utm_medium=post&amp;utm_campaign=descriptive_analytics_post">narrative and notebook</a>.</p>
+<p>You can also explore the full repository here: <a href="https://github.com/rajivsam/descriptive_analytics?utm_source=r2ds_blog&amp;utm_medium=post&amp;utm_campaign=descriptive_analytics_post">descriptive_analytics repository</a>.</p>
+</section>
+<section id="why-this-matters-for-ml-projects" class="level2">
+<h2 class="anchored" data-anchor-id="why-this-matters-for-ml-projects">Why this matters for ML projects</h2>
+<p>Descriptive analytics reduces modeling risk by helping teams verify data quality, identify structure, and align model choice with business process behavior before optimization or prediction stages.</p>
+</section>
+</div>
 
 
 
@@ -179,13 +223,13 @@ ul.task-list li input[type="checkbox"] {
   author = {Sambasivan, Rajiv},
   title = {Descriptive {Analytics,} the Lost Idea in the Current {AI}
     Hype},
-  date = {2026-01-28},
+  date = {2026-04-13},
   url = {https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas" role="listitem">
 Sambasivan, Rajiv. 2026. <span>“Descriptive Analytics, the Lost Idea in
-the Current AI Hype.”</span> January 28. <a href="https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics">https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics</a>.
+the Current AI Hype.”</span> April 13. <a href="https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics">https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

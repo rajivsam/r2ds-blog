@@ -9,10 +9,16 @@ date: last-modified
 categories: [news, code, analysis]
 image: "kde_hist_baguette_sales.png"
 bibliography: references_sopt.bib
+description: "An applied introduction to stochastic optimization for bakery demand planning, showing how statistical estimation drives optimization decisions under uncertainty."
+keywords: [stochastic optimization, demand uncertainty, negative binomial, gamma distribution, newsvendor, AMPL, operations research]
 citation:
   url: https://rajivsam.github.io/r2ds-blog/posts/stochastic_opt/
 nocite: |
   @*
+format:
+  html:
+    toc: true
+    toc-depth: 2
 ---
 
 ::: {style="text-align: justify"}
@@ -32,18 +38,18 @@ Interestingly, the interplay between statistics and optimization in this context
 ## Practical Example
 To illustrate the role of statistical estimation in a simplified stochastic optimization problem, consider a bakery that sells baguettes. Each morning, the bakery must decide how many baguettes to bake, knowing that daily demand is uncertain. The challenge lies in understanding this uncertainty and fitting an appropriate probability distribution to model the demand. This step is crucial for making informed decisions that balance the risks of overproduction and underproduction.
 
-Here is the cost data. The cost of baking a baguette is 53 cents, and the selling price is 90 cents. I used [this article](https://www.busbysbakery.com/how-to-price-bread-to-make-profit/) to arrive at pricing information. The gist of the price information is:
+Here is the cost data. The cost of baking a baguette is 53 cents, and the selling price is 90 cents. I used [this article](https://www.busbysbakery.com/how-to-price-bread-to-make-profit/?utm_source=r2ds_blog&utm_medium=post&utm_campaign=stochastic_opt_post) to arrive at pricing information. The gist of the price information is:
 $$
 \text{Costs} \times \text{Profit Index} = \text{Selling Price}
 $$
 
 The article uses a profit index of $1.7$, the selling price is available from the data.
-I am going with the version that you can use baguette's for up to a day, so what you need to bake each day is what is the sum of what is held (unsold) from yesterday and what you expect to sell today. This is based on an adaptation of [this model](https://ampl.com/mo-book/notebooks/09/seafood.html).
+I am going with the version that you can use baguette's for up to a day, so what you need to bake each day is what is the sum of what is held (unsold) from yesterday and what you expect to sell today. This is based on an adaptation of [this model](https://ampl.com/mo-book/notebooks/09/seafood.html?utm_source=r2ds_blog&utm_medium=post&utm_campaign=stochastic_opt_post).
 
 Here are the basic steps to solve the problem:
 
 1. **Profile the Data**
-I am going to build on the preview I talked about in my previous post. The data for this example comes from [kaggle](https://www.kaggle.com/datasets/matthieugimbert/french-bakery-daily-sales). The code for downloading the data and preliminary data exploration is available in [this notebook](../../notebooks/bakery_sales_data.ipynb). As discussed in the previous post, there are two trends in this data. If you restrict the time period to the last $40$ weeks then the data is unimodal with a mean of $38$ and a variance of $341$. The variable of interest, the number of baguettes sold everyday, is a count. The histogram and KDE are shown below.
+I am going to build on the preview I talked about in my previous post. The data for this example comes from [kaggle](https://www.kaggle.com/datasets/matthieugimbert/french-bakery-daily-sales?utm_source=r2ds_blog&utm_medium=post&utm_campaign=stochastic_opt_post). The code for downloading the data and preliminary data exploration is available in [this notebook](../../notebooks/bakery_sales_data.ipynb). As discussed in the previous post, there are two trends in this data. If you restrict the time period to the last $40$ weeks then the data is unimodal with a mean of $38$ and a variance of $341$. The variable of interest, the number of baguettes sold everyday, is a count. The histogram and KDE are shown below.
 
 ![Daily Sales of Baguettes in a bakery](kde_hist_baguette_sales.png){fig-align="center"}
 

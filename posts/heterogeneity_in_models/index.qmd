@@ -5,8 +5,14 @@ author: "Rajiv Sambasivan"
 date: last-modified
 categories: [news, code, analysis]
 image: "mixed_bag.png"
+description: "An introduction to heterogeneity in cross-sectional, longitudinal, and panel data, with practical modeling implications for random effects and graph-based methods."
+keywords: [heterogeneity, random effects models, panel data, longitudinal analysis, cross-sectional analysis, graph-based modeling]
 citation:
   url: https://rajivsam.github.io/r2ds-blog/posts/heterogeneity_in_models 
+format:
+  html:
+    toc: true
+    toc-depth: 2
 ---
 
 ::: {style="text-align: justify"}

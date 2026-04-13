@@ -4,6 +4,14 @@ author: "Rajiv Sambasivan"
 date: last-modified
 categories: [news, code, analysis]
 image: "magic_pill.jpeg"
+description: "A critical essay on the limits of one-size-fits-all AI approaches for complex analytical problems that require domain rigor and validated assumptions."
+keywords: [AI skepticism, model assumptions, domain expertise, data science rigor, analytical validity, problem framing]
+citation:
+  url: https://rajivsam.github.io/r2ds-blog/posts/the_magic_pill/
+format:
+  html:
+    toc: true
+    toc-depth: 2
 ---
 
 ::: {style="text-align: justify"}

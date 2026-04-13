@@ -4,8 +4,14 @@ author: "Rajiv Sambasivan"
 date: last-modified
 categories: [news, code, analysis]
 image: "baguette_sales.png"
+description: "A practical reflection on why model accuracy is not the only goal in data science, with a bakery time series example using trend and seasonality diagnostics."
+keywords: [model accuracy, data science practice, time series decomposition, trend analysis, seasonality analysis, KDE clustering, business data science]
 citation:
   url: https://rajivsam.github.io/r2ds-blog/posts/accuracy_is_all/
+format:
+  html:
+    toc: true
+    toc-depth: 2
 ---
 
 

@@ -4,6 +4,9 @@ project:
 website:
   title: "Rajiv's blog about data science"
   site-url: https://rajivsam.github.io/r2ds-blog/
+  google-analytics: "G-XXXXXXXXXX"
+  open-graph: true
+  twitter-card: true
   navbar:
     right:
       - about.qmd
