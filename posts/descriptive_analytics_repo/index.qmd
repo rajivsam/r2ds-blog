@@ -17,7 +17,9 @@ format:
 ::: {style="text-align: justify"}
 
 ## Descriptive Analytics
-I have a created a github repository for descriptive analytics. The goal of this reository is to illustrate the utility of decribing facets of your data in relation to analysis and modeling objectives. Except in a very small well defined set of scenarios, it takes a lot of contextual analysis to understand how business concepts are connected in your data. Often there are different sub-populations in your data. Achieving your objectives may need different approaches for each sub-population. LLM's have certainly helped in code generation and in content development. However, for complex business tasks, you still need the human expert to develop the analysis approach. The repository contains an example directory with case studies from this blog as well independent examples. Each case study has a subdirectory and a markdown file that describes the case study. 
+The apps that you can build with your data and your data team is only as good as your understanding of the data. This understanding is built by describing the different facets. Understanding these facets is essential for developing a good analysis approach and for building good models.
+
+I hope to build examples of descriptive analytics for at least longitudinal and cross-sectional data. Graphs will be a big part of the descriptive analytics. I will also include code for doing descriptive analytics in R and Python. The repository will be a work in progress and I will add to it as I learn more about descriptive analytics and as I get feedback from readers.
 
 [The descriptive analytics repository](https://github.com/rajivsam/descriptive_analytics/?utm_source=r2ds_blog&utm_medium=post&utm_campaign=descriptive_analytics_repo_post)
 

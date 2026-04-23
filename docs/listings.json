@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/descriptive_analytics_repo/index.html",
       "/posts/the_magic_pill/index.html",
       "/posts/ice_cream_sales/index.html",
       "/posts/stochastic_opt/index.html",
@@ -9,7 +10,6 @@
       "/posts/heterogeneity_in_models/index.html",
       "/posts/graph_from_relations/index.html",
       "/posts/experimentation_in_DS/index.html",
-      "/posts/descriptive_analytics_repo/index.html",
       "/posts/accuracy_is_all/index.html",
       "/posts/descriptive_analytics/index.html",
       "/posts/tseda announcement/index.html",

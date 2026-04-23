@@ -10,7 +10,44 @@
 <atom:link href="https://rajivsam.github.io/r2ds-blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.35</generator>
-<lastBuildDate>Mon, 13 Apr 2026 07:16:46 GMT</lastBuildDate>
+<lastBuildDate>Thu, 23 Apr 2026 10:00:54 GMT</lastBuildDate>
+<item>
+  <title>Descriptive Analytics Repository</title>
+  <dc:creator>Rajiv Sambasivan</dc:creator>
+  <link>https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics_repo/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="descriptive-analytics" class="level2" style="text-align: justify">
+<h2 class="anchored" data-anchor-id="descriptive-analytics">Descriptive Analytics</h2>
+<p>The apps that you can build with your data and your data team is only as good as your understanding of the data. This understanding is built by describing the different facets. Understanding these facets is essential for developing a good analysis approach and for building good models.</p>
+<p>I hope to build examples of descriptive analytics for at least longitudinal and cross-sectional data. Graphs will be a big part of the descriptive analytics. I will also include code for doing descriptive analytics in R and Python. The repository will be a work in progress and I will add to it as I learn more about descriptive analytics and as I get feedback from readers.</p>
+<p><a href="https://github.com/rajivsam/descriptive_analytics/?utm_source=r2ds_blog&amp;utm_medium=post&amp;utm_campaign=descriptive_analytics_repo_post">The descriptive analytics repository</a></p>
+</section>
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
+  author = {Sambasivan, Rajiv},
+  title = {Descriptive {Analytics} {Repository}},
+  date = {2026-04-23},
+  url = {https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics_repo},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas">
+Sambasivan, Rajiv. 2026. <span>“Descriptive Analytics
+Repository.”</span> April 23. <a href="https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics_repo">https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics_repo</a>.
+</div></div></section></div> ]]></description>
+  <category>news</category>
+  <category>code</category>
+  <category>analysis</category>
+  <guid>https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics_repo/</guid>
+  <pubDate>Thu, 23 Apr 2026 10:00:54 GMT</pubDate>
+  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics_repo/lost_child.jpeg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>The Magic Pill Approach</title>
   <dc:creator>Rajiv Sambasivan</dc:creator>
@@ -447,42 +484,6 @@ April 13. <a href="https://rajivsam.github.io/r2ds-blog/posts/experimentation_in
   <guid>https://rajivsam.github.io/r2ds-blog/posts/experimentation_in_DS/</guid>
   <pubDate>Mon, 13 Apr 2026 07:13:39 GMT</pubDate>
   <media:content url="https://rajivsam.github.io/r2ds-blog/posts/experimentation_in_DS/experiment.png" medium="image" type="image/png" height="144" width="144"/>
-</item>
-<item>
-  <title>Descriptive Analytics Repository</title>
-  <dc:creator>Rajiv Sambasivan</dc:creator>
-  <link>https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics_repo/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="descriptive-analytics" class="level2" style="text-align: justify">
-<h2 class="anchored" data-anchor-id="descriptive-analytics">Descriptive Analytics</h2>
-<p>I have a created a github repository for descriptive analytics. The goal of this reository is to illustrate the utility of decribing facets of your data in relation to analysis and modeling objectives. Except in a very small well defined set of scenarios, it takes a lot of contextual analysis to understand how business concepts are connected in your data. Often there are different sub-populations in your data. Achieving your objectives may need different approaches for each sub-population. LLM’s have certainly helped in code generation and in content development. However, for complex business tasks, you still need the human expert to develop the analysis approach. The repository contains an example directory with case studies from this blog as well independent examples. Each case study has a subdirectory and a markdown file that describes the case study.</p>
-<p><a href="https://github.com/rajivsam/descriptive_analytics/?utm_source=r2ds_blog&amp;utm_medium=post&amp;utm_campaign=descriptive_analytics_repo_post">The descriptive analytics repository</a></p>
-</section>
-
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
-  author = {Sambasivan, Rajiv},
-  title = {Descriptive {Analytics} {Repository}},
-  date = {2026-04-13},
-  url = {https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics_repo},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas">
-Sambasivan, Rajiv. 2026. <span>“Descriptive Analytics
-Repository.”</span> April 13. <a href="https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics_repo">https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics_repo</a>.
-</div></div></section></div> ]]></description>
-  <category>news</category>
-  <category>code</category>
-  <category>analysis</category>
-  <guid>https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics_repo/</guid>
-  <pubDate>Mon, 13 Apr 2026 07:13:35 GMT</pubDate>
-  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/descriptive_analytics_repo/lost_child.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Accuracy, is that what we are after?</title>
