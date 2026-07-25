@@ -212,7 +212,7 @@ gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true});
 <section id="upload-your-time-series-csv" class="level3">
 <h3 class="anchored" data-anchor-id="upload-your-time-series-csv">1. Upload your time series CSV</h3>
 <p>The data should be in long format, with a timestamp column and a value column. You get an initial assessment of the data and its structure through the following: - A meta-summary of the data: sampling frequency, dataset size, etc. To use this tool, your data needs to have a sampling frequency of one hour or higher. If your data has missing values, you need to impute them before uploading to the app. The app does not handle missing values at the moment. - A kernel density plot and a box plot to show you some sense of the concentration of values and the spread of values in the data. - A plot of the raw data to give you a sense of the structure in the data. This is a line plot with time on the x-axis and value on the y-axis. - A PACF and ACF plot to give you a sense of the autocorrelation in the data. The ACF should also show you the seasonality in the data if there is any.</p>
-<div class="caption-center-grid quarto-layout-panel" style="column-gap: 1.5rem;" data-layout-ncol="2">
+<div class="caption-center-grid quarto-layout-panel" data-layout-ncol="2" style="column-gap: 1.5rem;">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
@@ -236,7 +236,7 @@ gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true});
 <section id="decompose-the-signal-with-ssa" class="level3">
 <h3 class="anchored" data-anchor-id="decompose-the-signal-with-ssa">2. Decompose the signal with SSA</h3>
 <p>A decomposition of the data using SSA is done for you. This is based on a heuristic window selection. This should be reasonable for most datasets, but you can change the window size and see how the decomposition changes. You then pick the grouping of components for the decomposition. You do this by looking initially at the ACF plot, the eigenvector plots, and the explained variance plot. You apply the grouping and assess the quality of the decomposition by looking at the reconstructed components and the residuals. You can also look at the weighted correlation matrix to see how the components are correlated with each other. The grouping is important because it determines how the data is decomposed and what structure is captured in the various components. In data with strong structure (e.g.&nbsp;strong seasonality, strong trend, etc.), you can use the derivative idea to see where the signal changes. This is additional information that you get with this tool. If your data has weak structure (for example, if you upload white noise), this tool will indicate that it is not a good fit for your data.</p>
-<div class="caption-center-grid quarto-layout-panel" style="column-gap: 1.5rem; row-gap: 1rem;" data-layout-ncol="2">
+<div class="caption-center-grid quarto-layout-panel" data-layout-ncol="2" style="column-gap: 1.5rem; row-gap: 1rem;">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
