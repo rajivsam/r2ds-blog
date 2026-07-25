@@ -46,6 +46,6 @@ That’s how we deliver value — not by showing tools, but by solving problems 
 Stay tuned for more demos and case studies. In the meantime, explore the repos and articles:
 
 - [KMDS Migration Repo](https://github.com/rajivsam/kmds_migration)  
-- [KMDS Demos](https://rajivsam.github.io/kmds/)  
-- [Tseda Demos](https://rajivsam.github.io/tseda/)  
+- [KMDS](https://github.com/rajivsam/kmds)  
+- [tseda](https://github.com/rajivsam/tseda)  
 - [KMDS Insights Article](https://rajivsam.github.io/kmds_migration/kmds_insights_article.html)
