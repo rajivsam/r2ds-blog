@@ -8,10 +8,10 @@
 
 <meta name="author" content="Rajiv Sambasivan">
 <meta name="dcterms.date" content="2026-07-25">
-<meta name="keywords" content="experimentation in data science, AI coding assistants, iterative development, edge cases, data science engineering, deployment challenges">
-<meta name="description" content="Why experimentation and iteration remain central to data science workflows, even with modern AI coding assistants and faster prototyping tools.">
+<meta name="keywords" content="KMDS, machine learning workflows, reproducible analytics, consulting process, SBA loans, retail demand, ITSM downtime">
+<meta name="description" content="A KMDS update on modular, reproducible machine learning workflows, consulting process, and practical problem-solving across SBA Loans, Olist Retail, and ITSM Downtime.">
 
-<title>Experimentation in Data Science – Rajiv’s blog about data science</title>
+<title>KMDS Update: Lean, Clean, and Practical ML Workflows – Rajiv’s blog about data science</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -86,17 +86,17 @@ gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Experimentation in Data Science – Rajiv’s blog about data science">
-<meta property="og:description" content="Why experimentation and iteration remain central to data science workflows, even with modern AI coding assistants and faster prototyping tools.">
-<meta property="og:image" content="https://rajivsam.github.io/r2ds-blog/posts/experimentation_in_DS/experiment.png">
+<meta property="og:title" content="KMDS Update: Lean, Clean, and Practical ML Workflows – Rajiv’s blog about data science">
+<meta property="og:description" content="A KMDS update on modular, reproducible machine learning workflows, consulting process, and practical problem-solving across SBA Loans, Olist Retail, and ITSM Downtime.">
+<meta property="og:image" content="https://rajivsam.github.io/r2ds-blog/posts/kmds_changes/kmds_human_in_the_loop.png">
 <meta property="og:site_name" content="Rajiv’s blog about data science">
-<meta property="og:image:height" content="512">
-<meta property="og:image:width" content="512">
-<meta name="twitter:title" content="Experimentation in Data Science – Rajiv’s blog about data science">
-<meta name="twitter:description" content="Why experimentation and iteration remain central to data science workflows, even with modern AI coding assistants and faster prototyping tools.">
-<meta name="twitter:image" content="https://rajivsam.github.io/r2ds-blog/posts/experimentation_in_DS/experiment.png">
-<meta name="twitter:image-height" content="512">
-<meta name="twitter:image-width" content="512">
+<meta property="og:image:height" content="1024">
+<meta property="og:image:width" content="1536">
+<meta name="twitter:title" content="KMDS Update: Lean, Clean, and Practical ML Workflows – Rajiv’s blog about data science">
+<meta name="twitter:description" content="A KMDS update on modular, reproducible machine learning workflows, consulting process, and practical problem-solving across SBA Loans, Olist Retail, and ITSM Downtime.">
+<meta name="twitter:image" content="https://rajivsam.github.io/r2ds-blog/posts/kmds_changes/kmds_human_in_the_loop.png">
+<meta name="twitter:image-height" content="1024">
+<meta name="twitter:image-width" content="1536">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -147,10 +147,10 @@ gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Experimentation in Data Science</h1>
+      <h1 class="title">KMDS Update: Lean, Clean, and Practical ML Workflows</h1>
                   <div>
         <div class="description">
-          Why experimentation and iteration remain central to data science workflows, even with modern AI coding assistants and faster prototyping tools.
+          A KMDS update on modular, reproducible machine learning workflows, consulting process, and practical problem-solving across SBA Loans, Olist Retail, and ITSM Downtime.
         </div>
       </div>
                           <div class="quarto-categories">
@@ -185,7 +185,7 @@ gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true});
   <div>
     <div class="keywords">
       <div class="block-title">Keywords</div>
-      <p>experimentation in data science, AI coding assistants, iterative development, edge cases, data science engineering, deployment challenges</p>
+      <p>KMDS, machine learning workflows, reproducible analytics, consulting process, SBA loans, retail demand, ITSM downtime</p>
     </div>
   </div>
   
@@ -197,7 +197,13 @@ gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#the-importance-of-experimentation" id="toc-the-importance-of-experimentation" class="nav-link active" data-scroll-target="#the-importance-of-experimentation">The Importance of Experimentation</a></li>
+  <li><a href="#kmds-update-lean-clean-and-practical-ml-workflows" id="toc-kmds-update-lean-clean-and-practical-ml-workflows" class="nav-link active" data-scroll-target="#kmds-update-lean-clean-and-practical-ml-workflows">KMDS Update: Lean, Clean, and Practical ML Workflows</a>
+  <ul class="collapse">
+  <li><a href="#why-kmds-matters" id="toc-why-kmds-matters" class="nav-link" data-scroll-target="#why-kmds-matters">Why KMDS Matters</a></li>
+  <li><a href="#three-problems-weve-tackled" id="toc-three-problems-weve-tackled" class="nav-link" data-scroll-target="#three-problems-weve-tackled">Three Problems We’ve Tackled</a></li>
+  <li><a href="#the-human-data-scientist-role" id="toc-the-human-data-scientist-role" class="nav-link" data-scroll-target="#the-human-data-scientist-role">The Human Data Scientist Role</a></li>
+  <li><a href="#lean-and-clean-positioning" id="toc-lean-and-clean-positioning" class="nav-link" data-scroll-target="#lean-and-clean-positioning">Lean and Clean Positioning</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -208,29 +214,62 @@ gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true});
 
 
 
-<blockquote class="blockquote">
-<p><strong>Note:</strong> This post updates an older write-up to reflect my current opinions.</p>
-</blockquote>
-<section id="the-importance-of-experimentation" class="level2" style="text-align: justify">
-<h2 class="anchored" data-anchor-id="the-importance-of-experimentation">The Importance of Experimentation</h2>
-<p>Recently, I built a tool for exploratory data analysis of time series data. I used co-pilot for coding the tool, I used gemini for mathematical research and undertanding new literature and research. I wanted to write this based on what I learned about the importance of experimentation in data science and how it is a critical part of the data science process.</p>
-<p>Sure, co-pilot was great for writing code and iterating fast, but even for a simple application that is just three stages, there were so many iterations. So many times that the app was broken. Maybe Claude would have been a different experience, but I definitely did not have the experience that some people claim - write the idea broadly and presto you have a working app. I had to iterate a lot, and I had to experiment a lot. I had to try different things, see what worked, see what didn’t work, and then iterate again. This is the essence of experimentation in data science. You have an idea, you try it out, you see what happens, and then you iterate based on what you learn.</p>
-<p>Here is the thing I realized though, you can have the best tool that implements what you think, but at least in the data science world, there are a lot of corner cases, these are things that you don’t necessarily see right away. Your tool reporting that it implemented what you wanted maybe true (let’s go with that for now), but what you missed may be critical. It reminds me of a bumper sticker I saw about 25-30 years ago that was mocking parents who had a child in a prestigious school and had bumper stickers about it. This mock as something like “Your kid may go to <some famous="" schoo="">, but you are still an idiot”. The point is that real-world applications are complex with a lot of edge cases, and you need to experiment and iterate to get it right. None of us are clairvoyant, and if you are building an app for a data science task, I definitely don’t buy the idea that you write the requirements in a broad way and then the tool just gives you what you want.</some></p>
-<p>Deployment was another area where I have heard people say, yeah AI will just replace all the dev-ops people. I had one bug in Arrow and it had to do with different versions of pandas havind different initializations for the default variables. I spent a good 2 hours on that. Every software engineer has war stories about some gnarly bug that they would never have imagined. So I am still sticking with my belief that AI is a great tool for data science, but at the end of the day, tools are as good as the guys making them.</p>
+<section id="kmds-update-lean-clean-and-practical-ml-workflows" class="level1">
+<h1>KMDS Update: Lean, Clean, and Practical ML Workflows</h1>
+<p>It’s been a while since my last post — I’ve been heads‑down refining KMDS and Tseda. Both tools have matured significantly, and I want to share where they stand today.</p>
+<section id="why-kmds-matters" class="level2">
+<h2 class="anchored" data-anchor-id="why-kmds-matters">Why KMDS Matters</h2>
+<p>KMDS is now a <strong>modular, reproducible framework</strong> for ML workflows. It’s not about flashy demos — it’s about <strong>documented outcomes</strong> and a process that captures problems rigorously before solving them.</p>
 </section>
+<section id="three-problems-weve-tackled" class="level2">
+<h2 class="anchored" data-anchor-id="three-problems-weve-tackled">Three Problems We’ve Tackled</h2>
+<ul>
+<li><strong>SBA Loans</strong> → Forecasting errors in loan approvals<br>
+</li>
+<li><strong>Olist Retail</strong> → Demand variability and inventory planning<br>
+</li>
+<li><strong>ITSM Downtime</strong> → Operational resilience in service management</li>
+</ul>
+<p>Each case shows KMDS delivering clarity, reproducibility, and measurable impact.</p>
+</section>
+<section id="the-human-data-scientist-role" class="level2">
+<h2 class="anchored" data-anchor-id="the-human-data-scientist-role">The Human Data Scientist Role</h2>
+<p>Assistants execute tasks, but the <strong>human expert defines context and reviews iterations</strong>. This loop ensures solutions are practical, context‑aware, and aligned with organizational priorities.</p>
+<p>And here’s the critical point: <strong>good prompts, conceptual framing, precision, and interpretation of results are not generic skills — they are ML expert skills.</strong> Iterating and interrogating an AI assistant in a way that is meaningful to your use case requires deep understanding of machine learning. Without that expertise, the assistant cannot be guided to produce outcomes of real value.</p>
+</section>
+<section id="lean-and-clean-positioning" class="level2">
+<h2 class="anchored" data-anchor-id="lean-and-clean-positioning">Lean and Clean Positioning</h2>
+<p>KMDS isn’t about open‑ended demos. It’s about a <strong>structured consulting process</strong>: - Capture the problem with questionnaires<br>
+- Define workflows and units of analysis<br>
+- Solve with reproducible, documented outcomes</p>
+<p>That’s how we deliver value — not by showing tools, but by solving problems with rigor and expert‑driven context.</p>
+<hr>
+<p>Stay tuned for more demos and case studies. In the meantime, explore the repos and articles:</p>
+<ul>
+<li>KMDS Migration Repo: https://github.com/rajivsam/kmds_migration<br>
+</li>
+<li>KMDS Demos: https://rajivsam.github.io/kmds/<br>
+</li>
+<li>Tseda Demos: https://rajivsam.github.io/tseda/<br>
+</li>
+<li>KMDS Insights Article: https://rajivsam.github.io/kmds_migration/kmds_insights_article.html</li>
+</ul>
 
 
+</section>
+</section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
   author = {Sambasivan, Rajiv},
-  title = {Experimentation in {Data} {Science}},
+  title = {KMDS {Update:} {Lean,} {Clean,} and {Practical} {ML}
+    {Workflows}},
   date = {2026-07-25},
-  url = {https://rajivsam.github.io/r2ds-blog/posts/experimentation_in_DS},
+  url = {https://rajivsam.github.io/r2ds-blog/posts/kmds_changes/},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas" role="listitem">
-Sambasivan, Rajiv. 2026. <span>“Experimentation in Data Science.”</span>
-July 25. <a href="https://rajivsam.github.io/r2ds-blog/posts/experimentation_in_DS">https://rajivsam.github.io/r2ds-blog/posts/experimentation_in_DS</a>.
+Sambasivan, Rajiv. 2026. <span>“KMDS Update: Lean, Clean, and Practical
+ML Workflows.”</span> July 25. <a href="https://rajivsam.github.io/r2ds-blog/posts/kmds_changes/">https://rajivsam.github.io/r2ds-blog/posts/kmds_changes/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

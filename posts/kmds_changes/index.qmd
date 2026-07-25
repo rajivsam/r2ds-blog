@@ -1,0 +1,51 @@
+---
+title: "KMDS Update: Lean, Clean, and Practical ML Workflows"
+author: "Rajiv Sambasivan"
+date: last-modified
+categories: [news, code, analysis]
+image: "kmds_human_in_the_loop.png"
+description: "A KMDS update on modular, reproducible machine learning workflows, consulting process, and practical problem-solving across SBA Loans, Olist Retail, and ITSM Downtime."
+keywords: [KMDS, machine learning workflows, reproducible analytics, consulting process, SBA loans, retail demand, ITSM downtime]
+citation:
+  url: https://rajivsam.github.io/r2ds-blog/posts/kmds_changes/
+format:
+  html:
+    toc: true
+    toc-depth: 2
+---
+
+# KMDS Update: Lean, Clean, and Practical ML Workflows
+
+It’s been a while since my last post — I’ve been heads‑down refining KMDS and Tseda. Both tools have matured significantly, and I want to share where they stand today.
+
+## Why KMDS Matters
+KMDS is now a **modular, reproducible framework** for ML workflows. It’s not about flashy demos — it’s about **documented outcomes** and a process that captures problems rigorously before solving them.
+
+## Three Problems We’ve Tackled
+- **SBA Loans** → Forecasting errors in loan approvals  
+- **Olist Retail** → Demand variability and inventory planning  
+- **ITSM Downtime** → Operational resilience in service management  
+
+Each case shows KMDS delivering clarity, reproducibility, and measurable impact.
+
+## The Human Data Scientist Role
+Assistants execute tasks, but the **human expert defines context and reviews iterations**. This loop ensures solutions are practical, context‑aware, and aligned with organizational priorities.  
+
+And here’s the critical point: **good prompts, conceptual framing, precision, and interpretation of results are not generic skills — they are ML expert skills.** Iterating and interrogating an AI assistant in a way that is meaningful to your use case requires deep understanding of machine learning. Without that expertise, the assistant cannot be guided to produce outcomes of real value.
+
+## Lean and Clean Positioning
+KMDS isn’t about open‑ended demos. It’s about a **structured consulting process**:
+- Capture the problem with questionnaires  
+- Define workflows and units of analysis  
+- Solve with reproducible, documented outcomes  
+
+That’s how we deliver value — not by showing tools, but by solving problems with rigor and expert‑driven context.
+
+---
+
+Stay tuned for more demos and case studies. In the meantime, explore the repos and articles:
+
+- KMDS Migration Repo: https://github.com/rajivsam/kmds_migration  
+- KMDS Demos: https://rajivsam.github.io/kmds/  
+- Tseda Demos: https://rajivsam.github.io/tseda/  
+- KMDS Insights Article: https://rajivsam.github.io/kmds_migration/kmds_insights_article.html  
