@@ -22,9 +22,9 @@ It’s been a while since my last post — I’ve been heads‑down refining KMD
 KMDS is now a **modular, reproducible framework** for ML workflows. It’s not about flashy demos — it’s about **documented outcomes** and a process that captures problems rigorously before solving them.
 
 ## Three Problems We’ve Tackled
-- **SBA Loans** → Forecasting errors in loan approvals  
-- **Olist Retail** → Demand variability and inventory planning  
-- **ITSM Downtime** → Operational resilience in service management  
+- **SBA Loans** → predicting loan approvals based on custom feature engineering and an imbalanced learning workflow
+- **Olist Retail** → capturing temporal shopping preferences of Olist customers in Sau Paulo in 2017.
+- **ITSM Ticket Resolution Time** → using survival analysis to capture time to resolution of help desk tickets.
 
 Each case shows KMDS delivering clarity, reproducibility, and measurable impact.
 
