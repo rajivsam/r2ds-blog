@@ -10,7 +10,7 @@
 <atom:link href="https://rajivsam.github.io/r2ds-blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.35</generator>
-<lastBuildDate>Sat, 25 Jul 2026 08:01:36 GMT</lastBuildDate>
+<lastBuildDate>Sat, 25 Jul 2026 08:09:23 GMT</lastBuildDate>
 <item>
   <title>KMDS Update: Lean, Clean, and Practical ML Workflows</title>
   <dc:creator>Rajiv Sambasivan</dc:creator>
@@ -31,11 +31,9 @@
 <section id="three-problems-weve-tackled" class="level2">
 <h2 class="anchored" data-anchor-id="three-problems-weve-tackled">Three Problems We’ve Tackled</h2>
 <ul>
-<li><strong>SBA Loans</strong> → Forecasting errors in loan approvals<br>
-</li>
-<li><strong>Olist Retail</strong> → Demand variability and inventory planning<br>
-</li>
-<li><strong>ITSM Downtime</strong> → Operational resilience in service management</li>
+<li><strong>SBA Loans</strong> → predicting loan approvals based on custom feature engineering and an imbalanced learning workflow</li>
+<li><strong>Olist Retail</strong> → capturing temporal shopping preferences of Olist customers in Sau Paulo in 2017.</li>
+<li><strong>ITSM Ticket Resolution Time</strong> → using survival analysis to capture time to resolution of help desk tickets.</li>
 </ul>
 <p>Each case shows KMDS delivering clarity, reproducibility, and measurable impact.</p>
 </section>
@@ -82,7 +80,7 @@ ML Workflows.”</span> July 25. <a href="https://rajivsam.github.io/r2ds-blog/p
   <category>code</category>
   <category>analysis</category>
   <guid>https://rajivsam.github.io/r2ds-blog/posts/kmds_changes/</guid>
-  <pubDate>Sat, 25 Jul 2026 08:01:36 GMT</pubDate>
+  <pubDate>Sat, 25 Jul 2026 08:09:23 GMT</pubDate>
   <media:content url="https://rajivsam.github.io/r2ds-blog/posts/kmds_changes/kmds_human_in_the_loop.png" medium="image" type="image/png" height="96" width="144"/>
 </item>
 <item>
