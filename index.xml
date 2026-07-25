@@ -10,7 +10,7 @@
 <atom:link href="https://rajivsam.github.io/r2ds-blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.35</generator>
-<lastBuildDate>Sat, 25 Jul 2026 08:13:18 GMT</lastBuildDate>
+<lastBuildDate>Sat, 25 Jul 2026 08:27:28 GMT</lastBuildDate>
 <item>
   <title>KMDS Update: Lean, Clean, and Practical ML Workflows</title>
   <dc:creator>Rajiv Sambasivan</dc:creator>
@@ -53,9 +53,9 @@
 <ul>
 <li><a href="https://github.com/rajivsam/kmds_migration">KMDS Migration Repo</a><br>
 </li>
-<li><a href="https://rajivsam.github.io/kmds/">KMDS Demos</a><br>
+<li><a href="https://github.com/rajivsam/kmds">KMDS</a><br>
 </li>
-<li><a href="https://rajivsam.github.io/tseda/">Tseda Demos</a><br>
+<li><a href="https://github.com/rajivsam/tseda">tseda</a><br>
 </li>
 <li><a href="https://rajivsam.github.io/kmds_migration/kmds_insights_article.html">KMDS Insights Article</a></li>
 </ul>
@@ -80,7 +80,7 @@ ML Workflows.”</span> July 25. <a href="https://rajivsam.github.io/r2ds-blog/p
   <category>code</category>
   <category>analysis</category>
   <guid>https://rajivsam.github.io/r2ds-blog/posts/kmds_changes/</guid>
-  <pubDate>Sat, 25 Jul 2026 08:13:18 GMT</pubDate>
+  <pubDate>Sat, 25 Jul 2026 08:27:28 GMT</pubDate>
   <media:content url="https://rajivsam.github.io/r2ds-blog/posts/kmds_changes/kmds_human_in_the_loop.png" medium="image" type="image/png" height="96" width="144"/>
 </item>
 <item>
