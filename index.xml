@@ -10,78 +10,153 @@
 <atom:link href="https://rajivsam.github.io/r2ds-blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.35</generator>
-<lastBuildDate>Sat, 25 Jul 2026 08:27:28 GMT</lastBuildDate>
+<lastBuildDate>Tue, 18 Aug 2026 08:18:06 GMT</lastBuildDate>
 <item>
-  <title>KMDS Update: Lean, Clean, and Practical ML Workflows</title>
+  <title>KMDS Update: Context, Changes and Practical Implications</title>
   <dc:creator>Rajiv Sambasivan</dc:creator>
-  <link>https://rajivsam.github.io/r2ds-blog/posts/kmds_changes/</link>
+  <link>https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/</link>
   <description><![CDATA[ 
 
 
 
 
 
-<section id="kmds-update-lean-clean-and-practical-ml-workflows" class="level1">
-<h1>KMDS Update: Lean, Clean, and Practical ML Workflows</h1>
-<p>It’s been a while since my last post — I’ve been heads‑down refining KMDS and Tseda. Both tools have matured significantly, and I want to share where they stand today.</p>
-<section id="why-kmds-matters" class="level2">
-<h2 class="anchored" data-anchor-id="why-kmds-matters">Why KMDS Matters</h2>
-<p>KMDS is now a <strong>modular, reproducible framework</strong> for ML workflows. It’s not about flashy demos — it’s about <strong>documented outcomes</strong> and a process that captures problems rigorously before solving them.</p>
+<div style="text-align: justify">
+<section id="the-kmds-update-context-changes-and-practical-implications" class="level2">
+<h2 class="anchored" data-anchor-id="the-kmds-update-context-changes-and-practical-implications">The KMDS Update: Context, Changes, and Practical Implications</h2>
+<p>This post is part of a series on how KMDS has evolved as LLMs and coding agents have become standard tools for software development. In this post, I discuss the operational context for KMDS, the changes that have been made to the system, and the practical implications for enterprise data science teams.</p>
+<section id="evolution-of-kmds" class="level3">
+<h3 class="anchored" data-anchor-id="evolution-of-kmds">Evolution of KMDS</h3>
+<p>KMDS integrates coding assistants directly into its workflow. Rather than functioning as a static knowledge graph, it becomes a living system in which:</p>
+<ol type="1">
+<li>Coding agents support each phase of ML use case development.</li>
+<li>Their outputs — datasets, features, models, and diagnostics — are assembled and coordinated as a workflow.</li>
+<li>The knowledge graph keeps the process documented, reusable, and interpretable in enterprise settings.</li>
+</ol>
 </section>
-<section id="three-problems-weve-tackled" class="level2">
-<h2 class="anchored" data-anchor-id="three-problems-weve-tackled">Three Problems We’ve Tackled</h2>
+<section id="making-it-concrete" class="level3">
+<h3 class="anchored" data-anchor-id="making-it-concrete">Making It Concrete</h3>
+<p>To make this tangible, we need a working model for developing ML models in an enterprise setting. Let’s start with three foundational questions:</p>
+<ol type="1">
+<li>How a use case is framed and deployed in a business or engineering environment.</li>
+<li>The role of AI automation versus human expertise in guiding decisions.</li>
+<li>The operating environment in which applications interact with other systems and embedded services.</li>
+</ol>
+<p>Once that foundation is clear, we can show how KMDS is applied in practice. A useful schematic is shown below.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/end_to_end_frame_work.png" class="img-fluid figure-img"></p>
+<figcaption>End-to-end framework</figcaption>
+</figure>
+</div>
+<p>The basic idea is simple: building and deploying a production model happens in phases. The first phase is the initial deployment of a model to solve a business problem. This is usually the most time-consuming and difficult phase because both the business and modeling teams are learning about the problem and its operational context. The second phase is the ongoing maintenance of the model, which is usually easier because the teams have already learned about the problem and its operational context.</p>
+<p>That initial phase usually looks like this:</p>
+<ol type="1">
+<li>The team first develops a clear understanding of the business problem.</li>
+<li>It then translates that problem into a machine learning task, working closely with the business team to understand what data matters and how it behaves in real operations. The business explains the operational patterns; the modeling team tests that understanding, probes gaps, and defines the mapping from business needs to a canonical ML task such as classification, clustering, or regression. With modern tools like TabFM and TabDPT, a reasonable baseline model can often be built quickly. That is important: a baseline is not the final solution, but a starting point. A strong data science team can usually identify the most relevant features quickly.</li>
+<li>The team then reviews the model’s results with business stakeholders, clarifies remaining gaps, and develops a shared vocabulary for interpreting the problem. Generative AI can help with both the modeling work and the communication of results.</li>
+</ol>
+<p>Once stakeholders agree on performance and interpretation, the model can be deployed. Generative AI can also help package it for production. But it is equally important to remember that the model was trained on data from a specific operational window. The team should verify that performance remains consistent with expectations and assess whether business conditions have changed. This matters especially when firms retrain models on fresh data even though the current version still performs well. In retail e-commerce, for example, retraining is often practical because it adapts the model to the current operating environment without requiring heavy human analysis.</p>
+<p>When operational procedures, planning constraints, or shifting business conditions require it, the team may adjust an existing model to a new data window. This is typically a different exercise from routine retraining because it incorporates the most recent operational period and any business changes stakeholders want to evaluate for the next model iteration. If the changes are incremental, this may not be too demanding. If a new feature or a different modeling approach is introduced, the effort can become substantial.</p>
+<p>A few observations matter here:</p>
+<ol type="1">
+<li>Human agency is required to decide what counts as a good solution and what ideas the solution should be built around.</li>
+<li>Human agency is required to explain why successive model versions differ. AutoML can generate predictions, but it cannot tell us why the model behaves as it does or how the business itself is evolving.</li>
+<li>Human agency is required to interpret the data holistically. Automation can help with isolated results, but understanding the broader picture is arguably best done with automated tools and then validated by human experts.</li>
+</ol>
+<p>This is exactly the tension KMDS is designed to manage: combining expert human judgment with the strengths of generative AI.</p>
+<p>The batch deployment model is chosen deliberately. Online deployment is rarely worth the cost for most use cases because it offers little ROI relative to the expense. In cybersecurity, ad tech, or large-scale hyperscaler settings, real-time scoring may justify the investment. For most applications, the value of instant predictions is limited, and the cost of always-on infrastructure is not. Batch processing gives flexibility: hourly, daily, or weekly schedules can be tuned to balance freshness and operational simplicity.</p>
+<p>The practical view is that, for small and medium businesses, building a custom AI agent to automate an ML workflow is usually not worth it. Real-world enterprise data is messy, future requirements are uncertain, and edge cases can break fully automated systems. Despite the hype, a dedicated agent solution is often risky and low reward. A better first step is to pair a human expert with a coding agent. In a new deployment, that combination gives the best return: the AI can generate code quickly, while the human validates intermediate steps, handles messy data, and keeps the project moving safely. If the data and workflow remain stable over time, that work can then be delegated to an agent.</p>
+</section>
+</section>
+<section id="kmds-operating-environment" class="level2">
+<h2 class="anchored" data-anchor-id="kmds-operating-environment">KMDS Operating Environment</h2>
+<p>To give you a better sense of the process and the logical components and actors, let’s examine the system a little deeper. An illustrative schematic of the process is provided in Figure&nbsp;1. A typical solution development environment has the following components and actors:</p>
+<section id="analytical-data-environment" class="level3">
+<h3 class="anchored" data-anchor-id="analytical-data-environment">Analytical Data Environment</h3>
 <ul>
-<li><strong>SBA Loans</strong> → predicting loan approvals based on custom feature engineering and an imbalanced learning workflow</li>
-<li><strong>Olist Retail</strong> → capturing temporal shopping preferences of Olist customers in Sau Paulo in 2017.</li>
-<li><strong>ITSM Ticket Resolution Time</strong> → using survival analysis to capture time to resolution of help desk tickets.</li>
+<li>Lakehouse paradigm: Analytics data lives in modern lakehouse platforms such as Databricks or Snowflake.</li>
+<li>Unified storage: This combines the scalability of a data lake with the transactional integrity of a data warehouse.</li>
+<li>Streamlined pipelines: Data scientists work directly with curated, high-performance data layers for model training.</li>
 </ul>
-<p>Each case shows KMDS delivering clarity, reproducibility, and measurable impact.</p>
 </section>
-<section id="the-human-data-scientist-role" class="level2">
-<h2 class="anchored" data-anchor-id="the-human-data-scientist-role">The Human Data Scientist Role</h2>
-<p>Assistants execute tasks, but the <strong>human expert defines context and reviews iterations</strong>. This loop ensures solutions are practical, context‑aware, and aligned with organizational priorities.</p>
-<p>And here’s the critical point: <strong>good prompts, conceptual framing, precision, and interpretation of results are not generic skills — they are ML expert skills.</strong> Iterating and interrogating an AI assistant in a way that is meaningful to your use case requires deep understanding of machine learning. Without that expertise, the assistant cannot be guided to produce outcomes of real value.</p>
-</section>
-<section id="lean-and-clean-positioning" class="level2">
-<h2 class="anchored" data-anchor-id="lean-and-clean-positioning">Lean and Clean Positioning</h2>
-<p>KMDS isn’t about open‑ended demos. It’s about a <strong>structured consulting process</strong>: - Capture the problem with questionnaires<br>
-- Define workflows and units of analysis<br>
-- Solve with reproducible, documented outcomes</p>
-<p>That’s how we deliver value — not by showing tools, but by solving problems with rigor and expert‑driven context.</p>
-<hr>
-<p>Stay tuned for more demos and case studies. In the meantime, explore the repos and articles:</p>
+<section id="the-ml-development-expert" class="level3">
+<h3 class="anchored" data-anchor-id="the-ml-development-expert">The ML Development Expert</h3>
 <ul>
-<li><a href="https://github.com/rajivsam/kmds_migration">KMDS Migration Repo</a><br>
-</li>
-<li><a href="https://github.com/rajivsam/kmds">KMDS</a><br>
-</li>
-<li><a href="https://github.com/rajivsam/tseda">tseda</a><br>
-</li>
-<li><a href="https://rajivsam.github.io/kmds_migration/kmds_insights_article.html">KMDS Insights Article</a></li>
+<li>Expert practitioners: Designed for mid-level to senior data scientists.</li>
+<li>Strategic mapping: Users translate complex business problems into structured machine learning tasks.</li>
+<li>Technical execution: Users independently drive data augmentation, feature engineering, and iterative model refinement to achieve business goals.</li>
 </ul>
+</section>
+<section id="version-control-system" class="level3">
+<h3 class="anchored" data-anchor-id="version-control-system">Version Control System</h3>
+<ul>
+<li>Git-centric workflow: Git is the single source of truth for the project.</li>
+<li>Artifact tracking: All code, configuration files, and documentation artifacts are version-controlled.</li>
+<li>Collaborative safety: This supports reproducible workflows, transparent peer review, and smooth CI/CD integration.</li>
+</ul>
+</section>
+<section id="ai-coding-agents" class="level3">
+<h3 class="anchored" data-anchor-id="ai-coding-agents">AI-Coding Agents</h3>
+<ul>
+<li>Next-generation IDEs: Solutions are developed locally or in cloud environments using VS Code.</li>
+<li>Coding agents: Data scientists use AI agents, especially GitHub Copilot, to accelerate development.</li>
+<li>Efficiency gains: AI helps with boilerplate code, routine debugging, and rapid prototyping of pipeline components.</li>
+</ul>
+</section>
+<section id="production-deployment-environment" class="level3">
+<h3 class="anchored" data-anchor-id="production-deployment-environment">Production Deployment Environment</h3>
+<ul>
+<li>Standardized units: The target delivery artifact is a self-contained Docker container.</li>
+<li>Clear ownership: The KMDS lifecycle ends at containerization, isolating the model, dependencies, and inference code in an immutable image.</li>
+<li>Infrastructure-agnostic: Because the handoff occurs at the container level, the final artifact remains compatible with any downstream orchestration platform, whether a single cloud VM, a managed Kubernetes cluster, or a serverless runtime.</li>
+</ul>
+<div id="fig-kmds-assembly" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-kmds-assembly-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/ds_product_assembly_kmds.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kmds-assembly-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: KMDS product assembly overview
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="implications-for-enterprise-data-science-teams" class="level2">
+<h2 class="anchored" data-anchor-id="implications-for-enterprise-data-science-teams">Implications for Enterprise Data Science Teams</h2>
+<p>Clearly, LLMs have changed the productivity and velocity of data science teams in many ways. It is important to put this in perspective relative to the actual challenges that enterprise data science teams face. While LLMs can accelerate coding and documentation, they do not replace the need for human expertise in problem framing, data understanding, and model interpretation. Where does this impact enterprise data science teams? Here are some practical implications:</p>
+<ol type="1">
+<li><strong>Enhanced Productivity</strong>: LLMs can significantly reduce the time spent understanding and summarizing business requirements for technical teams — for example, the ML expert who needs to understand the actual challenges the business hopes to solve with this use case and map them to a canonical ML task. This allows data science teams to focus more on model development and less on administrative tasks. Conversely, it enables a curious and engaged business team to understand the technical challenges and trade-offs more efficiently. It helps business teams interested in understanding the technical approach to a use case implementation understand the challenges and trade-offs. This implies that collaboration between business and technical teams can be more efficient and productive.</li>
+<li><strong>Mapping Business Problems to a Machine Learning Problem</strong>: A technical team will progressively try to map a business problem to a canonical ML task. This is often a non-trivial exercise and needs to be driven by actual data analysis. It is important to reconcile the actual data with the business problem when this mapping is done. Interpreting the data and being deliberate about the mapping is important. Blindly using the results of an LLM to map a business problem to a canonical ML task will lead to poor results. LLMs can help with the research and analysis, but the set of tasks to consider and the ideas to explore should be driven by the actual data and the business problem.</li>
+<li><strong>Model Interpretation and Validation</strong>: Assuming the previous step—mapping a business problem to a canonical ML task—has been done well and a model has been built with due consideration given to interpretability, LLMs can help with model interpretation and validation. This is especially true when the model is complex and the business team needs to understand the model’s behavior and performance. It is quite common for machine learning teams to consider opaque models and not have the skills to use explainable AI techniques to correctly explain the model’s behavior to business stakeholders. The problem here is that business stakeholders inevitably need to understand the model’s behavior and performance for planning and decision-making. Baking interpretability into the model development process can save the team a lot of time and effort in the long run. It is harder and takes more skill and feature engineering effort, but it is worth it.</li>
+<li><strong>Model Maintenance and Monitoring</strong>: Once a model is deployed, it needs to be monitored for performance degradation and retrained as necessary. What should we monitor? How often do changes occur for this use case? How do we plan the batch updates and retraining? What type of modeling approach will give us the best mix of stability and performance? These are all decision points that require human expertise and judgment. You need to be deliberate about the choices you make here. LLMs can help with the analysis and research, but they cannot replace human judgment in these areas.</li>
+</ol>
+<p>It is worth discussing the enhanced productivity point in more detail. There is a lot of hype about LLMs and their ability to accelerate data science workflows. While they can help with coding and documentation, they cannot replace the need for human expertise in points 2, 3, and 4 above. Implementation after human decision-making in points 2, 3, and 4 is where LLMs can help accelerate the workflow. But the actual decision-making in these areas requires human expertise and judgment. Humans think at the speed they biologically can, but they are capable of making better decisions than LLMs in these areas. Accepting the speed of human decision-making is the cost teams must accept.</p>
+<p>The productivity gains from implementation are bound to lead to the question: do we need fewer data scientists? That is a question business leaders will need to answer based on how they plan to use AI in their organization. If they are not going to increase the number of use cases, then using consultants or contractors to get the project through the initial deployment phase may be a good option. If they are going to increase the number of use cases, then they will need to spread their data science team across more use cases. Hopefully, businesses do see the value of AI and its ability to increase their footprint of software-enabled services. Time will tell.</p>
+</section>
+</div>
 
 
-</section>
-</section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
   author = {Sambasivan, Rajiv},
-  title = {KMDS {Update:} {Lean,} {Clean,} and {Practical} {ML}
-    {Workflows}},
-  date = {2026-07-25},
-  url = {https://rajivsam.github.io/r2ds-blog/posts/kmds_changes/},
+  title = {KMDS {Update:} {Context,} {Changes} and {Practical}
+    {Implications}},
+  date = {2026-08-18},
+  url = {https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas">
-Sambasivan, Rajiv. 2026. <span>“KMDS Update: Lean, Clean, and Practical
-ML Workflows.”</span> July 25. <a href="https://rajivsam.github.io/r2ds-blog/posts/kmds_changes/">https://rajivsam.github.io/r2ds-blog/posts/kmds_changes/</a>.
+Sambasivan, Rajiv. 2026. <span>“KMDS Update: Context, Changes and
+Practical Implications.”</span> August 18. <a href="https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/">https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/</a>.
 </div></div></section></div> ]]></description>
   <category>news</category>
   <category>code</category>
   <category>analysis</category>
-  <guid>https://rajivsam.github.io/r2ds-blog/posts/kmds_changes/</guid>
-  <pubDate>Sat, 25 Jul 2026 08:27:28 GMT</pubDate>
-  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/kmds_changes/kmds_human_in_the_loop.png" medium="image" type="image/png" height="96" width="144"/>
+  <guid>https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/</guid>
+  <pubDate>Tue, 18 Aug 2026 08:18:06 GMT</pubDate>
+  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/kmds_human_in_the_loop.png" medium="image" type="image/png" height="96" width="144"/>
 </item>
 <item>
   <title>Exploring Time Series Signals</title>
