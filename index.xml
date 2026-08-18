@@ -10,7 +10,7 @@
 <atom:link href="https://rajivsam.github.io/r2ds-blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.35</generator>
-<lastBuildDate>Tue, 18 Aug 2026 08:18:06 GMT</lastBuildDate>
+<lastBuildDate>Tue, 18 Aug 2026 08:29:30 GMT</lastBuildDate>
 <item>
   <title>KMDS Update: Context, Changes and Practical Implications</title>
   <dc:creator>Rajiv Sambasivan</dc:creator>
@@ -22,8 +22,6 @@
 
 
 <div style="text-align: justify">
-<section id="the-kmds-update-context-changes-and-practical-implications" class="level2">
-<h2 class="anchored" data-anchor-id="the-kmds-update-context-changes-and-practical-implications">The KMDS Update: Context, Changes, and Practical Implications</h2>
 <p>This post is part of a series on how KMDS has evolved as LLMs and coding agents have become standard tools for software development. In this post, I discuss the operational context for KMDS, the changes that have been made to the system, and the practical implications for enterprise data science teams.</p>
 <section id="evolution-of-kmds" class="level3">
 <h3 class="anchored" data-anchor-id="evolution-of-kmds">Evolution of KMDS</h3>
@@ -62,22 +60,23 @@
 <ol type="1">
 <li>Human agency is required to decide what counts as a good solution and what ideas the solution should be built around.</li>
 <li>Human agency is required to explain why successive model versions differ. AutoML can generate predictions, but it cannot tell us why the model behaves as it does or how the business itself is evolving.</li>
-<li>Human agency is required to interpret the data holistically. Automation can help with isolated results, but understanding the broader picture is arguably best done with automated tools and then validated by human experts.</li>
+<li>Human agency is required to interpret the data holistically. Automation can surface patterns, compare cohorts, and summarize model diagnostics, but the final interpretation still depends on domain context, operational reality, and judgment.</li>
 </ol>
 <p>This is exactly the tension KMDS is designed to manage: combining expert human judgment with the strengths of generative AI.</p>
 <p>The batch deployment model is chosen deliberately. Online deployment is rarely worth the cost for most use cases because it offers little ROI relative to the expense. In cybersecurity, ad tech, or large-scale hyperscaler settings, real-time scoring may justify the investment. For most applications, the value of instant predictions is limited, and the cost of always-on infrastructure is not. Batch processing gives flexibility: hourly, daily, or weekly schedules can be tuned to balance freshness and operational simplicity.</p>
 <p>The practical view is that, for small and medium businesses, building a custom AI agent to automate an ML workflow is usually not worth it. Real-world enterprise data is messy, future requirements are uncertain, and edge cases can break fully automated systems. Despite the hype, a dedicated agent solution is often risky and low reward. A better first step is to pair a human expert with a coding agent. In a new deployment, that combination gives the best return: the AI can generate code quickly, while the human validates intermediate steps, handles messy data, and keeps the project moving safely. If the data and workflow remain stable over time, that work can then be delegated to an agent.</p>
-</section>
+<p>The lifecycle above makes the design goal of KMDS clear: the system has to preserve not just the model artifact, but the reasoning, assumptions, and history behind it. The next section describes the operating environment that makes that traceability workable at scale.</p>
 </section>
 <section id="kmds-operating-environment" class="level2">
 <h2 class="anchored" data-anchor-id="kmds-operating-environment">KMDS Operating Environment</h2>
-<p>To give you a better sense of the process and the logical components and actors, let’s examine the system a little deeper. An illustrative schematic of the process is provided in Figure&nbsp;1. A typical solution development environment has the following components and actors:</p>
+<p>To give you a better sense of the process and the logical components and actors, let’s examine the system a little deeper. In KMDS, the knowledge graph is the connective tissue that links the business problem, data lineage, model artifacts, version history, and decision rationale. An illustrative schematic of the process is provided in Figure&nbsp;1. A typical solution development environment has the following components and actors:</p>
 <section id="analytical-data-environment" class="level3">
 <h3 class="anchored" data-anchor-id="analytical-data-environment">Analytical Data Environment</h3>
 <ul>
 <li>Lakehouse paradigm: Analytics data lives in modern lakehouse platforms such as Databricks or Snowflake.</li>
 <li>Unified storage: This combines the scalability of a data lake with the transactional integrity of a data warehouse.</li>
 <li>Streamlined pipelines: Data scientists work directly with curated, high-performance data layers for model training.</li>
+<li>Knowledge graph linkage: The graph records data provenance, feature definitions, and upstream assumptions so the model can be interpreted in context.</li>
 </ul>
 </section>
 <section id="the-ml-development-expert" class="level3">
@@ -86,6 +85,7 @@
 <li>Expert practitioners: Designed for mid-level to senior data scientists.</li>
 <li>Strategic mapping: Users translate complex business problems into structured machine learning tasks.</li>
 <li>Technical execution: Users independently drive data augmentation, feature engineering, and iterative model refinement to achieve business goals.</li>
+<li>Decision traceability: The graph records which hypotheses were tested, which trade-offs were accepted, and why a particular model version was chosen.</li>
 </ul>
 </section>
 <section id="version-control-system" class="level3">
@@ -94,6 +94,7 @@
 <li>Git-centric workflow: Git is the single source of truth for the project.</li>
 <li>Artifact tracking: All code, configuration files, and documentation artifacts are version-controlled.</li>
 <li>Collaborative safety: This supports reproducible workflows, transparent peer review, and smooth CI/CD integration.</li>
+<li>Knowledge capture: Pull requests, notebooks, and design notes are connected to the graph so the project remains understandable long after the original author moves on.</li>
 </ul>
 </section>
 <section id="ai-coding-agents" class="level3">
@@ -102,6 +103,7 @@
 <li>Next-generation IDEs: Solutions are developed locally or in cloud environments using VS Code.</li>
 <li>Coding agents: Data scientists use AI agents, especially GitHub Copilot, to accelerate development.</li>
 <li>Efficiency gains: AI helps with boilerplate code, routine debugging, and rapid prototyping of pipeline components.</li>
+<li>Traceable outputs: Agent-generated code, notebooks, tests, and summaries are linked back to the business intent and the model lifecycle in the graph.</li>
 </ul>
 </section>
 <section id="production-deployment-environment" class="level3">
@@ -110,6 +112,7 @@
 <li>Standardized units: The target delivery artifact is a self-contained Docker container.</li>
 <li>Clear ownership: The KMDS lifecycle ends at containerization, isolating the model, dependencies, and inference code in an immutable image.</li>
 <li>Infrastructure-agnostic: Because the handoff occurs at the container level, the final artifact remains compatible with any downstream orchestration platform, whether a single cloud VM, a managed Kubernetes cluster, or a serverless runtime.</li>
+<li>Operational memory: The graph captures deployment assumptions, monitoring thresholds, and retraining triggers so the model can be maintained without reconstructing the original context from scratch.</li>
 </ul>
 <div id="fig-kmds-assembly" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -125,15 +128,14 @@ Figure&nbsp;1: KMDS product assembly overview
 </section>
 <section id="implications-for-enterprise-data-science-teams" class="level2">
 <h2 class="anchored" data-anchor-id="implications-for-enterprise-data-science-teams">Implications for Enterprise Data Science Teams</h2>
-<p>Clearly, LLMs have changed the productivity and velocity of data science teams in many ways. It is important to put this in perspective relative to the actual challenges that enterprise data science teams face. While LLMs can accelerate coding and documentation, they do not replace the need for human expertise in problem framing, data understanding, and model interpretation. Where does this impact enterprise data science teams? Here are some practical implications:</p>
+<p>Clearly, LLMs have changed the productivity and velocity of data science teams in many ways. It is important to put this in perspective relative to the actual challenges enterprise teams face. The crucial shift is not that LLMs replace judgment; it is that they change where the team spends its time. In a KMDS environment, the practical implications are these:</p>
 <ol type="1">
-<li><strong>Enhanced Productivity</strong>: LLMs can significantly reduce the time spent understanding and summarizing business requirements for technical teams — for example, the ML expert who needs to understand the actual challenges the business hopes to solve with this use case and map them to a canonical ML task. This allows data science teams to focus more on model development and less on administrative tasks. Conversely, it enables a curious and engaged business team to understand the technical challenges and trade-offs more efficiently. It helps business teams interested in understanding the technical approach to a use case implementation understand the challenges and trade-offs. This implies that collaboration between business and technical teams can be more efficient and productive.</li>
-<li><strong>Mapping Business Problems to a Machine Learning Problem</strong>: A technical team will progressively try to map a business problem to a canonical ML task. This is often a non-trivial exercise and needs to be driven by actual data analysis. It is important to reconcile the actual data with the business problem when this mapping is done. Interpreting the data and being deliberate about the mapping is important. Blindly using the results of an LLM to map a business problem to a canonical ML task will lead to poor results. LLMs can help with the research and analysis, but the set of tasks to consider and the ideas to explore should be driven by the actual data and the business problem.</li>
-<li><strong>Model Interpretation and Validation</strong>: Assuming the previous step—mapping a business problem to a canonical ML task—has been done well and a model has been built with due consideration given to interpretability, LLMs can help with model interpretation and validation. This is especially true when the model is complex and the business team needs to understand the model’s behavior and performance. It is quite common for machine learning teams to consider opaque models and not have the skills to use explainable AI techniques to correctly explain the model’s behavior to business stakeholders. The problem here is that business stakeholders inevitably need to understand the model’s behavior and performance for planning and decision-making. Baking interpretability into the model development process can save the team a lot of time and effort in the long run. It is harder and takes more skill and feature engineering effort, but it is worth it.</li>
-<li><strong>Model Maintenance and Monitoring</strong>: Once a model is deployed, it needs to be monitored for performance degradation and retrained as necessary. What should we monitor? How often do changes occur for this use case? How do we plan the batch updates and retraining? What type of modeling approach will give us the best mix of stability and performance? These are all decision points that require human expertise and judgment. You need to be deliberate about the choices you make here. LLMs can help with the analysis and research, but they cannot replace human judgment in these areas.</li>
+<li><strong>Human-agent pairing becomes the default operating model</strong>: For a new use case, the best results come from pairing a subject-matter expert with a coding agent. The agent can accelerate code generation, documentation, and prototyping, while the human confirms assumptions, handles edge cases, and keeps the work aligned with business reality. This is a practical productivity gain, not a replacement for the data scientist.</li>
+<li><strong>Business-to-ML mapping remains the hard part</strong>: The team still has to translate a business question into a tractable machine learning task and validate that mapping against actual data. This is where LLMs are most helpful as assistants, not decision-makers. A model can be accelerated by automation, but the structure of the problem must still be driven by data and business context.</li>
+<li><strong>Interpretability and monitoring are team responsibilities</strong>: Once a model is built, the work shifts to explaining what it is doing, why it changed, and whether the operating conditions still match the assumptions under which it was trained. That requires a disciplined process for validation, monitoring, and retraining. LLMs can help summarize diagnostics and propose checks, but they do not replace human judgment about what matters.</li>
+<li><strong>The likely change is not fewer data scientists, but a different mix of work</strong>: In a high-volume AI-enabled environment, the value of a data science team is not just coding; it is in deciding what problem to solve, what constitutes a good solution, and how to maintain trust as conditions change. The most likely outcome is not a collapse in data science headcount, but a shift toward more strategic, judgment-heavy work and fewer routine tasks.</li>
 </ol>
-<p>It is worth discussing the enhanced productivity point in more detail. There is a lot of hype about LLMs and their ability to accelerate data science workflows. While they can help with coding and documentation, they cannot replace the need for human expertise in points 2, 3, and 4 above. Implementation after human decision-making in points 2, 3, and 4 is where LLMs can help accelerate the workflow. But the actual decision-making in these areas requires human expertise and judgment. Humans think at the speed they biologically can, but they are capable of making better decisions than LLMs in these areas. Accepting the speed of human decision-making is the cost teams must accept.</p>
-<p>The productivity gains from implementation are bound to lead to the question: do we need fewer data scientists? That is a question business leaders will need to answer based on how they plan to use AI in their organization. If they are not going to increase the number of use cases, then using consultants or contractors to get the project through the initial deployment phase may be a good option. If they are going to increase the number of use cases, then they will need to spread their data science team across more use cases. Hopefully, businesses do see the value of AI and its ability to increase their footprint of software-enabled services. Time will tell.</p>
+<p>This does not mean the discipline becomes less valuable. If anything, it becomes more valuable in the places where judgment matters most. The question is less whether AI reduces the need for data scientists and more whether a firm can use AI to expand the number of business problems it can support responsibly. The more likely answer is that firms do expand their footprint, but they do so by leaning harder on the parts of the workflow where experienced data scientists still add the most value.</p>
 </section>
 </div>
 
@@ -155,7 +157,7 @@ Practical Implications.”</span> August 18. <a href="https://rajivsam.github.io
   <category>code</category>
   <category>analysis</category>
   <guid>https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/</guid>
-  <pubDate>Tue, 18 Aug 2026 08:18:06 GMT</pubDate>
+  <pubDate>Tue, 18 Aug 2026 08:29:30 GMT</pubDate>
   <media:content url="https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/kmds_human_in_the_loop.png" medium="image" type="image/png" height="96" width="144"/>
 </item>
 <item>
