@@ -112,5 +112,7 @@ Clearly, LLMs have changed the productivity and velocity of data science teams i
 
 This does not mean the discipline becomes less valuable. If anything, it becomes more valuable in the places where judgment matters most. The question is less whether AI reduces the need for data scientists and more whether a firm can use AI to expand the number of business problems it can support responsibly. The more likely answer is that firms do expand their footprint, but they do so by leaning harder on the parts of the workflow where experienced data scientists still add the most value.
 
+For a discussion of the KMDS workflow and its components, see [KMDS Internals Explained](https://rajivsam.github.io/r2ds-blog/posts/kmds_update_example/).
+
 :::
 

@@ -10,7 +10,7 @@
 <atom:link href="https://rajivsam.github.io/r2ds-blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.35</generator>
-<lastBuildDate>Tue, 18 Aug 2026 08:29:30 GMT</lastBuildDate>
+<lastBuildDate>Thu, 20 Aug 2026 04:40:19 GMT</lastBuildDate>
 <item>
   <title>KMDS Update: Context, Changes and Practical Implications</title>
   <dc:creator>Rajiv Sambasivan</dc:creator>
@@ -136,6 +136,7 @@ Figure&nbsp;1: KMDS product assembly overview
 <li><strong>The likely change is not fewer data scientists, but a different mix of work</strong>: In a high-volume AI-enabled environment, the value of a data science team is not just coding; it is in deciding what problem to solve, what constitutes a good solution, and how to maintain trust as conditions change. The most likely outcome is not a collapse in data science headcount, but a shift toward more strategic, judgment-heavy work and fewer routine tasks.</li>
 </ol>
 <p>This does not mean the discipline becomes less valuable. If anything, it becomes more valuable in the places where judgment matters most. The question is less whether AI reduces the need for data scientists and more whether a firm can use AI to expand the number of business problems it can support responsibly. The more likely answer is that firms do expand their footprint, but they do so by leaning harder on the parts of the workflow where experienced data scientists still add the most value.</p>
+<p>For a discussion of the KMDS workflow and its components, see <a href="https://rajivsam.github.io/r2ds-blog/posts/kmds_update_example/">KMDS Internals Explained</a>.</p>
 </section>
 </div>
 
@@ -145,20 +146,261 @@ Figure&nbsp;1: KMDS product assembly overview
   author = {Sambasivan, Rajiv},
   title = {KMDS {Update:} {Context,} {Changes} and {Practical}
     {Implications}},
-  date = {2026-08-18},
+  date = {2026-08-20},
   url = {https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas">
 Sambasivan, Rajiv. 2026. <span>“KMDS Update: Context, Changes and
-Practical Implications.”</span> August 18. <a href="https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/">https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/</a>.
+Practical Implications.”</span> August 20. <a href="https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/">https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/</a>.
 </div></div></section></div> ]]></description>
   <category>news</category>
   <category>code</category>
   <category>analysis</category>
   <guid>https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/</guid>
-  <pubDate>Tue, 18 Aug 2026 08:29:30 GMT</pubDate>
+  <pubDate>Thu, 20 Aug 2026 04:40:19 GMT</pubDate>
   <media:content url="https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/kmds_human_in_the_loop.png" medium="image" type="image/png" height="96" width="144"/>
+</item>
+<item>
+  <title>KMDS Internals Explained</title>
+  <dc:creator>Rajiv Sambasivan</dc:creator>
+  <link>https://rajivsam.github.io/r2ds-blog/posts/kmds_update_example/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="kmds-featurization-and-modeling-workflow" class="level1">
+<h1>KMDS Featurization and Modeling Workflow</h1>
+<p>KMDS is easiest to understand as a connected workflow built from a few focused components: <code>dd-parser-cleaner</code>, <code>kmds-featurization</code>, <code>kmds-modeling</code>, and <code>kmds-data-helper</code>. In this post, we describe how each component contributes to the end-to-end ML lifecycle for a use case. The key idea is simple: the workflow starts by bootstrapping the dataset, sets up the project and configuration, then builds modular feature-engineering and modeling stages. After the model is trained, <code>kmds-data-helper</code> materializes the project into a KMDS knowledge graph that can be queried and updated in the KMDS UI, including through natural-language interactions.</p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>The <code>dd-parser-cleaner</code> component is the entry point for the workflow. It includes the dataset bootstrap utilities (<code>dataset-bootstrap</code>, <code>init-workspace</code>, and <code>bootstrap-config</code>) that inspect the raw tabular data, infer the dataset type, and initialize the project metadata and configuration needed downstream. Once that foundation is in place, <code>kmds-featurization</code> defines the feature pipeline, <code>kmds-modeling</code> trains and evaluates the learning task, and <code>kmds-data-helper</code> converts the project into a KMDS knowledge graph. Together, these components produce a complete ML solution for a given use case.</p>
+<div id="fig-dataset-classification" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dataset-classification-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://rajivsam.github.io/r2ds-blog/posts/kmds_update_example/dataset_classification.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dataset-classification-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Dataset type determination
+</figcaption>
+</figure>
+</div>
+<p>The dataset type determination is shown in Figure Figure&nbsp;1.</p>
+</section>
+<section id="core-idea" class="level2">
+<h2 class="anchored" data-anchor-id="core-idea">Core Idea</h2>
+<p><code>dd-parser-cleaner</code> does more than display raw tables; it bootstraps the dataset and establishes the project context for the rest of the workflow. The metadata and project configuration produced here tell us about data types, entity roles, missing values, and the project structure needed to support downstream modeling decisions. The resolved dataset type then guides the learning task and the design of the modular pipeline.</p>
+<ul>
+<li><strong>Dataset Bootstrapping</strong> → Use <code>dataset-bootstrap</code> in <code>dd-parser-cleaner</code> to inspect the raw data and classify the dataset.</li>
+<li><strong>Workspace Initialization</strong> → Use <code>init-workspace</code> and <code>bootstrap-config</code> to initialize project metadata and configuration.</li>
+<li><strong>Featurization Pipeline</strong> → Sequential stages that transform raw data into model-ready features via <code>kmds-featurization</code>.</li>
+<li><strong>Modeling Pipeline</strong> → Sequential stages that train, evaluate, and prepare models through <code>kmds-modeling</code>.</li>
+<li><strong>Knowledge Graph Generation</strong> → Use <code>kmds-data-helper</code> to generate a KMDS knowledge graph for the project.</li>
+</ul>
+<p>Each pipeline is a <strong>linear chain of stages</strong>, and both follow best practices defined in the <strong>advisor modules</strong>. The important connection is that the output of one stage becomes the input to the next: dataset metadata → workspace setup → featurization → modeling → knowledge graph.</p>
+<div id="fig-kmds-featurization" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-kmds-featurization-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://rajivsam.github.io/r2ds-blog/posts/kmds_update_example/kmds_featurization.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kmds-featurization-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: KMDS featurization workflow
+</figcaption>
+</figure>
+</div>
+<p>A schematic illustrating how <code>kmds-featurization</code> builds on the metadata generated by <code>dd-parser-cleaner</code> and the problem definition is shown in Figure Figure&nbsp;2.</p>
+<p>The data scientist uses the featurization metadata and the modeling plan for the problem to develop the models, as shown in the schematic in Figure Figure&nbsp;3.</p>
+<div id="fig-kmds-modeling" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-kmds-modeling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://rajivsam.github.io/r2ds-blog/posts/kmds_update_example/kmds_modeling.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kmds-modeling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: KMDS modeling workflow
+</figcaption>
+</figure>
+</div>
+<p>This makes the workflow feel consistent: <code>dd-parser-cleaner</code> creates the project foundation, <code>kmds-featurization</code> turns the data into usable features, <code>kmds-modeling</code> learns from those features, and <code>kmds-data-helper</code> records the project state as a KMDS knowledge graph that can be explored in the KMDS UI.</p>
+</section>
+<section id="introducing-new-models" class="level2">
+<h2 class="anchored" data-anchor-id="introducing-new-models">Introducing New Models</h2>
+<p>To add a new model type (for example, regression): 1. Create a <strong>featurization pipeline</strong> for regression. 2. Add regression best practices to the <strong>featurization advisor</strong>. 3. Add a <strong>modeling pipeline</strong> for regression. 4. Extend the <strong>modeling advisor</strong> with regression guidelines.</p>
+</section>
+<section id="typical-kmds-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="typical-kmds-workflow">Typical KMDS Workflow</h2>
+<ol type="1">
+<li><strong>Dataset Resolution</strong> → Use <code>dataset-bootstrap</code> in <code>dd-parser-cleaner</code> to identify the dataset type.</li>
+<li><strong>Workspace Initialization</strong> → Run <code>init-workspace</code> and <code>bootstrap-config</code> to set up project metadata and configuration.</li>
+<li><strong>Feature Engineering</strong> → Use <code>kmds-featurization</code> to define the feature pipeline for the use case.</li>
+<li><strong>Model Training &amp; Evaluation</strong> → Use <code>kmds-modeling</code> to train, validate, and score the model.</li>
+<li><strong>Knowledge Graph Creation</strong> → Run <code>kmds-data-helper</code> to generate a KMDS knowledge graph from the project workspace.</li>
+<li><strong>KMDS UI Interaction</strong> → Query and update the knowledge graph in the KMDS UI; natural-language querying is supported.</li>
+</ol>
+<p>The interaction between the KMDS components is shown in the schematic in Figure Figure&nbsp;4.</p>
+<div id="fig-parser-cleaner-feat-modeling-interaction" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-parser-cleaner-feat-modeling-interaction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://rajivsam.github.io/r2ds-blog/posts/kmds_update_example/parser_cleaner_feat_modeling_interaction.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-parser-cleaner-feat-modeling-interaction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: KMDS component interaction
+</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="example-sba-loan-classification-project" class="level2">
+<h2 class="anchored" data-anchor-id="example-sba-loan-classification-project">Example: SBA Loan Classification Project</h2>
+<section id="problem-setup" class="level3">
+<h3 class="anchored" data-anchor-id="problem-setup">Problem Setup</h3>
+<p>The SBA loan dataset represents an <strong>imbalanced classification problem</strong>.<br>
+The data scientist’s plan to solve it unfolds as follows:</p>
+<ol type="1">
+<li><strong>Active Loan Isolation</strong> → Identify loans without a determined status (active loans).<br>
+</li>
+<li><strong>Dataset Split</strong> → From loans with clear labels (paid in full or charged off), create training, validation, and test sets.<br>
+</li>
+<li><strong>Feature Engineering Workflow</strong> →
+<ul>
+<li>Engineer features on the training set.<br>
+</li>
+<li>Validate and tune on the validation set.<br>
+</li>
+<li>Estimate performance on the test set.</li>
+</ul></li>
+</ol>
+</section>
+<section id="featurization-steps" class="level3">
+<h3 class="anchored" data-anchor-id="featurization-steps">Featurization Steps</h3>
+<ol start="4" type="1">
+<li><strong>Similarity Feature</strong> →
+<ul>
+<li>Cluster distressed (charged-off) loans.<br>
+</li>
+<li>Compute distance to nearest <em>paid-in-full</em> and <em>charged-off</em> cluster centers.<br>
+</li>
+<li>Build a featurization pipeline for this computation.</li>
+</ul></li>
+<li><strong>Geocoding Feature</strong> →
+<ul>
+<li>Convert borrower addresses to latitude and longitude.<br>
+</li>
+<li>Implement a pipeline stage for geocoding.</li>
+</ul></li>
+<li><strong>Categorical Encoding</strong> →
+<ul>
+<li>Apply <strong>target encoding</strong> to categorical attributes.<br>
+</li>
+<li>Ensure only levels with sufficient support are encoded; low-support levels are grouped separately.<br>
+</li>
+<li>Merge clustering, geocoding, and encoded features into a unified pipeline.</li>
+</ul></li>
+<li><strong>Advisor Recommendations</strong> →
+<ul>
+<li>Use the <strong>featurization advisor</strong> to review best practices for imbalanced tabular classification.<br>
+</li>
+<li>Optionally augment or modify the knowledge base for this problem type.</li>
+</ul></li>
+<li><strong>Featurization Complete</strong> →
+<ul>
+<li>Dataset is now ready for modeling.</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+<section id="modeling-steps" class="level3">
+<h3 class="anchored" data-anchor-id="modeling-steps">Modeling Steps</h3>
+<ol start="9" type="1">
+<li><strong>Model Choice</strong> →
+<ul>
+<li>Consider ensemble tree-based solutions:
+<ol type="1">
+<li>Gradient Boosted Trees<br>
+</li>
+<li>Random Forest</li>
+</ol></li>
+</ul></li>
+<li><strong>Validation &amp; Tuning</strong> →
+<ul>
+<li>Tune hyperparameters (number of trees, learning rate, etc.) on the validation set.<br>
+</li>
+<li>Select the model with best validation performance for final scoring.</li>
+</ul></li>
+<li><strong>Scoring Active Loans</strong> →
+<ul>
+<li>Use the best model to score active loans.<br>
+</li>
+<li>Apply a threshold tuned on the ROC curve (validation set) to handle imbalance.</li>
+</ul></li>
+<li><strong>Modeling Advisor</strong> →
+<ul>
+<li>Consult the <strong>modeling advisor</strong> for recommendations on imbalanced classification.<br>
+</li>
+<li>Implementation decisions remain at the data scientist’s discretion.</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+<section id="project-finalization" class="level3">
+<h3 class="anchored" data-anchor-id="project-finalization">Project Finalization</h3>
+<ol start="13" type="1">
+<li><strong>Knowledge Graph Generation</strong> →
+<ul>
+<li>Run <code>kmds-data-helper</code> to generate a KMDS knowledge graph from the project workspace.</li>
+</ul></li>
+<li><strong>Version Control</strong> →
+<ul>
+<li>Check in the project workspace as a Git repository.</li>
+</ul></li>
+<li><strong>KMDS UI Access</strong> →
+<ul>
+<li>Team members and stakeholders can query and update the project’s knowledge graph in the KMDS UI.<br>
+</li>
+<li>Natural language queries are supported — business users can explore the results without needing deep schema knowledge.</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="key-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li>Dataset type resolution drives modeling strategy.<br>
+</li>
+<li>The <code>dd-parser-cleaner</code> utilities bootstrap the dataset and establish the project foundation.<br>
+</li>
+<li><code>kmds-featurization</code> and <code>kmds-modeling</code> provide modular, sequential stages for feature development and model training.<br>
+</li>
+<li><code>kmds-data-helper</code> converts the project into a KMDS knowledge graph.<br>
+</li>
+<li>The KMDS UI can query and update that graph, including through natural-language interactions.<br>
+</li>
+<li>KMDS integrates project metadata, feature engineering, modeling, and knowledge graph generation into a unified workflow for building ML solutions. ```</li>
+</ul>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
+  author = {Sambasivan, Rajiv},
+  title = {KMDS {Internals} {Explained}},
+  date = {2026-08-20},
+  url = {https://rajivsam.github.io/r2ds-blog/posts/kmds_update_example/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas">
+Sambasivan, Rajiv. 2026. <span>“KMDS Internals Explained.”</span> August
+20. <a href="https://rajivsam.github.io/r2ds-blog/posts/kmds_update_example/">https://rajivsam.github.io/r2ds-blog/posts/kmds_update_example/</a>.
+</div></div></section></div> ]]></description>
+  <category>news</category>
+  <category>code</category>
+  <category>analysis</category>
+  <guid>https://rajivsam.github.io/r2ds-blog/posts/kmds_update_example/</guid>
+  <pubDate>Thu, 20 Aug 2026 04:37:24 GMT</pubDate>
+  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/kmds_update_example/parser_cleaner_feat_modeling_interaction.png" medium="image" type="image/png" height="96" width="144"/>
 </item>
 <item>
   <title>Exploring Time Series Signals</title>
@@ -714,7 +956,7 @@ Sambasivan, Rajiv. 2026. <span>“Graph From Relations.”</span> July 25.
 <section id="upload-your-time-series-csv" class="level3">
 <h3 class="anchored" data-anchor-id="upload-your-time-series-csv">1. Upload your time series CSV</h3>
 <p>The data should be in long format, with a timestamp column and a value column. You get an initial assessment of the data and its structure through the following: - A meta-summary of the data: sampling frequency, dataset size, etc. To use this tool, your data needs to have a sampling frequency of one hour or higher. If your data has missing values, you need to impute them before uploading to the app. The app does not handle missing values at the moment. - A kernel density plot and a box plot to show you some sense of the concentration of values and the spread of values in the data. - A plot of the raw data to give you a sense of the structure in the data. This is a line plot with time on the x-axis and value on the y-axis. - A PACF and ACF plot to give you a sense of the autocorrelation in the data. The ACF should also show you the seasonality in the data if there is any.</p>
-<div class="caption-center-grid quarto-layout-panel" data-layout-ncol="2" style="column-gap: 1.5rem;">
+<div class="caption-center-grid quarto-layout-panel" style="column-gap: 1.5rem;" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
@@ -738,7 +980,7 @@ Sambasivan, Rajiv. 2026. <span>“Graph From Relations.”</span> July 25.
 <section id="decompose-the-signal-with-ssa" class="level3">
 <h3 class="anchored" data-anchor-id="decompose-the-signal-with-ssa">2. Decompose the signal with SSA</h3>
 <p>A decomposition of the data using SSA is done for you. This is based on a heuristic window selection. This should be reasonable for most datasets, but you can change the window size and see how the decomposition changes. You then pick the grouping of components for the decomposition. You do this by looking initially at the ACF plot, the eigenvector plots, and the explained variance plot. You apply the grouping and assess the quality of the decomposition by looking at the reconstructed components and the residuals. You can also look at the weighted correlation matrix to see how the components are correlated with each other. The grouping is important because it determines how the data is decomposed and what structure is captured in the various components. In data with strong structure (e.g.&nbsp;strong seasonality, strong trend, etc.), you can use the derivative idea to see where the signal changes. This is additional information that you get with this tool. If your data has weak structure (for example, if you upload white noise), this tool will indicate that it is not a good fit for your data.</p>
-<div class="caption-center-grid quarto-layout-panel" data-layout-ncol="2" style="column-gap: 1.5rem; row-gap: 1rem;">
+<div class="caption-center-grid quarto-layout-panel" style="column-gap: 1.5rem; row-gap: 1rem;" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
