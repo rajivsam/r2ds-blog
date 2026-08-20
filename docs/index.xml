@@ -10,157 +10,7 @@
 <atom:link href="https://rajivsam.github.io/r2ds-blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.35</generator>
-<lastBuildDate>Thu, 20 Aug 2026 04:40:19 GMT</lastBuildDate>
-<item>
-  <title>KMDS Update: Context, Changes and Practical Implications</title>
-  <dc:creator>Rajiv Sambasivan</dc:creator>
-  <link>https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<div style="text-align: justify">
-<p>This post is part of a series on how KMDS has evolved as LLMs and coding agents have become standard tools for software development. In this post, I discuss the operational context for KMDS, the changes that have been made to the system, and the practical implications for enterprise data science teams.</p>
-<section id="evolution-of-kmds" class="level3">
-<h3 class="anchored" data-anchor-id="evolution-of-kmds">Evolution of KMDS</h3>
-<p>KMDS integrates coding assistants directly into its workflow. Rather than functioning as a static knowledge graph, it becomes a living system in which:</p>
-<ol type="1">
-<li>Coding agents support each phase of ML use case development.</li>
-<li>Their outputs — datasets, features, models, and diagnostics — are assembled and coordinated as a workflow.</li>
-<li>The knowledge graph keeps the process documented, reusable, and interpretable in enterprise settings.</li>
-</ol>
-</section>
-<section id="making-it-concrete" class="level3">
-<h3 class="anchored" data-anchor-id="making-it-concrete">Making It Concrete</h3>
-<p>To make this tangible, we need a working model for developing ML models in an enterprise setting. Let’s start with three foundational questions:</p>
-<ol type="1">
-<li>How a use case is framed and deployed in a business or engineering environment.</li>
-<li>The role of AI automation versus human expertise in guiding decisions.</li>
-<li>The operating environment in which applications interact with other systems and embedded services.</li>
-</ol>
-<p>Once that foundation is clear, we can show how KMDS is applied in practice. A useful schematic is shown below.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/end_to_end_frame_work.png" class="img-fluid figure-img"></p>
-<figcaption>End-to-end framework</figcaption>
-</figure>
-</div>
-<p>The basic idea is simple: building and deploying a production model happens in phases. The first phase is the initial deployment of a model to solve a business problem. This is usually the most time-consuming and difficult phase because both the business and modeling teams are learning about the problem and its operational context. The second phase is the ongoing maintenance of the model, which is usually easier because the teams have already learned about the problem and its operational context.</p>
-<p>That initial phase usually looks like this:</p>
-<ol type="1">
-<li>The team first develops a clear understanding of the business problem.</li>
-<li>It then translates that problem into a machine learning task, working closely with the business team to understand what data matters and how it behaves in real operations. The business explains the operational patterns; the modeling team tests that understanding, probes gaps, and defines the mapping from business needs to a canonical ML task such as classification, clustering, or regression. With modern tools like TabFM and TabDPT, a reasonable baseline model can often be built quickly. That is important: a baseline is not the final solution, but a starting point. A strong data science team can usually identify the most relevant features quickly.</li>
-<li>The team then reviews the model’s results with business stakeholders, clarifies remaining gaps, and develops a shared vocabulary for interpreting the problem. Generative AI can help with both the modeling work and the communication of results.</li>
-</ol>
-<p>Once stakeholders agree on performance and interpretation, the model can be deployed. Generative AI can also help package it for production. But it is equally important to remember that the model was trained on data from a specific operational window. The team should verify that performance remains consistent with expectations and assess whether business conditions have changed. This matters especially when firms retrain models on fresh data even though the current version still performs well. In retail e-commerce, for example, retraining is often practical because it adapts the model to the current operating environment without requiring heavy human analysis.</p>
-<p>When operational procedures, planning constraints, or shifting business conditions require it, the team may adjust an existing model to a new data window. This is typically a different exercise from routine retraining because it incorporates the most recent operational period and any business changes stakeholders want to evaluate for the next model iteration. If the changes are incremental, this may not be too demanding. If a new feature or a different modeling approach is introduced, the effort can become substantial.</p>
-<p>A few observations matter here:</p>
-<ol type="1">
-<li>Human agency is required to decide what counts as a good solution and what ideas the solution should be built around.</li>
-<li>Human agency is required to explain why successive model versions differ. AutoML can generate predictions, but it cannot tell us why the model behaves as it does or how the business itself is evolving.</li>
-<li>Human agency is required to interpret the data holistically. Automation can surface patterns, compare cohorts, and summarize model diagnostics, but the final interpretation still depends on domain context, operational reality, and judgment.</li>
-</ol>
-<p>This is exactly the tension KMDS is designed to manage: combining expert human judgment with the strengths of generative AI.</p>
-<p>The batch deployment model is chosen deliberately. Online deployment is rarely worth the cost for most use cases because it offers little ROI relative to the expense. In cybersecurity, ad tech, or large-scale hyperscaler settings, real-time scoring may justify the investment. For most applications, the value of instant predictions is limited, and the cost of always-on infrastructure is not. Batch processing gives flexibility: hourly, daily, or weekly schedules can be tuned to balance freshness and operational simplicity.</p>
-<p>The practical view is that, for small and medium businesses, building a custom AI agent to automate an ML workflow is usually not worth it. Real-world enterprise data is messy, future requirements are uncertain, and edge cases can break fully automated systems. Despite the hype, a dedicated agent solution is often risky and low reward. A better first step is to pair a human expert with a coding agent. In a new deployment, that combination gives the best return: the AI can generate code quickly, while the human validates intermediate steps, handles messy data, and keeps the project moving safely. If the data and workflow remain stable over time, that work can then be delegated to an agent.</p>
-<p>The lifecycle above makes the design goal of KMDS clear: the system has to preserve not just the model artifact, but the reasoning, assumptions, and history behind it. The next section describes the operating environment that makes that traceability workable at scale.</p>
-</section>
-<section id="kmds-operating-environment" class="level2">
-<h2 class="anchored" data-anchor-id="kmds-operating-environment">KMDS Operating Environment</h2>
-<p>To give you a better sense of the process and the logical components and actors, let’s examine the system a little deeper. In KMDS, the knowledge graph is the connective tissue that links the business problem, data lineage, model artifacts, version history, and decision rationale. An illustrative schematic of the process is provided in Figure&nbsp;1. A typical solution development environment has the following components and actors:</p>
-<section id="analytical-data-environment" class="level3">
-<h3 class="anchored" data-anchor-id="analytical-data-environment">Analytical Data Environment</h3>
-<ul>
-<li>Lakehouse paradigm: Analytics data lives in modern lakehouse platforms such as Databricks or Snowflake.</li>
-<li>Unified storage: This combines the scalability of a data lake with the transactional integrity of a data warehouse.</li>
-<li>Streamlined pipelines: Data scientists work directly with curated, high-performance data layers for model training.</li>
-<li>Knowledge graph linkage: The graph records data provenance, feature definitions, and upstream assumptions so the model can be interpreted in context.</li>
-</ul>
-</section>
-<section id="the-ml-development-expert" class="level3">
-<h3 class="anchored" data-anchor-id="the-ml-development-expert">The ML Development Expert</h3>
-<ul>
-<li>Expert practitioners: Designed for mid-level to senior data scientists.</li>
-<li>Strategic mapping: Users translate complex business problems into structured machine learning tasks.</li>
-<li>Technical execution: Users independently drive data augmentation, feature engineering, and iterative model refinement to achieve business goals.</li>
-<li>Decision traceability: The graph records which hypotheses were tested, which trade-offs were accepted, and why a particular model version was chosen.</li>
-</ul>
-</section>
-<section id="version-control-system" class="level3">
-<h3 class="anchored" data-anchor-id="version-control-system">Version Control System</h3>
-<ul>
-<li>Git-centric workflow: Git is the single source of truth for the project.</li>
-<li>Artifact tracking: All code, configuration files, and documentation artifacts are version-controlled.</li>
-<li>Collaborative safety: This supports reproducible workflows, transparent peer review, and smooth CI/CD integration.</li>
-<li>Knowledge capture: Pull requests, notebooks, and design notes are connected to the graph so the project remains understandable long after the original author moves on.</li>
-</ul>
-</section>
-<section id="ai-coding-agents" class="level3">
-<h3 class="anchored" data-anchor-id="ai-coding-agents">AI-Coding Agents</h3>
-<ul>
-<li>Next-generation IDEs: Solutions are developed locally or in cloud environments using VS Code.</li>
-<li>Coding agents: Data scientists use AI agents, especially GitHub Copilot, to accelerate development.</li>
-<li>Efficiency gains: AI helps with boilerplate code, routine debugging, and rapid prototyping of pipeline components.</li>
-<li>Traceable outputs: Agent-generated code, notebooks, tests, and summaries are linked back to the business intent and the model lifecycle in the graph.</li>
-</ul>
-</section>
-<section id="production-deployment-environment" class="level3">
-<h3 class="anchored" data-anchor-id="production-deployment-environment">Production Deployment Environment</h3>
-<ul>
-<li>Standardized units: The target delivery artifact is a self-contained Docker container.</li>
-<li>Clear ownership: The KMDS lifecycle ends at containerization, isolating the model, dependencies, and inference code in an immutable image.</li>
-<li>Infrastructure-agnostic: Because the handoff occurs at the container level, the final artifact remains compatible with any downstream orchestration platform, whether a single cloud VM, a managed Kubernetes cluster, or a serverless runtime.</li>
-<li>Operational memory: The graph captures deployment assumptions, monitoring thresholds, and retraining triggers so the model can be maintained without reconstructing the original context from scratch.</li>
-</ul>
-<div id="fig-kmds-assembly" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-kmds-assembly-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/ds_product_assembly_kmds.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kmds-assembly-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: KMDS product assembly overview
-</figcaption>
-</figure>
-</div>
-</section>
-</section>
-<section id="implications-for-enterprise-data-science-teams" class="level2">
-<h2 class="anchored" data-anchor-id="implications-for-enterprise-data-science-teams">Implications for Enterprise Data Science Teams</h2>
-<p>Clearly, LLMs have changed the productivity and velocity of data science teams in many ways. It is important to put this in perspective relative to the actual challenges enterprise teams face. The crucial shift is not that LLMs replace judgment; it is that they change where the team spends its time. In a KMDS environment, the practical implications are these:</p>
-<ol type="1">
-<li><strong>Human-agent pairing becomes the default operating model</strong>: For a new use case, the best results come from pairing a subject-matter expert with a coding agent. The agent can accelerate code generation, documentation, and prototyping, while the human confirms assumptions, handles edge cases, and keeps the work aligned with business reality. This is a practical productivity gain, not a replacement for the data scientist.</li>
-<li><strong>Business-to-ML mapping remains the hard part</strong>: The team still has to translate a business question into a tractable machine learning task and validate that mapping against actual data. This is where LLMs are most helpful as assistants, not decision-makers. A model can be accelerated by automation, but the structure of the problem must still be driven by data and business context.</li>
-<li><strong>Interpretability and monitoring are team responsibilities</strong>: Once a model is built, the work shifts to explaining what it is doing, why it changed, and whether the operating conditions still match the assumptions under which it was trained. That requires a disciplined process for validation, monitoring, and retraining. LLMs can help summarize diagnostics and propose checks, but they do not replace human judgment about what matters.</li>
-<li><strong>The likely change is not fewer data scientists, but a different mix of work</strong>: In a high-volume AI-enabled environment, the value of a data science team is not just coding; it is in deciding what problem to solve, what constitutes a good solution, and how to maintain trust as conditions change. The most likely outcome is not a collapse in data science headcount, but a shift toward more strategic, judgment-heavy work and fewer routine tasks.</li>
-</ol>
-<p>This does not mean the discipline becomes less valuable. If anything, it becomes more valuable in the places where judgment matters most. The question is less whether AI reduces the need for data scientists and more whether a firm can use AI to expand the number of business problems it can support responsibly. The more likely answer is that firms do expand their footprint, but they do so by leaning harder on the parts of the workflow where experienced data scientists still add the most value.</p>
-<p>For a discussion of the KMDS workflow and its components, see <a href="https://rajivsam.github.io/r2ds-blog/posts/kmds_update_example/">KMDS Internals Explained</a>.</p>
-</section>
-</div>
-
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
-  author = {Sambasivan, Rajiv},
-  title = {KMDS {Update:} {Context,} {Changes} and {Practical}
-    {Implications}},
-  date = {2026-08-20},
-  url = {https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas">
-Sambasivan, Rajiv. 2026. <span>“KMDS Update: Context, Changes and
-Practical Implications.”</span> August 20. <a href="https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/">https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/</a>.
-</div></div></section></div> ]]></description>
-  <category>news</category>
-  <category>code</category>
-  <category>analysis</category>
-  <guid>https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/</guid>
-  <pubDate>Thu, 20 Aug 2026 04:40:19 GMT</pubDate>
-  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/kmds_human_in_the_loop.png" medium="image" type="image/png" height="96" width="144"/>
-</item>
+<lastBuildDate>Thu, 20 Aug 2026 05:14:25 GMT</lastBuildDate>
 <item>
   <title>KMDS Internals Explained</title>
   <dc:creator>Rajiv Sambasivan</dc:creator>
@@ -226,17 +76,23 @@ Figure&nbsp;3: KMDS modeling workflow
 </section>
 <section id="introducing-new-models" class="level2">
 <h2 class="anchored" data-anchor-id="introducing-new-models">Introducing New Models</h2>
-<p>To add a new model type (for example, regression): 1. Create a <strong>featurization pipeline</strong> for regression. 2. Add regression best practices to the <strong>featurization advisor</strong>. 3. Add a <strong>modeling pipeline</strong> for regression. 4. Extend the <strong>modeling advisor</strong> with regression guidelines.</p>
+<p>To add a new model type (for example, regression):</p>
+<ol type="1">
+<li><p>Create a <strong>featurization pipeline</strong> for regression.</p></li>
+<li><p>Add regression best practices to the <strong>featurization advisor</strong>.</p></li>
+<li><p>Add a <strong>modeling pipeline</strong> for regression.</p></li>
+<li><p>Extend the <strong>modeling advisor</strong> with regression guidelines.</p></li>
+</ol>
 </section>
 <section id="typical-kmds-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="typical-kmds-workflow">Typical KMDS Workflow</h2>
 <ol type="1">
-<li><strong>Dataset Resolution</strong> → Use <code>dataset-bootstrap</code> in <code>dd-parser-cleaner</code> to identify the dataset type.</li>
-<li><strong>Workspace Initialization</strong> → Run <code>init-workspace</code> and <code>bootstrap-config</code> to set up project metadata and configuration.</li>
-<li><strong>Feature Engineering</strong> → Use <code>kmds-featurization</code> to define the feature pipeline for the use case.</li>
-<li><strong>Model Training &amp; Evaluation</strong> → Use <code>kmds-modeling</code> to train, validate, and score the model.</li>
-<li><strong>Knowledge Graph Creation</strong> → Run <code>kmds-data-helper</code> to generate a KMDS knowledge graph from the project workspace.</li>
-<li><strong>KMDS UI Interaction</strong> → Query and update the knowledge graph in the KMDS UI; natural-language querying is supported.</li>
+<li><p><strong>Dataset Resolution</strong> → Use <code>dataset-bootstrap</code> in <code>dd-parser-cleaner</code> to identify the dataset type.</p></li>
+<li><p><strong>Workspace Initialization</strong> → Run <code>init-workspace</code> and <code>bootstrap-config</code> to set up project metadata and configuration.</p></li>
+<li><p><strong>Feature Engineering</strong> → Use <code>kmds-featurization</code> to define the feature pipeline for the use case.</p></li>
+<li><p><strong>Model Training &amp; Evaluation</strong> → Use <code>kmds-modeling</code> to train, validate, and score the model.</p></li>
+<li><p><strong>Knowledge Graph Creation</strong> → Run <code>kmds-data-helper</code> to generate a KMDS knowledge graph from the project workspace.</p></li>
+<li><p><strong>KMDS UI Interaction</strong> → Query and update the knowledge graph in the KMDS UI; natural-language querying is supported.</p></li>
 </ol>
 <p>The interaction between the KMDS components is shown in the schematic in Figure Figure&nbsp;4.</p>
 <div id="fig-parser-cleaner-feat-modeling-interaction" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -399,8 +255,158 @@ Sambasivan, Rajiv. 2026. <span>“KMDS Internals Explained.”</span> August
   <category>code</category>
   <category>analysis</category>
   <guid>https://rajivsam.github.io/r2ds-blog/posts/kmds_update_example/</guid>
-  <pubDate>Thu, 20 Aug 2026 04:37:24 GMT</pubDate>
+  <pubDate>Thu, 20 Aug 2026 05:14:25 GMT</pubDate>
   <media:content url="https://rajivsam.github.io/r2ds-blog/posts/kmds_update_example/parser_cleaner_feat_modeling_interaction.png" medium="image" type="image/png" height="96" width="144"/>
+</item>
+<item>
+  <title>KMDS Update: Context, Changes and Practical Implications</title>
+  <dc:creator>Rajiv Sambasivan</dc:creator>
+  <link>https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<div style="text-align: justify">
+<p>This post is part of a series on how KMDS has evolved as LLMs and coding agents have become standard tools for software development. In this post, I discuss the operational context for KMDS, the changes that have been made to the system, and the practical implications for enterprise data science teams.</p>
+<section id="evolution-of-kmds" class="level3">
+<h3 class="anchored" data-anchor-id="evolution-of-kmds">Evolution of KMDS</h3>
+<p>KMDS integrates coding assistants directly into its workflow. Rather than functioning as a static knowledge graph, it becomes a living system in which:</p>
+<ol type="1">
+<li>Coding agents support each phase of ML use case development.</li>
+<li>Their outputs — datasets, features, models, and diagnostics — are assembled and coordinated as a workflow.</li>
+<li>The knowledge graph keeps the process documented, reusable, and interpretable in enterprise settings.</li>
+</ol>
+</section>
+<section id="making-it-concrete" class="level3">
+<h3 class="anchored" data-anchor-id="making-it-concrete">Making It Concrete</h3>
+<p>To make this tangible, we need a working model for developing ML models in an enterprise setting. Let’s start with three foundational questions:</p>
+<ol type="1">
+<li>How a use case is framed and deployed in a business or engineering environment.</li>
+<li>The role of AI automation versus human expertise in guiding decisions.</li>
+<li>The operating environment in which applications interact with other systems and embedded services.</li>
+</ol>
+<p>Once that foundation is clear, we can show how KMDS is applied in practice. A useful schematic is shown below.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/end_to_end_frame_work.png" class="img-fluid figure-img"></p>
+<figcaption>End-to-end framework</figcaption>
+</figure>
+</div>
+<p>The basic idea is simple: building and deploying a production model happens in phases. The first phase is the initial deployment of a model to solve a business problem. This is usually the most time-consuming and difficult phase because both the business and modeling teams are learning about the problem and its operational context. The second phase is the ongoing maintenance of the model, which is usually easier because the teams have already learned about the problem and its operational context.</p>
+<p>That initial phase usually looks like this:</p>
+<ol type="1">
+<li>The team first develops a clear understanding of the business problem.</li>
+<li>It then translates that problem into a machine learning task, working closely with the business team to understand what data matters and how it behaves in real operations. The business explains the operational patterns; the modeling team tests that understanding, probes gaps, and defines the mapping from business needs to a canonical ML task such as classification, clustering, or regression. With modern tools like TabFM and TabDPT, a reasonable baseline model can often be built quickly. That is important: a baseline is not the final solution, but a starting point. A strong data science team can usually identify the most relevant features quickly.</li>
+<li>The team then reviews the model’s results with business stakeholders, clarifies remaining gaps, and develops a shared vocabulary for interpreting the problem. Generative AI can help with both the modeling work and the communication of results.</li>
+</ol>
+<p>Once stakeholders agree on performance and interpretation, the model can be deployed. Generative AI can also help package it for production. But it is equally important to remember that the model was trained on data from a specific operational window. The team should verify that performance remains consistent with expectations and assess whether business conditions have changed. This matters especially when firms retrain models on fresh data even though the current version still performs well. In retail e-commerce, for example, retraining is often practical because it adapts the model to the current operating environment without requiring heavy human analysis.</p>
+<p>When operational procedures, planning constraints, or shifting business conditions require it, the team may adjust an existing model to a new data window. This is typically a different exercise from routine retraining because it incorporates the most recent operational period and any business changes stakeholders want to evaluate for the next model iteration. If the changes are incremental, this may not be too demanding. If a new feature or a different modeling approach is introduced, the effort can become substantial.</p>
+<p>A few observations matter here:</p>
+<ol type="1">
+<li>Human agency is required to decide what counts as a good solution and what ideas the solution should be built around.</li>
+<li>Human agency is required to explain why successive model versions differ. AutoML can generate predictions, but it cannot tell us why the model behaves as it does or how the business itself is evolving.</li>
+<li>Human agency is required to interpret the data holistically. Automation can surface patterns, compare cohorts, and summarize model diagnostics, but the final interpretation still depends on domain context, operational reality, and judgment.</li>
+</ol>
+<p>This is exactly the tension KMDS is designed to manage: combining expert human judgment with the strengths of generative AI.</p>
+<p>The batch deployment model is chosen deliberately. Online deployment is rarely worth the cost for most use cases because it offers little ROI relative to the expense. In cybersecurity, ad tech, or large-scale hyperscaler settings, real-time scoring may justify the investment. For most applications, the value of instant predictions is limited, and the cost of always-on infrastructure is not. Batch processing gives flexibility: hourly, daily, or weekly schedules can be tuned to balance freshness and operational simplicity.</p>
+<p>The practical view is that, for small and medium businesses, building a custom AI agent to automate an ML workflow is usually not worth it. Real-world enterprise data is messy, future requirements are uncertain, and edge cases can break fully automated systems. Despite the hype, a dedicated agent solution is often risky and low reward. A better first step is to pair a human expert with a coding agent. In a new deployment, that combination gives the best return: the AI can generate code quickly, while the human validates intermediate steps, handles messy data, and keeps the project moving safely. If the data and workflow remain stable over time, that work can then be delegated to an agent.</p>
+<p>The lifecycle above makes the design goal of KMDS clear: the system has to preserve not just the model artifact, but the reasoning, assumptions, and history behind it. The next section describes the operating environment that makes that traceability workable at scale.</p>
+</section>
+<section id="kmds-operating-environment" class="level2">
+<h2 class="anchored" data-anchor-id="kmds-operating-environment">KMDS Operating Environment</h2>
+<p>To give you a better sense of the process and the logical components and actors, let’s examine the system a little deeper. In KMDS, the knowledge graph is the connective tissue that links the business problem, data lineage, model artifacts, version history, and decision rationale. An illustrative schematic of the process is provided in Figure&nbsp;1. A typical solution development environment has the following components and actors:</p>
+<section id="analytical-data-environment" class="level3">
+<h3 class="anchored" data-anchor-id="analytical-data-environment">Analytical Data Environment</h3>
+<ul>
+<li>Lakehouse paradigm: Analytics data lives in modern lakehouse platforms such as Databricks or Snowflake.</li>
+<li>Unified storage: This combines the scalability of a data lake with the transactional integrity of a data warehouse.</li>
+<li>Streamlined pipelines: Data scientists work directly with curated, high-performance data layers for model training.</li>
+<li>Knowledge graph linkage: The graph records data provenance, feature definitions, and upstream assumptions so the model can be interpreted in context.</li>
+</ul>
+</section>
+<section id="the-ml-development-expert" class="level3">
+<h3 class="anchored" data-anchor-id="the-ml-development-expert">The ML Development Expert</h3>
+<ul>
+<li>Expert practitioners: Designed for mid-level to senior data scientists.</li>
+<li>Strategic mapping: Users translate complex business problems into structured machine learning tasks.</li>
+<li>Technical execution: Users independently drive data augmentation, feature engineering, and iterative model refinement to achieve business goals.</li>
+<li>Decision traceability: The graph records which hypotheses were tested, which trade-offs were accepted, and why a particular model version was chosen.</li>
+</ul>
+</section>
+<section id="version-control-system" class="level3">
+<h3 class="anchored" data-anchor-id="version-control-system">Version Control System</h3>
+<ul>
+<li>Git-centric workflow: Git is the single source of truth for the project.</li>
+<li>Artifact tracking: All code, configuration files, and documentation artifacts are version-controlled.</li>
+<li>Collaborative safety: This supports reproducible workflows, transparent peer review, and smooth CI/CD integration.</li>
+<li>Knowledge capture: Pull requests, notebooks, and design notes are connected to the graph so the project remains understandable long after the original author moves on.</li>
+</ul>
+</section>
+<section id="ai-coding-agents" class="level3">
+<h3 class="anchored" data-anchor-id="ai-coding-agents">AI-Coding Agents</h3>
+<ul>
+<li>Next-generation IDEs: Solutions are developed locally or in cloud environments using VS Code.</li>
+<li>Coding agents: Data scientists use AI agents, especially GitHub Copilot, to accelerate development.</li>
+<li>Efficiency gains: AI helps with boilerplate code, routine debugging, and rapid prototyping of pipeline components.</li>
+<li>Traceable outputs: Agent-generated code, notebooks, tests, and summaries are linked back to the business intent and the model lifecycle in the graph.</li>
+</ul>
+</section>
+<section id="production-deployment-environment" class="level3">
+<h3 class="anchored" data-anchor-id="production-deployment-environment">Production Deployment Environment</h3>
+<ul>
+<li>Standardized units: The target delivery artifact is a self-contained Docker container.</li>
+<li>Clear ownership: The KMDS lifecycle ends at containerization, isolating the model, dependencies, and inference code in an immutable image.</li>
+<li>Infrastructure-agnostic: Because the handoff occurs at the container level, the final artifact remains compatible with any downstream orchestration platform, whether a single cloud VM, a managed Kubernetes cluster, or a serverless runtime.</li>
+<li>Operational memory: The graph captures deployment assumptions, monitoring thresholds, and retraining triggers so the model can be maintained without reconstructing the original context from scratch.</li>
+</ul>
+<div id="fig-kmds-assembly" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-kmds-assembly-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/ds_product_assembly_kmds.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kmds-assembly-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: KMDS product assembly overview
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="implications-for-enterprise-data-science-teams" class="level2">
+<h2 class="anchored" data-anchor-id="implications-for-enterprise-data-science-teams">Implications for Enterprise Data Science Teams</h2>
+<p>Clearly, LLMs have changed the productivity and velocity of data science teams in many ways. It is important to put this in perspective relative to the actual challenges enterprise teams face. The crucial shift is not that LLMs replace judgment; it is that they change where the team spends its time. In a KMDS environment, the practical implications are these:</p>
+<ol type="1">
+<li><strong>Human-agent pairing becomes the default operating model</strong>: For a new use case, the best results come from pairing a subject-matter expert with a coding agent. The agent can accelerate code generation, documentation, and prototyping, while the human confirms assumptions, handles edge cases, and keeps the work aligned with business reality. This is a practical productivity gain, not a replacement for the data scientist.</li>
+<li><strong>Business-to-ML mapping remains the hard part</strong>: The team still has to translate a business question into a tractable machine learning task and validate that mapping against actual data. This is where LLMs are most helpful as assistants, not decision-makers. A model can be accelerated by automation, but the structure of the problem must still be driven by data and business context.</li>
+<li><strong>Interpretability and monitoring are team responsibilities</strong>: Once a model is built, the work shifts to explaining what it is doing, why it changed, and whether the operating conditions still match the assumptions under which it was trained. That requires a disciplined process for validation, monitoring, and retraining. LLMs can help summarize diagnostics and propose checks, but they do not replace human judgment about what matters.</li>
+<li><strong>The likely change is not fewer data scientists, but a different mix of work</strong>: In a high-volume AI-enabled environment, the value of a data science team is not just coding; it is in deciding what problem to solve, what constitutes a good solution, and how to maintain trust as conditions change. The most likely outcome is not a collapse in data science headcount, but a shift toward more strategic, judgment-heavy work and fewer routine tasks.</li>
+</ol>
+<p>This does not mean the discipline becomes less valuable. If anything, it becomes more valuable in the places where judgment matters most. The question is less whether AI reduces the need for data scientists and more whether a firm can use AI to expand the number of business problems it can support responsibly. The more likely answer is that firms do expand their footprint, but they do so by leaning harder on the parts of the workflow where experienced data scientists still add the most value.</p>
+<p>For a discussion of the KMDS workflow and its components, see <a href="https://rajivsam.github.io/r2ds-blog/posts/kmds_update_example/">KMDS Internals Explained</a>.</p>
+</section>
+</div>
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambasivan2026,
+  author = {Sambasivan, Rajiv},
+  title = {KMDS {Update:} {Context,} {Changes} and {Practical}
+    {Implications}},
+  date = {2026-08-20},
+  url = {https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambasivan2026" class="csl-entry quarto-appendix-citeas">
+Sambasivan, Rajiv. 2026. <span>“KMDS Update: Context, Changes and
+Practical Implications.”</span> August 20. <a href="https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/">https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/</a>.
+</div></div></section></div> ]]></description>
+  <category>news</category>
+  <category>code</category>
+  <category>analysis</category>
+  <guid>https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/</guid>
+  <pubDate>Thu, 20 Aug 2026 04:40:19 GMT</pubDate>
+  <media:content url="https://rajivsam.github.io/r2ds-blog/posts/kmds_update_1/kmds_human_in_the_loop.png" medium="image" type="image/png" height="96" width="144"/>
 </item>
 <item>
   <title>Exploring Time Series Signals</title>

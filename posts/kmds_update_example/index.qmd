@@ -46,18 +46,29 @@ The data scientist uses the featurization metadata and the modeling plan for the
 This makes the workflow feel consistent: `dd-parser-cleaner` creates the project foundation, `kmds-featurization` turns the data into usable features, `kmds-modeling` learns from those features, and `kmds-data-helper` records the project state as a KMDS knowledge graph that can be explored in the KMDS UI.
 
 ## Introducing New Models
+
 To add a new model type (for example, regression):
+
 1. Create a **featurization pipeline** for regression.
+
 2. Add regression best practices to the **featurization advisor**.
+
 3. Add a **modeling pipeline** for regression.
+
 4. Extend the **modeling advisor** with regression guidelines.
 
 ## Typical KMDS Workflow
+
 1. **Dataset Resolution** → Use `dataset-bootstrap` in `dd-parser-cleaner` to identify the dataset type.
+
 2. **Workspace Initialization** → Run `init-workspace` and `bootstrap-config` to set up project metadata and configuration.
+
 3. **Feature Engineering** → Use `kmds-featurization` to define the feature pipeline for the use case.
+
 4. **Model Training & Evaluation** → Use `kmds-modeling` to train, validate, and score the model.
+
 5. **Knowledge Graph Creation** → Run `kmds-data-helper` to generate a KMDS knowledge graph from the project workspace.
+
 6. **KMDS UI Interaction** → Query and update the knowledge graph in the KMDS UI; natural-language querying is supported.
 
 The interaction between the KMDS components is shown in the schematic in Figure @fig-parser-cleaner-feat-modeling-interaction.
