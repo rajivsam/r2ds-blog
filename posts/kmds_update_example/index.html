@@ -271,17 +271,23 @@ Figure&nbsp;3: KMDS modeling workflow
 </section>
 <section id="introducing-new-models" class="level2">
 <h2 class="anchored" data-anchor-id="introducing-new-models">Introducing New Models</h2>
-<p>To add a new model type (for example, regression): 1. Create a <strong>featurization pipeline</strong> for regression. 2. Add regression best practices to the <strong>featurization advisor</strong>. 3. Add a <strong>modeling pipeline</strong> for regression. 4. Extend the <strong>modeling advisor</strong> with regression guidelines.</p>
+<p>To add a new model type (for example, regression):</p>
+<ol type="1">
+<li><p>Create a <strong>featurization pipeline</strong> for regression.</p></li>
+<li><p>Add regression best practices to the <strong>featurization advisor</strong>.</p></li>
+<li><p>Add a <strong>modeling pipeline</strong> for regression.</p></li>
+<li><p>Extend the <strong>modeling advisor</strong> with regression guidelines.</p></li>
+</ol>
 </section>
 <section id="typical-kmds-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="typical-kmds-workflow">Typical KMDS Workflow</h2>
 <ol type="1">
-<li><strong>Dataset Resolution</strong> → Use <code>dataset-bootstrap</code> in <code>dd-parser-cleaner</code> to identify the dataset type.</li>
-<li><strong>Workspace Initialization</strong> → Run <code>init-workspace</code> and <code>bootstrap-config</code> to set up project metadata and configuration.</li>
-<li><strong>Feature Engineering</strong> → Use <code>kmds-featurization</code> to define the feature pipeline for the use case.</li>
-<li><strong>Model Training &amp; Evaluation</strong> → Use <code>kmds-modeling</code> to train, validate, and score the model.</li>
-<li><strong>Knowledge Graph Creation</strong> → Run <code>kmds-data-helper</code> to generate a KMDS knowledge graph from the project workspace.</li>
-<li><strong>KMDS UI Interaction</strong> → Query and update the knowledge graph in the KMDS UI; natural-language querying is supported.</li>
+<li><p><strong>Dataset Resolution</strong> → Use <code>dataset-bootstrap</code> in <code>dd-parser-cleaner</code> to identify the dataset type.</p></li>
+<li><p><strong>Workspace Initialization</strong> → Run <code>init-workspace</code> and <code>bootstrap-config</code> to set up project metadata and configuration.</p></li>
+<li><p><strong>Feature Engineering</strong> → Use <code>kmds-featurization</code> to define the feature pipeline for the use case.</p></li>
+<li><p><strong>Model Training &amp; Evaluation</strong> → Use <code>kmds-modeling</code> to train, validate, and score the model.</p></li>
+<li><p><strong>Knowledge Graph Creation</strong> → Run <code>kmds-data-helper</code> to generate a KMDS knowledge graph from the project workspace.</p></li>
+<li><p><strong>KMDS UI Interaction</strong> → Query and update the knowledge graph in the KMDS UI; natural-language querying is supported.</p></li>
 </ol>
 <p>The interaction between the KMDS components is shown in the schematic in Figure <a href="#fig-parser-cleaner-feat-modeling-interaction" class="quarto-xref">Figure&nbsp;4</a>.</p>
 <div id="fig-parser-cleaner-feat-modeling-interaction" class="quarto-float quarto-figure quarto-figure-center anchored">
